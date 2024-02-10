@@ -1,5 +1,6 @@
 # rq-checkin
  A RepairQ extension which generates a customer-facing form showing the results of a pre-test on their phone, a list of repairs to be performed on that phone, and a confirmation of estimated cost and intended follow-up method and time.
+ This will be packaged as a browser extension without any requirements for a desktop app or remote server. I'm open to changing this approach down the road, but I think the full scope of this project fits neatly into an extension, using mostly static HTML and vanilla JS. I also think this is the easiest way for most folks to access the software and the easiest way for us to push updates to everyone.
 
 # Goals
 1. Create transparency for customers by showing them which repairs we are going to perform and whether we are using OEM or aftermarket screens. This will help customers feel more confident that they are getting exactly what they expect to get from us.
@@ -21,6 +22,8 @@
 - Compatibility with all device types
 - Custom information which can be added depending on the device model (i.e. warranty information regarding green lines on Samsung OLEDs, 30-day accidental warranty on iPhone LCDs, etc.)
 - Make this workflow and form a requirement during check-ins. This will only work once the extension is aware of device type or is compatible with every device type. We will also need to account for situations where we are creating a ticket while the device is not present.
+- This will be a requirement for the above features: an option page and instructions/documentation
+- Update alerts. Extenstions don't automatically update every time, and it's easy to ignore update notifications. Maybe we can ask for emails?
 
 ### Priority 3
 - Script prompts. These are items which will not end up on the customer-facing form but would naturally fit into the workflow of an intake pre-test. It would cover questions about adding accessories, insurance, etc.
