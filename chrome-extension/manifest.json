@@ -1,0 +1,33 @@
+{
+    "manifest_version" : 3,
+    "name": "rq-checkin",
+    "version": "1.0",
+    "description": "A custom generated check-in form",
+
+    "icons": {
+        "16": "images/rqm16.png",
+        "48": "images/rqm48.png",
+        "128": "images/rqm128.png"
+    },
+
+    "permissions" : [
+        "activeTab",
+        "scripting"
+    ],
+
+    "content_scripts" : [
+        
+        {
+            "js" : [
+                "scripts/testing.js"
+            ],
+            "css" : [
+                "style/addButton.css"
+            ],
+            "matches" : [
+                "https://cpr.repairq.io/ticket/*"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
