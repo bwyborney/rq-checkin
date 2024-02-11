@@ -1,6 +1,5 @@
-# rq-checkin
+# RQ Check-in
  A RepairQ extension which generates a customer-facing form showing the results of a pre-test on their phone, a list of repairs to be performed on that phone, and a confirmation of estimated cost and intended follow-up method and time.
- This will be packaged as a browser extension without any requirements for a desktop app or remote server. I'm open to changing this approach down the road, but I think the full scope of this project fits neatly into an extension, using mostly static HTML and vanilla JS. I also think this is the easiest way for most folks to access the software and the easiest way for us to push updates to everyone.
 
 # Goals
 1. Create transparency for customers by showing them which repairs we are going to perform and whether we are using OEM or aftermarket screens. This will help customers feel more confident that they are getting exactly what they expect to get from us.
@@ -8,7 +7,10 @@
 3. Ensure employee accountability by giving the customer all the information we have during check-in. By handing this sheet to a customer, we are creating an agreement with the customer on the status of their phone and our intentions for the repair. The customer gets to take this form home with them while we work on their phone, so they can call out any errors. This means we need to get this checklist right every time, and so we are less likely to skip certain steps or skip the pre-test altogether. 
 4. Standardize a workflow for asking customers about additional repairs. Right now, asking a customer if they'd like to fix their back glass or replace their battery is completely up to whoever is checking in the device. By adding those questions to this form, we are making sure the customer gets asked every time.
 
-## Features
+# Packaging
+ This will be packaged as a browser extension without any requirements for a desktop app or remote server. I'm open to changing this approach down the road, but I think the full scope of this project fits neatly into an extension, using mostly static HTML and vanilla JS. I also think this is the easiest way for most folks to access the software and the easiest way for us to push updates to everyone.
+
+# Features (work in progress)
 ### Priority 1
 - A thorough pre-test checklist and list of repairs to perform
 - A professional-looking form to hand the customer
@@ -29,7 +31,7 @@
 - Script prompts. These are items which will not end up on the customer-facing form but would naturally fit into the workflow of an intake pre-test. It would cover questions about adding accessories, insurance, etc.
 - Safari, Firefox, etc. Most people are probably using Chrome, but a fair few probably use Safari. Firefox compatibility is just for me 
 
-## Other projects
+# Other projects
 These may end up getting integrated with this project, however the priority is to get this one shipped and working first.
 - [RCP Order Converter](https://chromewebstore.google.com/detail/rcp-order-converter/egnaiolljdmpnngnpijngcbngjhpfflb?hl=en): a Chrome extension which generates .csv files for RCP orders so they can be quickly imported into RepairQ.
 - [RQ Mods](https://chromewebstore.google.com/detail/rq-mods/cbfbidmaikcepocpnjeoafncoeeanegh?hl=en): a Chrome extension which fixes several bugs in RepairQ and adds a few UI changes and features, such as an unlock pattern recorder.
