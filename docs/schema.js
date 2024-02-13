@@ -13,14 +13,17 @@ let data = {
             estimate: "$329.99",
             due: "1/1/24 - 1:00"
         },
+        technician: {
+            name: "Ben Wyborney",
+            number: "12345678",
+            email: "repairs@cpr-eugene.com"
+        },
         device: {
             model: "Samsung Galaxy S22 Ultra",
             serial: "45648461564861685"
         },
-        notes: {
-            notes: "Screen replacement - the glass is cracked."
+        notes: "Screen replacement - the glass is cracked."
             // The initial diagnostic notes from the ticket
-        }
     },
     // Everyting to be included in column A. These will essentially be labels
     // for each component that is getting tested. They will be stored here 
@@ -42,13 +45,13 @@ let data = {
         // along with unicode characters for checked and unchecked boxes
         format: [
             ["Yes", "No"],
-            ["percent"],
+            ["percent"], // the other keyword would be "amps"
             ["Pass", "Fail", "Not testable"]
         ],
         // These values determine where to place the checked boxes
         values: [
-            0,
-            "85%",
+            0, 
+            "85",
             1
         ]
         // In this case, the outputs would be the following:
@@ -71,7 +74,7 @@ let data = {
         // for where to place the checkmark. The third one sees the "Other" 
         // keyword and looks for a string to append.
         values:  [
-            1,
+            true,
             2,
             "Factory reset" 
             // If you don't select the "other" options which requires text to

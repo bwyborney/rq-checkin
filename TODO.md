@@ -34,6 +34,15 @@ Adding other features:
 - [ ] Find a solution for saving the form for later viewing
     BW: since I'm hoping to avoid storing any information off-site, the obvious approach is to encode the intake information into RQ somehow. We could save a JSON object as the contents of a note or custom form. This is gonna be tricky, though
 - [ ] Test with different types of ticket. Chrome extensions trigger based on URLs, and there are at least two URL variants for ticket editing. Element selectors may be different on claim tickets, too.
+- [ ] Documentation and polish:
+    - Add a favicon
+    - Add webstore images
+    - Add instructions
+- [ ] Change the check-in form so "other" doesn't require a checkbox but just typing
+- [ ] Change the "18-point inspection" to accurately reflect how many points there are
+- [ ] While rendering the check-in form, start invisible then return to visible
+- [ ] Also keep track of how many rows are needed to make them even
+- [ ] In columnData.values, initialize each with a 99 or something
 
 # Ideas:
 - I want to add good/bad OLED as an option, but this will probably have to wait until customization is added, at this point. I think we can provide templates such as Pass/Fail/Can't test, Yes/No, x%, x amps. 
