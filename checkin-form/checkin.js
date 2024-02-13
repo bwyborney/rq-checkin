@@ -1,4 +1,5 @@
 // sample data
+/*
 let data = {
     ticketInfo: {
         customer: {
@@ -25,19 +26,23 @@ let data = {
         values: [
             "Front cracked?",
             "Battery health?",
-            "Biometric scanner"
+            "Biometric scanner",
+            "Battery health again",
+            "Testing"
         ]
     },
     columnB: {
         format: [
             ["Yes", "No"],
             ["percent"],
-            ["Pass", "Fail", "Not testable"]
+            ["Pass", "Fail", "Not testable"],
+            ["percent"]
         ],
         values: [
             0,
             "85",
-            1
+            1,
+            "92"
         ]
     },
     columnC: {
@@ -53,9 +58,28 @@ let data = {
         ]
     }
 }
+*/
 
 // Keep track of the longest column's length, so they can be matched later
-let maxRows = 0;
+function getMaxRows() {
+    let max = 0;
+    let columnALength = data.columnA.values.length;
+    let columnBLength = data.columnB.values.length;
+    let columnCLength = data.columnC.values.length;
+
+    if (columnALength > columnBLength) {
+        max = columnALength;
+    } else {
+        max = columnBLength;
+    }
+
+    if (columnCLength > max) {
+        max = columnCLength;
+    }
+
+    return max;
+}
+let maxRows = getMaxRows();
 
 // The place where the columns go
 const columnPlace = document.getElementById("inspection");
@@ -85,6 +109,19 @@ function fillColumnA() {
         row.appendChild(rowP);
 
         // Flip even or odd every time
+        row.classList.add(evenOrOdd);
+        if (evenOrOdd === 'ir-odd') {
+            evenOrOdd = 'ir-even';
+        } else {
+            evenOrOdd = 'ir-odd';
+        }
+
+        container.appendChild(row);
+    }
+
+    let difference = maxRows - (container.children.length - 1);
+    for (let d = 0; d < difference; d++) {
+        let row = document.createElement("div");
         row.classList.add(evenOrOdd);
         if (evenOrOdd === 'ir-odd') {
             evenOrOdd = 'ir-even';
@@ -147,6 +184,19 @@ function fillColumnB() {
         row.appendChild(rowP);
 
         // Flip even or odd every time
+        row.classList.add(evenOrOdd);
+        if (evenOrOdd === 'ir-odd') {
+            evenOrOdd = 'ir-even';
+        } else {
+            evenOrOdd = 'ir-odd';
+        }
+
+        container.appendChild(row);
+    }
+
+    let difference = maxRows - (container.children.length - 1);
+    for (let d = 0; d < difference; d++) {
+        let row = document.createElement("div");
         row.classList.add(evenOrOdd);
         if (evenOrOdd === 'ir-odd') {
             evenOrOdd = 'ir-even';
@@ -220,6 +270,14 @@ function fillColumnC() {
         container.appendChild(row);
     }
 
+    let difference = maxRows - (container.children.length - 1);
+    for (let d = 0; d < difference; d++) {
+        let row = document.createElement("div");
+        row.classList.add(evenOrOdd);
+
+        container.appendChild(row);
+    }
+
     columnPlace.appendChild(container);
 }
 
@@ -238,6 +296,8 @@ function fillMetaInfo() {
     document.getElementById("technician-email").innerText = data.ticketInfo.technician.email;
 
     document.getElementById("notes").innerText = data.ticketInfo.notes;
+
+    document.getElementById("inspection-points").innerText = data.columnA.values.length;
 }   
 
 fillMetaInfo();

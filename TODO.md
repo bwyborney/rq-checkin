@@ -39,9 +39,9 @@ Adding other features:
     - Add webstore images
     - Add instructions
 - [ ] Change the check-in form so "other" doesn't require a checkbox but just typing
-- [ ] Change the "18-point inspection" to accurately reflect how many points there are
+- [X] Change the "18-point inspection" to accurately reflect how many points there are
 - [ ] While rendering the check-in form, start invisible then return to visible
-- [ ] Also keep track of how many rows are needed to make them even
+- [X] Also keep track of how many rows are needed to make them even
 - [ ] In columnData.values, initialize each with a 99 or something
 
 # Ideas:
