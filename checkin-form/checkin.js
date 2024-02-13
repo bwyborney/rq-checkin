@@ -60,6 +60,18 @@ let data = {
 }
 */
 
+
+
+// ----- Everything for populating the printout form:
+/*
+// Call these functions to fill out the form:
+fillMetaInfo();
+fillColumnA();
+fillColumnB();
+fillColumnC();
+
+*/
+
 // Keep track of the longest column's length, so they can be matched later
 function getMaxRows() {
     let max = 0;
@@ -300,7 +312,3 @@ function fillMetaInfo() {
     document.getElementById("inspection-points").innerText = data.columnA.values.length;
 }   
 
-fillMetaInfo();
-fillColumnA();
-fillColumnB();
-fillColumnC();

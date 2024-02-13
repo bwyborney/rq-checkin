@@ -31,14 +31,14 @@ body {
 
 /* ============================== What gets printed ============================== */
 
-#container {
+#printout {
     width: 1125px;
     margin-left: calc((100vw - 1125px) / 2);
     margin-right: calc((100vw - 1125px) / 2);
 }
 
 @media print {
-    #container {
+    #printout {
         width: 90%;
         margin-left: 5%;
         margin-right: 5%;
