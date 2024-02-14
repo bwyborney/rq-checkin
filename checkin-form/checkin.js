@@ -5,7 +5,12 @@ let data = {
     ticketInfo: {
         customer: {
             name: "Customer McCustomer",
-            contact: "Call 541-123-4567"
+            contact: "",
+            methods: [
+                "(541)555-5555",
+                "(808)888-8888",
+                "fix@cpr.com"
+            ]
         },
         ticket: {
             number: "12345678",
@@ -39,10 +44,10 @@ let data = {
             ["percent"]
         ],
         values: [
-            0,
-            "85",
-            1,
-            "92"
+            999,
+            999,
+            999,
+            999
         ]
     },
     columnC: {
@@ -95,7 +100,6 @@ function changeColumnBSelection(id) {
     document.getElementById(id).classList = 'ci-selected';
     // Now change the value in storage
     data.columnB.values[a] = b;
-    console.log(data.columnB.values);
     
 }
 
@@ -147,11 +151,137 @@ function addPreTests() {
     }
 }
 
-function updateNotes() {
-    data.ticketInfo.notes = document.getElementById('ci-notes').value;
-    console.log(data.ticketInfo.notes);
+// Concatenate the values of the contact method dropdown boxes and
+// update the data accordingly
+function concatContact() {
+    // First, identify all the values
+    const method = document.getElementById('contact-method').value;
+    const otherMethod = document.getElementById('cic-other-method').value;
+    const number = document.getElementById('contact-number').value;
+    const otherNumber = document.getElementById('cic-other-number').value;
+
+    let concat = '';
+    if (method === 'No contact method') {
+        concat = method;
+    } else {
+        if (method === 'Other') {
+            concat += otherMethod;
+        } else {
+            concat += method;
+        }
+        concat += ' ';
+        if (number === 'Other') {
+            concat += otherNumber;
+        } else {
+            concat += number;
+        }
+    }
+
+    data.ticketInfo.customer.contact = concat;
+    
 }
 
+// Handle contact method change
+function handleContactMethod() {
+    // Show or hide the second row if there is no contact method
+    const value = document.getElementById('contact-method').value;
+    if (value == 'No contact method') {
+        document.getElementsByClassName('ci-contact-row')[1].style.display = 'none';
+    } else {
+        document.getElementsByClassName('ci-contact-row')[1].style.display = 'grid';
+    }
+    // Show or hide the "other" box as needed
+    if (value === 'Other') {
+        document.getElementById('cic-other-method').style.display = 'grid';
+    } else {
+        document.getElementById('cic-other-method').style.display = 'none';
+    }
+
+    concatContact();
+}
+
+// Handle contact number change
+function handleContactNumber() {
+    // Show or hide the "other" box as needed
+    const value = document.getElementById('contact-number').value;
+    if (value === 'Other') {
+        document.getElementById('cic-other-number').style.display = 'grid';
+    } else {
+        document.getElementById('cic-other-number').style.display = 'none';
+    }
+
+    concatContact();
+}
+
+// Prepare the contact method selection menus
+function addContact() {
+    // Populate all the contact options in the dropdown menu
+    for (let m = 0; m < data.ticketInfo.customer.methods.length; m++) {
+        let option = document.createElement('option');
+        option.value = data.ticketInfo.customer.methods[m];
+        option.innerText = data.ticketInfo.customer.methods[m];
+        document.getElementById('contact-number').appendChild(option);
+    }
+    // Add an 'other' option
+    let other = document.createElement('option');
+    other.value = 'Other';
+    other.innerText = 'Other';
+    document.getElementById('contact-number').appendChild(other);
+    // Add listeners for all the contacts methods
+    document.getElementById('contact-method').addEventListener('change', handleContactMethod);
+    document.getElementById('contact-number').addEventListener('change', handleContactNumber);
+
+    document.getElementById('cic-other-method').addEventListener('change', concatContact);
+    document.getElementById('cic-other-number').addEventListener('change', concatContact);
+}
+
+// Update the notes if they get changed
+function updateNotes() {
+    data.ticketInfo.notes = document.getElementById('ci-notes').value;
+}
+
+// When the Submit button is clicked, make sure everything is ready
+function checkSubmit() {
+    // Hide the error messages. They'll be visible again if they still apply
+    document.getElementById('err-contact').style.display = 'none';
+    document.getElementById('err-pretest').style.display = 'none';
+
+    let pass = true;
+    // Make sure all the pre-tests are filled out by checking against the default value of 999
+    for (let b = 0; b < data.columnB.values.length; b++) {
+        if (data.columnB.values[b] === 999) {
+            pass = false;
+            document.getElementById('err-pretest').style.display = 'grid';
+        }
+    }
+    // Make sure the contact method is chosen
+    // First, identify all the values
+    const method = document.getElementById('contact-method').value;
+    const otherMethod = document.getElementById('cic-other-method').value;
+    const number = document.getElementById('contact-number').value;
+    const otherNumber = document.getElementById('cic-other-number').value;
+
+    if (method === "") {
+        pass = false;
+        document.getElementById('err-contact').style.display = 'grid';
+    } else if (method === "Other" && otherMethod === "") {
+        pass = false;
+        document.getElementById('err-contact').style.display = 'grid';
+    }
+    if (method !== "No contact method" && number === "") {
+        pass = false;
+        document.getElementById('err-contact').style.display = 'grid';
+    }
+    if (method !== "No contact method" && number === "Other" && otherNumber === "") {
+        pass = false;
+        document.getElementById('err-contact').style.display = 'grid';
+    }    
+    if (pass) {
+        submit();
+    }
+}
+
+// Trigger everything to load the page with all the correct values
 function initialize() {
     if (data.ticketInfo.notes) {
         document.getElementById('ci-notes').value = data.ticketInfo.notes;
@@ -160,21 +290,19 @@ function initialize() {
     document.getElementById('ci-notes').addEventListener('change', updateNotes);
 
     addPreTests();
+    addContact();
+
+    document.getElementById('submit-button').addEventListener('click', checkSubmit);
 }
 
 initialize();
 
 
 
-// ----- Everything for populating the printout form:
-/*
-// Call these functions to fill out the form:
-fillMetaInfo();
-fillColumnA();
-fillColumnB();
-fillColumnC();
 
-*/
+
+
+// ----- Everything for populating the printout form:
 
 // Keep track of the longest column's length, so they can be matched later
 function getMaxRows() {
@@ -397,8 +525,6 @@ function fillColumnC() {
     columnPlace.appendChild(container);
 }
 
-
-
 // Fill the "meta info," all the stuff that goes on the top of the page
 function fillMetaInfo() {
     document.getElementById("customer-name").innerText = data.ticketInfo.customer.name;
@@ -414,5 +540,19 @@ function fillMetaInfo() {
     document.getElementById("notes").innerText = data.ticketInfo.notes;
 
     document.getElementById("inspection-points").innerText = data.columnA.values.length;
-}   
+}  
+
+// Call these functions to fill out the form:
+function submit() {
+    fillMetaInfo();
+    fillColumnA();
+    fillColumnB();
+    fillColumnC();
+
+    document.getElementById('checkin').style.display = 'none';
+    document.getElementById('submit').style.display = 'none';
+    document.getElementById('printout').style.display = 'grid';
+}
+
+
 

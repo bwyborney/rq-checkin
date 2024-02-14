@@ -7,8 +7,13 @@ let data = {
     ticketInfo: {
         customer: {
             name: "",
-            contact: ""
-            // Contact will look like "Call (123)456-7891"
+            contact: "Call (123)456-7891", // This will show up on the form
+            methods: [
+                "(541)555-5555",
+                "(808)888-8888",
+                "fix@cpr.com"
+                // All the differnt contact options, pulled from RQ
+            ]
         },
         ticket: {
             number: "12345678",
@@ -60,6 +65,8 @@ let data = {
             // "\u2611 Yes \u2610 No "
             // 85%
             // "\u2610 Pass \u2611 Fail \u2610 Not testable"
+        // There will be a default value of 999 for each of these.
+            // This is to prevent submitting before filling everything out.
     },
     // This column contains the values for repairs we will perform. It works
     // the same way as columnB
@@ -81,6 +88,57 @@ let data = {
             "Factory reset" 
             // If you don't select the "other" options which requires text to
             // be typed in, that value will be an empty string
+        ]
+    }
+}
+
+
+// Here's the default, non-filled version:
+let defaultData = {
+    version: 1.0,
+    ticketInfo: {
+        customer: {
+            name: "",
+            contact: "",
+            methods: [
+                ""
+            ]
+        },
+        ticket: {
+            number: "",
+            estimate: "",
+            due: ""
+        },
+        technician: {
+            name: "",
+            number: "",
+            email: ""
+        },
+        device: {
+            model: "",
+            serial: ""
+        },
+        notes: ""
+    },
+    columnA: {
+        values: [
+            ""
+        ]
+    },
+    columnB: {
+        format: [
+            [""]
+        ],
+        values: [
+            999
+        ]
+    },
+    columnC: {
+        format: [
+            [""]
+        ],
+        values:  [
+            999 
         ]
     }
 }

@@ -1,16 +1,4 @@
-Make functions for generating check-in items based on fed formats
-    event listener for each button, passing its key which is also its id
-    for percent/amps, do onChange and pass its value
-
-make the event action for each of those buttons
-
-Add a button for converting the page
-
-Add a button for printing the page
-
-Make a starting variable which would get passed to this including default values
-
-Test
+Make a starting variable which would get passed to this including default values of 999 for everything
 
 Integrate with Chrome extension
     how to get page to pop up

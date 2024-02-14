@@ -24,9 +24,6 @@ Adding other features:
 - Model/manufacturer-specific information added to the bottom of a ticket. This would mostly be used for warranty and disclaimer text
 
 # To-do:
-- [x] Create a template file for the customer-facing form
-- [ ] Create the input form for the pre-test checklist
-    BW: I already have a working version of this, but I need to make some serious changes to it before it's ready
 - [ ] Functions for pulling customer, device, ticket, and repair details
     BW: nearly done, just need to pull ticket information and customer contact information. Will need to come up with a solution for contact method. I think the intake form should just have a drop-down which includes call, text, email, customer to return, and another drop-drop down which includes primary number (pulled from RQ), alt number, email, or custom 
 - [ ] Barcode generator. I'm just using a sample barcode PNG for CSS prototyping. This doesn't have to be a QR code, but it should be labelled "ticket number: 1234567"
@@ -40,12 +37,8 @@ Adding other features:
     - Add webstore images
     - Add instructions
 - [ ] Change the check-in form so "other" doesn't require a checkbox but just typing
-- [X] Change the "18-point inspection" to accurately reflect how many points there are
 - [ ] While rendering the check-in form, start invisible then return to visible
-- [X] Also keep track of how many rows are needed to make them even
 - [ ] In columnData.values, initialize each with a 99 or something
 - [ ] For the extension: create options page for customizing test values
 - [ ] While customizing options, need a hard check to ensure column A and B are the same length
 
-# Ideas:
-- I want to add good/bad OLED as an option, but this will probably have to wait until customization is added, at this point. I think we can provide templates such as Pass/Fail/Can't test, Yes/No, x%, x amps. 

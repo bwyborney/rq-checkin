@@ -14,43 +14,41 @@
                 Please review the following information, then make a selection for each of the items below.
                 Once you are done, hit the "Submit and Print" button, then hand the form to the customer.
             </div>
+
             <input type="text" id="ci-notes">
 
-
-
-            <!-- Examples of what these divs will look like -->
-
-            <!-- Checkin-Test: for a pre-test item -->
-            <!-- 
-                Every div uses the ci-test class. 
-                ci-multiselect is for tests which require choosing one of multiple outcomes
-            -->
-            <div class="ci-test ci-multiselect">
-                <div class="ci-test-label">"Front cracked?"</div>
-                <!--The represents 't' for test, 0 for this test's index, and the second 0 for the value -->
-                <div id="t-0-0">Yes</div>
-                <div id="t-0-1">No</div>
+            <div id="ci-contact">
+                <div class="ci-contact-label">Contact method: </div>
+                <div class="ci-contact-row">
+                    <select id="contact-method" name="contact-method">
+                        <option value="" selected disabled>Select a method:</option>
+                        <option value="Call">Call</option>
+                        <option value="Text">Text</option>
+                        <option value="Email">Email</option>
+                        <option value="No contact method">No contact method</option>
+                        <option value="Other">Other</option>
+                    </select>
+    
+                    <input style="display:none" type="text" id="cic-other-method" placeholder='type a method (like "FB message")'>
+                </div>
+                <div class="ci-contact-row">
+                    <select id="contact-number" name="contact-number">
+                        <option value="" selected disabled>Select a number:</option>
+                    </select>
+                    <input style="display:none" type="text" id="cic-other-number" placeholder='type a number or email'>
+                </div>
             </div>
-
-            <!-- ci-input is for text inputs -->
-            <div class="ci-test ci-input">
-                <div class="ci-test-label">"Battery health?"</div>
-                <input type="text" id="t-1-0">
-                <!-- What to append to the string, amps or percent -->
-                <div class="ci-append">%</div>
-
-            </div>
-
-            <!-- end examples -->
-
+        </div>  
+        <div id="submit">
+            <div id="submit-button">Submit</div>
+            <div class="error-message" id="err-contact" style="display: none">Please choose a contact method.</div>
+            <div class="error-message" id="err-pretest" style="display: none">Please fill out the pre-test.</div>
         </div>
-
-        
         <!-- 
             The printed form, to be handed to the customer.
             This will be auto-filled by the script
         -->
-        <div id="printout">
+        <div id="printout" style="display: none">
             <div id="header">
                 <img src="./cpr.png">
                 <h1><span id="technician-location" class="no-i">Repair Check-In</span></h1>
@@ -140,8 +138,8 @@
             </p>
     
             <div id="qr-code">
-                <img src="./qrcode.png">
-                <p>1234567</p>
+                <div id="qrcode"></div>
+                <p id="qr-ticket-number"></p>
             </div>
     
             <div id="signature">
