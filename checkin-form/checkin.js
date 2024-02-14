@@ -1,6 +1,7 @@
 // sample data
-/*
+
 let data = {
+    version: 1.0,
     ticketInfo: {
         customer: {
             name: "Customer McCustomer",
@@ -58,7 +59,22 @@ let data = {
         ]
     }
 }
-*/
+
+
+function updateNotes() {
+    data.ticketInfo.notes = document.getElementById('ci-notes').value;
+    console.log(data.ticketInfo.notes);
+}
+
+function initialize() {
+    if (data.ticketInfo.notes) {
+        document.getElementById('ci-notes').value = data.ticketInfo.notes;
+    }
+
+    document.getElementById('ci-notes').addEventListener('change', updateNotes);
+}
+
+initialize();
 
 
 

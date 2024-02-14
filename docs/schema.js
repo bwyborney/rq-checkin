@@ -1,6 +1,8 @@
 // This is an example of how data should be stored in variables:
 
 let data = {
+    // In case we decide to redo this whole thing at some point
+    version: 1.0,
     // All the metadata about this ticket
     ticketInfo: {
         customer: {

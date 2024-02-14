@@ -30,6 +30,7 @@ Adding other features:
 - [ ] Functions for pulling customer, device, ticket, and repair details
     BW: nearly done, just need to pull ticket information and customer contact information. Will need to come up with a solution for contact method. I think the intake form should just have a drop-down which includes call, text, email, customer to return, and another drop-drop down which includes primary number (pulled from RQ), alt number, email, or custom 
 - [ ] Barcode generator. I'm just using a sample barcode PNG for CSS prototyping. This doesn't have to be a QR code, but it should be labelled "ticket number: 1234567"
+    BW: probably just use [this](https://davidshimjs.github.io/qrcodejs/)
 - [ ] Create the Chrome extension. Will add a button alongside the ticket-status buttons to pull up the intake form
 - [ ] Find a solution for saving the form for later viewing
     BW: since I'm hoping to avoid storing any information off-site, the obvious approach is to encode the intake information into RQ somehow. We could save a JSON object as the contents of a note or custom form. This is gonna be tricky, though
@@ -43,6 +44,7 @@ Adding other features:
 - [ ] While rendering the check-in form, start invisible then return to visible
 - [X] Also keep track of how many rows are needed to make them even
 - [ ] In columnData.values, initialize each with a 99 or something
+- [ ] For the extension: create options page for customizing test values
 
 # Ideas:
 - I want to add good/bad OLED as an option, but this will probably have to wait until customization is added, at this point. I think we can provide templates such as Pass/Fail/Can't test, Yes/No, x%, x amps. 
