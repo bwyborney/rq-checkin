@@ -45,6 +45,7 @@ Adding other features:
 - [X] Also keep track of how many rows are needed to make them even
 - [ ] In columnData.values, initialize each with a 99 or something
 - [ ] For the extension: create options page for customizing test values
+- [ ] While customizing options, need a hard check to ensure column A and B are the same length
 
 # Ideas:
 - I want to add good/bad OLED as an option, but this will probably have to wait until customization is added, at this point. I think we can provide templates such as Pass/Fail/Can't test, Yes/No, x%, x amps. 

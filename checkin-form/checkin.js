@@ -28,8 +28,7 @@ let data = {
             "Front cracked?",
             "Battery health?",
             "Biometric scanner",
-            "Battery health again",
-            "Testing"
+            "Battery health again"
         ]
     },
     columnB: {
@@ -60,6 +59,93 @@ let data = {
     }
 }
 
+// ----- Everything for generating the initial checkin form:
+
+// These functions will get passed IDs which they need to 
+// parse into a two-layer array index
+function parseId(id) {
+    // Get an array with just the two numbers
+    let numbersOnly = id.split('-').toSpliced(0,1);
+    // Those numbers are chars, need to be ints
+    let parsed = [];
+    for (let n = 0; n < numbersOnly.length; n++) {
+        parsed[n] = parseInt(numbersOnly[n]);
+    }
+    return parsed;
+}
+
+// When a pre-test percent or amperage value is changed
+function changeColumnBValue(id, value) {
+    let index = parseId(id);
+    const a = index[0];
+    data.columnB.values[a] = value;
+}
+
+// When a pre-test with multiple selections is clicked
+function changeColumnBSelection(id) {
+    let index = parseId(id);
+    const a = index[0];
+    const b = index[1];
+    // Change the class of the selected element, but first set
+    // all its neighbors to the default class
+    for (let c = 0; c < data.columnB.format[a].length; c++) {
+        let target = `t-${a}-${c}`;
+        document.getElementById(target).classList = 'ci-deselected';
+    }
+    document.getElementById(id).classList = 'ci-selected';
+    // Now change the value in storage
+    data.columnB.values[a] = b;
+    console.log(data.columnB.values);
+    
+}
+
+// Add all the pre test forms to the page
+function addPreTests() {
+    // Make one row for each item on the list
+    for (let p = 0; p < data.columnA.values.length; p++) {
+        let row = document.createElement('div');
+        row.classList.add('ci-test');
+        // The label says what the test is for
+        let label = document.createElement('div');
+        label.classList.add('ci-test-label');
+        label.innerText = data.columnA.values[p];
+        row.appendChild(label);
+        // Check if the test contains a keyword, either "percent" or "amps"
+        // If it does, it will require an input form and a different class
+        if (data.columnB.format[p][0] === "percent" || 
+        data.columnB.format[p][0] === "amps" ) {
+            row.classList.add('ci-input');
+            let input = document.createElement('input');
+            input.type = 'text'; // could change this to number, but that wouldn't allow floats
+            // The id will let the change function know which value to change
+            const inputId = `t-${p}-0`;
+            input.id = inputId;
+            input.addEventListener('change', () => changeColumnBValue(inputId, input.value));
+            row.appendChild(input);
+            // This is just an ending, so folks won't add their own percent sign
+            let append = document.createElement('div');
+            append.classList.add('ci-append');
+            append.innerText = data.columnB.format[p][0];
+            row.appendChild(append);
+        } else {
+            row.classList.add('ci-multiselect');
+            // Add one button per option
+            for (let v = 0; v < data.columnB.format[p].length; v++) {
+                let button = document.createElement('div');
+                button.classList.add('ci-deselected');
+                button.innerText = data.columnB.format[p][v];
+                const inputId = `t-${p}-${v}`;
+                button.id = inputId;
+                // Use a different function for this type of input
+                button.addEventListener('click', () => changeColumnBSelection(inputId));
+
+                row.appendChild(button);
+            }
+        }
+
+        document.getElementById('checkin').appendChild(row);
+    }
+}
 
 function updateNotes() {
     data.ticketInfo.notes = document.getElementById('ci-notes').value;
@@ -72,6 +158,8 @@ function initialize() {
     }
 
     document.getElementById('ci-notes').addEventListener('change', updateNotes);
+
+    addPreTests();
 }
 
 initialize();
