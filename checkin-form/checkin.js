@@ -206,6 +206,7 @@ function addRepairs() {
             field.type = 'text';
             field.placeholder="Enter the type of repair";
             field.classList.add("rep-other-input");
+            field.id = `other-input-${f}`;
             row.appendChild(field);
         } else {
             row.classList.add('rep-select');
@@ -321,6 +322,7 @@ function checkSubmit() {
     // Hide the error messages. They'll be visible again if they still apply
     document.getElementById('err-contact').style.display = 'none';
     document.getElementById('err-pretest').style.display = 'none';
+    document.getElementById('err-other-repair').style.display = 'none';
 
     let pass = true;
     // Make sure all the pre-tests are filled out by checking against the default value of 999
@@ -352,6 +354,20 @@ function checkSubmit() {
         pass = false;
         document.getElementById('err-contact').style.display = 'grid';
     }    
+
+    // Make sure that, if the "other" box is checked,
+    // something has actually been typed in
+    for (let o = 0; o < data.columnC.format.length; o++) {
+        if (data.columnC.format[o][0] === "Other") {
+            if (data.columnC.values[o][0] === 1) {
+                if (document.getElementById(`other-input-${o}`).value.length < 1) {
+                    pass = false;
+                    document.getElementById('err-other-repair').style.display = 'grid';
+                }
+            }
+        }
+    }
+
     if (pass) {
         submit();
     }
@@ -543,41 +559,31 @@ function fillColumnC() {
     container.appendChild(header);
     
     // Here's the unique code for column C
-    let values = [];
     const format = data.columnC.format;
     const originals = data.columnC.values;
-
+    let values = [];
     for (let v = 0; v < format.length; v++) {
-        // Check for the "other" keyword. Check it if needed,
-        // then append the "other" text
+        // Handle "other" repairs by grabbing the value of the correlated input 
         if (format[v][0] === "Other") {
-            if (originals[v].length > 0) {
-                values[v] = "\u2611 Other: " + originals[v];
+            let field = document.getElementById(`other-input-${v}`).value;
+            if (field.length > 0 && originals[v][0] === 1) {
+                values[v] = "\u2611 Other: " + field;
             } else {
                 values[v] = "\u2610 Other: ";
             }
-        } else if (format[v].length === 1) {
-            // A single-length format only requires a check or not a check
-            if (originals[v]) {
-                values[v] = "\u2611 " + format[v];
-            } else {
-                values[v] = "\u2610 " + format[v];
-            }
         } else {
-            // Check the correct item, just like in column B
-            let concat = "";
-            for (let w = 0; w < format[v].length; w++) {
-                if (originals[v] === w) {
-                    concat += "\u2611 ";
+            // Check the boxes as neccesarry
+            values[v] = "";
+            for (let q = 0; q < format[v].length; q++) {
+                if (originals[v][q] === 0) {
+                    values[v] += `\u2610 ${format[v][q]} `;
                 } else {
-                    concat += "\u2610 ";
+                    values[v] += `\u2611 ${format[v][q]} `;
                 }
-                concat += format[v][w];
-                concat += " ";
             }
-            values[v] = concat;
         }
     }
+    
 
     // Column C is all even, no odd
     const evenOrOdd = 'ir-even';
