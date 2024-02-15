@@ -81,13 +81,13 @@ let data = {
         // For example, the first row is one value long, so it will look for a
         // 0 or a 1 to represent checked or unchecked. The second one will look
         // for where to place the checkmark. The third one sees the "Other" 
-        // keyword and looks for a string to append.
+        // keyword and looks for a string to append. It will still look for a
+        // checkmark below in the values, and the text will live in an input
+        // form on the page
         values:  [
-            true,
-            2,
-            "Factory reset" 
-            // If you don't select the "other" options which requires text to
-            // be typed in, that value will be an empty string
+            [0],
+            [1, 0, 0],
+            [1]
         ]
     }
 }

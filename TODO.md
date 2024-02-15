@@ -41,4 +41,12 @@ Adding other features:
 - [ ] In columnData.values, initialize each with a 99 or something
 - [ ] For the extension: create options page for customizing test values
 - [ ] While customizing options, need a hard check to ensure column A and B are the same length
+- [ ] Add an override button for certain situations
+    Add a way to track whether this has been done or not
+- [ ] Add a backup in case someone fills this out before fillin out the customer, device data, if they choose anonymous customer, etc
 
+Where I'm leaving off:
+Handle submit and transformation for column C
+    Will need to validate one thing, which is that a checked "other" box will need to be accompanied by a filled in text box.
+
+Add styling and dividers and headers to the checkin form

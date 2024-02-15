@@ -57,9 +57,9 @@ let data = {
             ["Other"]
         ],
         values:  [
-            true,
-            2,
-            "Factory reset" 
+            [0],
+            [0, 0, 0],
+            [0]
         ]
     }
 }
@@ -149,6 +149,82 @@ function addPreTests() {
 
         document.getElementById('checkin').appendChild(row);
     }
+}
+
+// Handle checkbox clicks for repair types
+function handleRepairCheck(id) {
+    // Get the index of the array and the sub-array
+    let index = parseId(id);
+    const a = index[0];
+    const b = index[1];
+
+    // Toggle the target value between 1 and 0. It defaults at 0
+    if (data.columnC.values[a][b] === 0) {
+        data.columnC.values[a][b] = 1;
+    } else if (data.columnC.values[a][b] === 1) {
+        data.columnC.values[a][b] = 0;
+    }
+
+    // Now, if this is a multi-option, such as screen type, deselect the others
+    for (let u = 0; u < data.columnC.values[a].length; u++) {
+        if (u !== b) {
+            data.columnC.values[a][u] = 0;
+        }
+    }
+
+    // Finally, set the correct classes and checkboxes for everyone
+    for (let s = 0; s < data.columnC.values[a].length; s++) {
+        if (data.columnC.values[a][s] === 0) {
+            document.getElementById(`r-${a}-${s}`).classList = "rep-deselected";
+            document.getElementById(`r-${a}-${s}`).innerText = "\u2610 " + data.columnC.format[a][s];
+        } else {
+            document.getElementById(`r-${a}-${s}`).classList = "rep-selected";
+            document.getElementById(`r-${a}-${s}`).innerText = "\u2611 " + data.columnC.format[a][s];
+        }
+    }
+}
+
+// Add the repair checklist
+function addRepairs() {
+    let format = data.columnC.format;
+    for (let f = 0; f < format.length; f++) {
+        let row = document.createElement('div');
+        row.classList.add('rep-test');
+
+        if (format[f][0] === "Other") {
+            row.classList.add('rep-other');
+            let item = document.createElement('div');
+            item.classList.add('rep-deselected');
+
+            let itemId = `r-${f}-0`;
+            item.id = itemId;
+            item.innerText = "\u2610 Other";
+            item.addEventListener('click', () => handleRepairCheck(itemId));
+            row.appendChild(item);
+
+            let field = document.createElement('input');
+            field.type = 'text';
+            field.placeholder="Enter the type of repair";
+            field.classList.add("rep-other-input");
+            row.appendChild(field);
+        } else {
+            row.classList.add('rep-select');
+            for (let g = 0; g < format[f].length; g++) {
+                let item = document.createElement('div');
+                item.classList.add('rep-deselected');
+                let itemId = `r-${f}-${g}`;
+                item.id = itemId;
+                item.innerText = "\u2610 " + data.columnC.format[f][g];
+                item.addEventListener('click', () => handleRepairCheck(itemId));
+                row.appendChild(item);
+            }
+
+        }
+        
+    
+        document.getElementById('checkin').appendChild(row);
+    }
+
 }
 
 // Concatenate the values of the contact method dropdown boxes and
@@ -291,6 +367,7 @@ function initialize() {
 
     addPreTests();
     addContact();
+    addRepairs();
 
     document.getElementById('submit-button').addEventListener('click', checkSubmit);
 }
