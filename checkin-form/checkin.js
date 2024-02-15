@@ -105,6 +105,11 @@ function changeColumnBSelection(id) {
 
 // Add all the pre test forms to the page
 function addPreTests() {
+    // Add a header first
+    let sectionHeader = document.createElement('p');
+    sectionHeader.classList = 'section-head';
+    sectionHeader.innerText = 'Pre-repair Inspection:';
+    document.getElementById('checkin').appendChild(sectionHeader);
     // Make one row for each item on the list
     for (let p = 0; p < data.columnA.values.length; p++) {
         let row = document.createElement('div');
@@ -147,6 +152,7 @@ function addPreTests() {
             }
         }
 
+        
         document.getElementById('checkin').appendChild(row);
     }
 }
@@ -186,6 +192,12 @@ function handleRepairCheck(id) {
 
 // Add the repair checklist
 function addRepairs() {
+    // Add a header first
+    let sectionHeader = document.createElement('p');
+    sectionHeader.classList = 'section-head';
+    sectionHeader.innerText = 'Repairs to perform:';
+    document.getElementById('checkin').appendChild(sectionHeader);
+
     let format = data.columnC.format;
     for (let f = 0; f < format.length; f++) {
         let row = document.createElement('div');
@@ -222,7 +234,6 @@ function addRepairs() {
 
         }
         
-    
         document.getElementById('checkin').appendChild(row);
     }
 

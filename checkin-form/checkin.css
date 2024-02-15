@@ -29,6 +29,236 @@ body {
 
 /* ============================== What the technician fills out ============================== */
 
+#checkin {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#ci-instructions {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#ci-notes-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+#ci-notes-container > p {
+    text-align: center;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+#ci-notes {
+    width: 100%;
+    border: solid 2px;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+#ci-contact {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    margin-bottom: 35px;
+}
+
+.ci-contact-label {
+    text-align: right;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 1.1rem;
+}
+
+.ci-contact-row {
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+}
+
+.ci-contact-row > select {
+    width: 100%;
+    border: solid 2px;
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.ci-contact-row > input {
+    width: 100%;
+    border: solid 2px;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.ci-test {
+    width: 100%;
+    display: grid;
+    margin-bottom: 35px;
+}
+
+.ci-multiselect {
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+
+.ci-test-label {
+    text-align: right;
+    font-size: 1.1rem;
+}
+
+.ci-selected, .ci-deselected {
+    text-align: center;
+    font-size: 1.1rem;
+    border: solid 2px;
+    border-radius: 3px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 1.5rem;
+}
+
+.ci-selected {
+    background-color: black;
+    color: white;
+    transition: 0.1s;
+}
+
+.ci-deselected {
+    background-color: white;
+    color: black;
+    transition: 0.1s;
+}
+
+.ci-deselected:hover {
+    background-color: black;
+    color: white;
+    transition: 0.1s;
+}
+
+.ci-input {
+    grid-template-columns: 20% 20% 20%;
+}
+
+.ci-input > input {
+    text-align: center;
+    font-size: 1.1rem;
+    border: solid 2px;
+    border-radius: 3px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 1.5rem;
+}
+
+.ci-append {
+    text-align: left;
+    font-size: 1.1rem;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.rep-test {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    cursor: pointer;
+}
+
+.rep-other {
+    grid-template-columns: 20% 80%;
+}
+
+.rep-selected, .rep-deselected {
+    text-align: center;
+    font-size: 1.1rem;
+    border: solid 2px;
+    border-radius: 3px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 1.5rem;
+}
+
+.rep-selected {
+    background-color: black;
+    color: white;
+    transition: 0.1s;
+}
+
+.rep-deselected {
+    background-color: white;
+    color: black;
+    transition: 0.1s;
+}
+
+.rep-test > input {
+    text-align: center;
+    font-size: 1.1rem;
+    border: solid 2px;
+    border-radius: 3px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 1.5rem;
+}
+
+.section-head {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 35px;
+}
+
+#submit-button {
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    text-align: center;
+    font-size: 1.3rem;
+    border: solid 2px;
+    border-radius: 3px;
+    padding: 10px;
+
+}
+
+#submit-button:hover {
+    background-color: black;
+    color: white;
+    transition: 0.1s;
+}
+
+.error-message {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    font-size: 1.2rem;
+    background-color: maroon;
+    color: white;
+    text-align: center;
+    border: solid 2px maroon;
+    border-radius: 5px;
+    transition: 0.1s;
+    margin-bottom: 20px;
+}
+
 /* ============================== What gets printed ============================== */
 
 #printout {

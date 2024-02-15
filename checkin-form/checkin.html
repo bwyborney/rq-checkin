@@ -14,8 +14,11 @@
                 Please review the following information, then make a selection for each of the items below.
                 Once you are done, hit the "Submit and Print" button, then hand the form to the customer.
             </div>
-
-            <input type="text" id="ci-notes">
+            <div id="ci-notes-container">
+                <p>Customer remarks: </p>
+                <input type="textarea" id="ci-notes">
+            </div>
+            
 
             <div id="ci-contact">
                 <div class="ci-contact-label">Contact method: </div>
@@ -41,10 +44,11 @@
 
         </div>  
         <div id="submit">
-            <div id="submit-button">Submit</div>
+            
             <div class="error-message" id="err-contact" style="display: none">Please choose a contact method.</div>
             <div class="error-message" id="err-pretest" style="display: none">Please fill out the pre-test.</div>
             <div class="error-message" id="err-other-repair" style="display: none">"Other" repair is selected but nothing has been typed.</div>
+            <div id="submit-button">Submit</div>
         </div>
         <!-- 
             The printed form, to be handed to the customer.
