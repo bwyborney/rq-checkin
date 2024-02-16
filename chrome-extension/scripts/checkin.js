@@ -1,67 +1,6 @@
-// sample data
-
-let sampleData = {
-    version: 1.0,
-    ticketInfo: {
-        customer: {
-            name: "Customer McCustomer",
-            contact: "",
-            methods: [
-                "(541)555-5555",
-                "(808)888-8888",
-                "fix@cpr.com"
-            ]
-        },
-        ticket: {
-            estimate: "$329.99",
-            due: "1/1/24 - 1:00"
-        },
-        technician: {
-            name: "Ben Wyborney",
-            number: "12345678",
-            email: "repairs@cpr-eugene.com"
-        },
-        device: {
-            model: "Samsung Galaxy S22 Ultra",
-            serial: "45648461564861685"
-        },
-        notes: "Screen replacement - the glass is cracked."
-    },
-    columnA: {
-        values: [
-            "Front cracked?",
-            "Battery health?",
-            "Biometric scanner",
-            "Battery health again"
-        ]
-    },
-    columnB: {
-        format: [
-            ["Yes", "No"],
-            ["percent"],
-            ["Pass", "Fail", "Not testable"],
-            ["percent"]
-        ],
-        values: [
-            999,
-            999,
-            999,
-            999
-        ]
-    },
-    columnC: {
-        format: [
-            ["Screen replacement"],
-            ["OEM", "AFM LCD", "AFM OLED"],
-            ["Other"]
-        ],
-        values:  [
-            [0],
-            [0, 0, 0],
-            [0]
-        ]
-    }
-}
+let data;
+let maxRows;
+let columnPlace;
 
 // ----- Everything for generating the initial checkin form:
 
@@ -94,9 +33,9 @@ function changeColumnBSelection(id) {
     // all its neighbors to the default class
     for (let c = 0; c < data.columnB.format[a].length; c++) {
         let target = `t-${a}-${c}`;
-        document.getElementById(target).classList = 'ci-deselected';
+        innerDocument.document.getElementById(target).classList = 'ci-deselected';
     }
-    document.getElementById(id).classList = 'ci-selected';
+    innerDocument.document.getElementById(id).classList = 'ci-selected';
     // Now change the value in storage
     data.columnB.values[a] = b;
     
@@ -105,16 +44,16 @@ function changeColumnBSelection(id) {
 // Add all the pre test forms to the page
 function addPreTests() {
     // Add a header first
-    let sectionHeader = document.createElement('p');
+    let sectionHeader = innerDocument.document.createElement('p');
     sectionHeader.classList = 'section-head';
     sectionHeader.innerText = 'Pre-repair Inspection:';
-    document.getElementById('checkin').appendChild(sectionHeader);
+    innerDocument.document.getElementById('checkin').appendChild(sectionHeader);
     // Make one row for each item on the list
     for (let p = 0; p < data.columnA.values.length; p++) {
-        let row = document.createElement('div');
+        let row = innerDocument.document.createElement('div');
         row.classList.add('ci-test');
         // The label says what the test is for
-        let label = document.createElement('div');
+        let label = innerDocument.document.createElement('div');
         label.classList.add('ci-test-label');
         label.innerText = data.columnA.values[p];
         row.appendChild(label);
@@ -123,7 +62,7 @@ function addPreTests() {
         if (data.columnB.format[p][0] === "percent" || 
         data.columnB.format[p][0] === "amps" ) {
             row.classList.add('ci-input');
-            let input = document.createElement('input');
+            let input = innerDocument.document.createElement('input');
             input.type = 'text'; // could change this to number, but that wouldn't allow floats
             // The id will let the change function know which value to change
             const inputId = `t-${p}-0`;
@@ -131,7 +70,7 @@ function addPreTests() {
             input.addEventListener('change', () => changeColumnBValue(inputId, input.value));
             row.appendChild(input);
             // This is just an ending, so folks won't add their own percent sign
-            let append = document.createElement('div');
+            let append = innerDocument.document.createElement('div');
             append.classList.add('ci-append');
             append.innerText = data.columnB.format[p][0];
             row.appendChild(append);
@@ -139,7 +78,7 @@ function addPreTests() {
             row.classList.add('ci-multiselect');
             // Add one button per option
             for (let v = 0; v < data.columnB.format[p].length; v++) {
-                let button = document.createElement('div');
+                let button = innerDocument.document.createElement('div');
                 button.classList.add('ci-deselected');
                 button.innerText = data.columnB.format[p][v];
                 const inputId = `t-${p}-${v}`;
@@ -152,7 +91,7 @@ function addPreTests() {
         }
 
         
-        document.getElementById('checkin').appendChild(row);
+        innerDocument.document.getElementById('checkin').appendChild(row);
     }
 }
 
@@ -180,11 +119,11 @@ function handleRepairCheck(id) {
     // Finally, set the correct classes and checkboxes for everyone
     for (let s = 0; s < data.columnC.values[a].length; s++) {
         if (data.columnC.values[a][s] === 0) {
-            document.getElementById(`r-${a}-${s}`).classList = "rep-deselected";
-            document.getElementById(`r-${a}-${s}`).innerText = "\u2610 " + data.columnC.format[a][s];
+            innerDocument.document.getElementById(`r-${a}-${s}`).classList = "rep-deselected";
+            innerDocument.document.getElementById(`r-${a}-${s}`).innerText = "\u2610 " + data.columnC.format[a][s];
         } else {
-            document.getElementById(`r-${a}-${s}`).classList = "rep-selected";
-            document.getElementById(`r-${a}-${s}`).innerText = "\u2611 " + data.columnC.format[a][s];
+            innerDocument.document.getElementById(`r-${a}-${s}`).classList = "rep-selected";
+            innerDocument.document.getElementById(`r-${a}-${s}`).innerText = "\u2611 " + data.columnC.format[a][s];
         }
     }
 }
@@ -192,19 +131,19 @@ function handleRepairCheck(id) {
 // Add the repair checklist
 function addRepairs() {
     // Add a header first
-    let sectionHeader = document.createElement('p');
+    let sectionHeader = innerDocument.document.createElement('p');
     sectionHeader.classList = 'section-head';
     sectionHeader.innerText = 'Repairs to perform:';
-    document.getElementById('checkin').appendChild(sectionHeader);
+    innerDocument.document.getElementById('checkin').appendChild(sectionHeader);
 
     let format = data.columnC.format;
     for (let f = 0; f < format.length; f++) {
-        let row = document.createElement('div');
+        let row = innerDocument.document.createElement('div');
         row.classList.add('rep-test');
 
         if (format[f][0] === "Other") {
             row.classList.add('rep-other');
-            let item = document.createElement('div');
+            let item = innerDocument.document.createElement('div');
             item.classList.add('rep-deselected');
 
             let itemId = `r-${f}-0`;
@@ -213,7 +152,7 @@ function addRepairs() {
             item.addEventListener('click', () => handleRepairCheck(itemId));
             row.appendChild(item);
 
-            let field = document.createElement('input');
+            let field = innerDocument.document.createElement('input');
             field.type = 'text';
             field.placeholder="Enter the type of repair";
             field.classList.add("rep-other-input");
@@ -222,7 +161,7 @@ function addRepairs() {
         } else {
             row.classList.add('rep-select');
             for (let g = 0; g < format[f].length; g++) {
-                let item = document.createElement('div');
+                let item = innerDocument.document.createElement('div');
                 item.classList.add('rep-deselected');
                 let itemId = `r-${f}-${g}`;
                 item.id = itemId;
@@ -233,7 +172,7 @@ function addRepairs() {
 
         }
         
-        document.getElementById('checkin').appendChild(row);
+        innerDocument.document.getElementById('checkin').appendChild(row);
     }
 
 }
@@ -242,10 +181,10 @@ function addRepairs() {
 // update the data accordingly
 function concatContact() {
     // First, identify all the values
-    const method = document.getElementById('contact-method').value;
-    const otherMethod = document.getElementById('cic-other-method').value;
-    const number = document.getElementById('contact-number').value;
-    const otherNumber = document.getElementById('cic-other-number').value;
+    const method = innerDocument.document.getElementById('contact-method').value;
+    const otherMethod = innerDocument.document.getElementById('cic-other-method').value;
+    const number = innerDocument.document.getElementById('contact-number').value;
+    const otherNumber = innerDocument.document.getElementById('cic-other-number').value;
 
     let concat = '';
     if (method === 'No contact method') {
@@ -271,17 +210,17 @@ function concatContact() {
 // Handle contact method change
 function handleContactMethod() {
     // Show or hide the second row if there is no contact method
-    const value = document.getElementById('contact-method').value;
+    const value = innerDocument.document.getElementById('contact-method').value;
     if (value == 'No contact method') {
-        document.getElementsByClassName('ci-contact-row')[1].style.display = 'none';
+        innerDocument.document.getElementsByClassName('ci-contact-row')[1].style.display = 'none';
     } else {
-        document.getElementsByClassName('ci-contact-row')[1].style.display = 'grid';
+        innerDocument.document.getElementsByClassName('ci-contact-row')[1].style.display = 'grid';
     }
     // Show or hide the "other" box as needed
     if (value === 'Other') {
-        document.getElementById('cic-other-method').style.display = 'grid';
+        innerDocument.document.getElementById('cic-other-method').style.display = 'grid';
     } else {
-        document.getElementById('cic-other-method').style.display = 'none';
+        innerDocument.document.getElementById('cic-other-method').style.display = 'none';
     }
 
     concatContact();
@@ -290,11 +229,11 @@ function handleContactMethod() {
 // Handle contact number change
 function handleContactNumber() {
     // Show or hide the "other" box as needed
-    const value = document.getElementById('contact-number').value;
+    const value = innerDocument.document.getElementById('contact-number').value;
     if (value === 'Other') {
-        document.getElementById('cic-other-number').style.display = 'grid';
+        innerDocument.document.getElementById('cic-other-number').style.display = 'grid';
     } else {
-        document.getElementById('cic-other-number').style.display = 'none';
+        innerDocument.document.getElementById('cic-other-number').style.display = 'none';
     }
 
     concatContact();
@@ -304,65 +243,65 @@ function handleContactNumber() {
 function addContact() {
     // Populate all the contact options in the dropdown menu
     for (let m = 0; m < data.ticketInfo.customer.methods.length; m++) {
-        let option = document.createElement('option');
+        let option = innerDocument.document.createElement('option');
         option.value = data.ticketInfo.customer.methods[m];
         option.innerText = data.ticketInfo.customer.methods[m];
-        document.getElementById('contact-number').appendChild(option);
+        innerDocument.document.getElementById('contact-number').appendChild(option);
     }
     // Add an 'other' option
-    let other = document.createElement('option');
+    let other = innerDocument.document.createElement('option');
     other.value = 'Other';
     other.innerText = 'Other';
-    document.getElementById('contact-number').appendChild(other);
+    innerDocument.document.getElementById('contact-number').appendChild(other);
     // Add listeners for all the contacts methods
-    document.getElementById('contact-method').addEventListener('change', handleContactMethod);
-    document.getElementById('contact-number').addEventListener('change', handleContactNumber);
+    innerDocument.document.getElementById('contact-method').addEventListener('change', handleContactMethod);
+    innerDocument.document.getElementById('contact-number').addEventListener('change', handleContactNumber);
 
-    document.getElementById('cic-other-method').addEventListener('change', concatContact);
-    document.getElementById('cic-other-number').addEventListener('change', concatContact);
+    innerDocument.document.getElementById('cic-other-method').addEventListener('change', concatContact);
+    innerDocument.document.getElementById('cic-other-number').addEventListener('change', concatContact);
 }
 
 // Update the notes if they get changed
 function updateNotes() {
-    data.ticketInfo.notes = document.getElementById('ci-notes').value;
+    data.ticketInfo.notes = innerDocument.document.getElementById('ci-notes').value;
 }
 
 // When the Submit button is clicked, make sure everything is ready
 function checkSubmit() {
     // Hide the error messages. They'll be visible again if they still apply
-    document.getElementById('err-contact').style.display = 'none';
-    document.getElementById('err-pretest').style.display = 'none';
-    document.getElementById('err-other-repair').style.display = 'none';
+    innerDocument.document.getElementById('err-contact').style.display = 'none';
+    innerDocument.document.getElementById('err-pretest').style.display = 'none';
+    innerDocument.document.getElementById('err-other-repair').style.display = 'none';
 
     let pass = true;
     // Make sure all the pre-tests are filled out by checking against the default value of 999
     for (let b = 0; b < data.columnB.values.length; b++) {
         if (data.columnB.values[b] === 999) {
             pass = false;
-            document.getElementById('err-pretest').style.display = 'grid';
+            innerDocument.document.getElementById('err-pretest').style.display = 'grid';
         }
     }
     // Make sure the contact method is chosen
     // First, identify all the values
-    const method = document.getElementById('contact-method').value;
-    const otherMethod = document.getElementById('cic-other-method').value;
-    const number = document.getElementById('contact-number').value;
-    const otherNumber = document.getElementById('cic-other-number').value;
+    const method = innerDocument.document.getElementById('contact-method').value;
+    const otherMethod = innerDocument.document.getElementById('cic-other-method').value;
+    const number = innerDocument.document.getElementById('contact-number').value;
+    const otherNumber = innerDocument.document.getElementById('cic-other-number').value;
 
     if (method === "") {
         pass = false;
-        document.getElementById('err-contact').style.display = 'grid';
+        innerDocument.document.getElementById('err-contact').style.display = 'grid';
     } else if (method === "Other" && otherMethod === "") {
         pass = false;
-        document.getElementById('err-contact').style.display = 'grid';
+        innerDocument.document.getElementById('err-contact').style.display = 'grid';
     }
     if (method !== "No contact method" && number === "") {
         pass = false;
-        document.getElementById('err-contact').style.display = 'grid';
+        innerDocument.document.getElementById('err-contact').style.display = 'grid';
     }
     if (method !== "No contact method" && number === "Other" && otherNumber === "") {
         pass = false;
-        document.getElementById('err-contact').style.display = 'grid';
+        innerDocument.document.getElementById('err-contact').style.display = 'grid';
     }    
 
     // Make sure that, if the "other" box is checked,
@@ -370,9 +309,9 @@ function checkSubmit() {
     for (let o = 0; o < data.columnC.format.length; o++) {
         if (data.columnC.format[o][0] === "Other") {
             if (data.columnC.values[o][0] === 1) {
-                if (document.getElementById(`other-input-${o}`).value.length < 1) {
+                if (innerDocument.document.getElementById(`other-input-${o}`).value.length < 1) {
                     pass = false;
-                    document.getElementById('err-other-repair').style.display = 'grid';
+                    innerDocument.document.getElementById('err-other-repair').style.display = 'grid';
                 }
             }
         }
@@ -384,21 +323,25 @@ function checkSubmit() {
 }
 
 // Trigger everything to load the page with all the correct values
-function initialize() {
-    if (data.ticketInfo.notes) {
-        document.getElementById('ci-notes').value = data.ticketInfo.notes;
-    }
+function initializeCheckin(finishedData) {
+    innerDocument = document.getElementById('checkin-frame').contentWindow;
+    data = finishedData;
 
-    document.getElementById('ci-notes').addEventListener('change', updateNotes);
+    maxRows = getMaxRows();
+
+    if (data.ticketInfo.notes) {
+        innerDocument.document.getElementById('ci-notes').value = data.ticketInfo.notes;
+    }
+    innerDocument.document.getElementById('ci-notes').addEventListener('change', updateNotes);
 
     addPreTests();
     addContact();
     addRepairs();
 
-    document.getElementById('submit-button').addEventListener('click', checkSubmit);
+    innerDocument.document.getElementById('submit-button').addEventListener('click', checkSubmit);
 }
 
-initialize();
+
 
 
 
@@ -426,23 +369,23 @@ function getMaxRows() {
 
     return max;
 }
-let maxRows = getMaxRows();
 
-// The place where the columns go
-const columnPlace = document.getElementById("inspection");
+
 
 // Make one row element for everything in column A
 function fillColumnA() {
-    let container = document.createElement('div');
+    // The place where the columns go
+    columnPlace = innerDocument.document.getElementById("inspection");
+    let container = innerDocument.document.createElement('div');
     container.classList = 'inspect-column ic-internal-border';
 
     // To keep track of whether this is an even row, for background color
     let evenOrOdd = 'ir-odd';
 
     // Add the header row
-    let header = document.createElement("div");
+    let header = innerDocument.document.createElement("div");
     header.classList = "ir-even ir-bold";
-    let headerP = document.createElement("p");
+    let headerP = innerDocument.document.createElement("p");
     headerP.innerText = "Function";
     header.appendChild(headerP);
     container.appendChild(header);
@@ -450,8 +393,8 @@ function fillColumnA() {
     // Add one row for each entry
     const values = data.columnA.values;
     for (let a = 0; a < values.length; a++) {
-        let row = document.createElement("div");
-        let rowP = document.createElement("p");
+        let row = innerDocument.document.createElement("div");
+        let rowP = innerDocument.document.createElement("p");
         rowP.innerText = values[a];
         row.appendChild(rowP);
 
@@ -468,7 +411,7 @@ function fillColumnA() {
 
     let difference = maxRows - (container.children.length - 1);
     for (let d = 0; d < difference; d++) {
-        let row = document.createElement("div");
+        let row = innerDocument.document.createElement("div");
         row.classList.add(evenOrOdd);
         if (evenOrOdd === 'ir-odd') {
             evenOrOdd = 'ir-even';
@@ -483,16 +426,16 @@ function fillColumnA() {
 }
 
 function fillColumnB() {
-    let container = document.createElement('div');
+    let container = innerDocument.document.createElement('div');
     container.classList = 'inspect-column ic-internal-border';
 
     // To keep track of whether this is an even row, for background color
     let evenOrOdd = 'ir-odd';
 
     // Add the header row, just like the columnA function
-    let header = document.createElement("div");
+    let header = innerDocument.document.createElement("div");
     header.classList = "ir-even ir-bold";
-    let headerP = document.createElement("p");
+    let headerP = innerDocument.document.createElement("p");
     headerP.innerText = "Result";
     header.appendChild(headerP);
     container.appendChild(header);
@@ -525,8 +468,8 @@ function fillColumnB() {
 
     // Create one row per entry, just like the columnA function
     for (let b = 0; b < values.length; b++) {
-        let row = document.createElement("div");
-        let rowP = document.createElement("p");
+        let row = innerDocument.document.createElement("div");
+        let rowP = innerDocument.document.createElement("p");
         rowP.innerText = values[b];
         row.appendChild(rowP);
 
@@ -543,7 +486,7 @@ function fillColumnB() {
 
     let difference = maxRows - (container.children.length - 1);
     for (let d = 0; d < difference; d++) {
-        let row = document.createElement("div");
+        let row = innerDocument.document.createElement("div");
         row.classList.add(evenOrOdd);
         if (evenOrOdd === 'ir-odd') {
             evenOrOdd = 'ir-even';
@@ -558,12 +501,12 @@ function fillColumnB() {
 }
 
 function fillColumnC() {
-    let container = document.createElement('div');
+    let container = innerDocument.document.createElement('div');
     container.classList = 'inspect-column ic-external-border';
 
-    let header = document.createElement("div");
+    let header = innerDocument.document.createElement("div");
     header.classList = "ir-even ir-bold";
-    let headerP = document.createElement("p");
+    let headerP = innerDocument.document.createElement("p");
     headerP.innerText = "Repairs to perform:";
     header.appendChild(headerP);
     container.appendChild(header);
@@ -575,7 +518,7 @@ function fillColumnC() {
     for (let v = 0; v < format.length; v++) {
         // Handle "other" repairs by grabbing the value of the correlated input 
         if (format[v][0] === "Other") {
-            let field = document.getElementById(`other-input-${v}`).value;
+            let field = innerDocument.document.getElementById(`other-input-${v}`).value;
             if (field.length > 0 && originals[v][0] === 1) {
                 values[v] = "\u2611 Other: " + field;
             } else {
@@ -599,8 +542,8 @@ function fillColumnC() {
     const evenOrOdd = 'ir-even';
 
     for (let c = 0; c < values.length; c++) {
-        let row = document.createElement("div");
-        let rowP = document.createElement("p");
+        let row = innerDocument.document.createElement("div");
+        let rowP = innerDocument.document.createElement("p");
         rowP.innerText = values[c];
         row.appendChild(rowP);
         row.classList.add(evenOrOdd);
@@ -609,7 +552,7 @@ function fillColumnC() {
 
     let difference = maxRows - (container.children.length - 1);
     for (let d = 0; d < difference; d++) {
-        let row = document.createElement("div");
+        let row = innerDocument.document.createElement("div");
         row.classList.add(evenOrOdd);
 
         container.appendChild(row);
@@ -620,19 +563,19 @@ function fillColumnC() {
 
 // Fill the "meta info," all the stuff that goes on the top of the page
 function fillMetaInfo() {
-    document.getElementById("customer-name").innerText = data.ticketInfo.customer.name;
-    document.getElementById("customer-contact").innerText = data.ticketInfo.customer.contact;
+    innerDocument.document.getElementById("customer-name").innerText = data.ticketInfo.customer.name;
+    innerDocument.document.getElementById("customer-contact").innerText = data.ticketInfo.customer.contact;
 
-    document.getElementById("device-model").innerText = data.ticketInfo.device.model;
-    document.getElementById("device-serial").innerText = data.ticketInfo.device.serial;
+    innerDocument.document.getElementById("device-model").innerText = data.ticketInfo.device.model;
+    innerDocument.document.getElementById("device-serial").innerText = data.ticketInfo.device.serial;
 
-    document.getElementById("technician-name").innerText = data.ticketInfo.technician.name;
-    document.getElementById("technician-number").innerText = data.ticketInfo.technician.number;
-    document.getElementById("technician-email").innerText = data.ticketInfo.technician.email;
+    innerDocument.document.getElementById("technician-name").innerText = data.ticketInfo.technician.name;
+    innerDocument.document.getElementById("technician-number").innerText = data.ticketInfo.technician.number;
+    innerDocument.document.getElementById("technician-email").innerText = data.ticketInfo.technician.email;
 
-    document.getElementById("notes").innerText = data.ticketInfo.notes;
+    innerDocument.document.getElementById("notes").innerText = data.ticketInfo.notes;
 
-    document.getElementById("inspection-points").innerText = data.columnA.values.length;
+    innerDocument.document.getElementById("inspection-points").innerText = data.columnA.values.length;
 }  
 
 // Call these functions to fill out the form:
@@ -642,9 +585,9 @@ function submit() {
     fillColumnB();
     fillColumnC();
 
-    document.getElementById('checkin').style.display = 'none';
-    document.getElementById('submit').style.display = 'none';
-    document.getElementById('printout').style.display = 'grid';
+    innerDocument.document.getElementById('checkin').style.display = 'none';
+    innerDocument.document.getElementById('submit').style.display = 'none';
+    innerDocument.document.getElementById('printout').style.display = 'grid';
 }
 
 
