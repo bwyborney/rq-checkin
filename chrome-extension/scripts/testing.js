@@ -9,10 +9,11 @@ inject.appendChild(frame);
 */
 
 function injectButtons(parent) {
-    let username = document.getElementById('user_dropdown').innerText;
-    let usernamesplit = username.split(', ');
-    let name = usernamesplit[1] + ' ' + usernamesplit[0];
-    console.log(name);
+    let configField = document.querySelectorAll('div[data-condition="null"]')[1].children[1].children[0];
+    let configStr = JSON.stringify(configField.innerText);
+    let config = JSON.parse(configStr);
+    console.log(typeof(config));
+    console.log(config);
     
 }
 
@@ -47,6 +48,3 @@ observeForm();
 
 
 
-
-// date-picker
-// estimate-time

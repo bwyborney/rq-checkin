@@ -13,7 +13,6 @@ let data = {
             ]
         },
         ticket: {
-            number: "12345678",
             estimate: "$329.99",
             due: "1/1/24 - 1:00"
         },

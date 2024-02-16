@@ -41,6 +41,8 @@ Adding other features:
 - [ ] Add an override button for certain situations
     Add a way to track whether this has been done or not
 - [ ] Add a backup in case someone fills this out before fillin out the customer, device data, if they choose anonymous customer, etc
+- [ ] Finish the customization page. It is started
+    Do need to add customer store phone number and email before full release
 
 Where I'm leaving off:
 Finish functions for pulling all page data and creating a basic default variable, this should happen when the edit modal is detected
@@ -60,3 +62,6 @@ test test test
 Need to remove ticket number, that will be impossible to get
 Change contact information for the store to get pulled from settings
 technicians will type in their name every time
+make sure the disclaimer is on there and includes the "diagnostic and liquid rep may require additional repairs" or maybe there's just a better catch-all disclaimer for that
+
+Add customer disclaimers

@@ -16,13 +16,14 @@ let data = {
             ]
         },
         ticket: {
-            number: "12345678",
+            // No ticket number because that isn't often available until
+            // the ticket is saved
             estimate: "$329.99",
             due: "1/1/24 - 1:00"
         },
         technician: {
             name: "Ben Wyborney",
-            number: "12345678",
+            number: "(541) 914-1230",
             email: "repairs@cpr-eugene.com"
         },
         device: {
