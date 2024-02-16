@@ -38,4 +38,11 @@ These may end up getting integrated with this project, however the priority is t
 - In development: custom ticket workflows in RQ, triggered by device models. This will mainly involve contextual prompts. For example, a device sale will trigger a prompt for a customer to sign a return policy, or an accessory sale will trigger a prompt to discuss the VIP program.
 - In development: RQ Checklists, which adds a custom checklist to the side of a ticket. Boxes are automatically checked once their corresponding actions are taken. For example, a box might get automatically checked once the check-in form is generated, or once a part is attached to a repair SKU. The ticket will not be able to be saved until certain boxes are checked.
 
+# Guide to this repo
+The **docs** folder contains example files. **schema.js** is a reference for how data will be packaged as a JS object for each file.
+
+**checkin-form** contains the files for the webpage, which makes up the bulk of this project. When this page pop up, it will have the technician fill out all the pre-test information, then the page will convert itself to the printable form.
+
+**chrome-extension** is for the Chrome version of the web extension, which we'll use as the bridge between our webpage and RQ.
+
 -Ben Wyborney
