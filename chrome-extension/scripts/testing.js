@@ -9,7 +9,11 @@ inject.appendChild(frame);
 */
 
 function injectButtons(parent) {
-    console.log(parent);
+    let username = document.getElementById('user_dropdown').innerText;
+    let usernamesplit = username.split(', ');
+    let name = usernamesplit[1] + ' ' + usernamesplit[0];
+    console.log(name);
+    
 }
 
 // Check if the custom form has popped up yet
@@ -38,3 +42,11 @@ function observeForm() {
 }
 
 observeForm();
+
+
+
+
+
+
+// date-picker
+// estimate-time

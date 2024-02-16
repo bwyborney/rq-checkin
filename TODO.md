@@ -45,6 +45,8 @@ Adding other features:
 Where I'm leaving off:
 Finish functions for pulling all page data and creating a basic default variable, this should happen when the edit modal is detected
     Just make a basic test layout for now
+    Need to make a getConfig function in order to handle config, which means
+    I need a solution for configs
 Need to add buttons in the extension.
     One for creating the form, one for viewing it, one for override (doesn't do anything yet)
 Work on add button first, spawns the check-in page
@@ -55,3 +57,6 @@ add contextual detection for different types of devices (maybe make this into th
     Could even save the schema in the custom form to save up chrome user storage space
 If you don't do that, make the chrome options page
 test test test
+Need to remove ticket number, that will be impossible to get
+Change contact information for the store to get pulled from settings
+technicians will type in their name every time
