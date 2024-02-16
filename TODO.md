@@ -65,3 +65,5 @@ technicians will type in their name every time
 make sure the disclaimer is on there and includes the "diagnostic and liquid rep may require additional repairs" or maybe there's just a better catch-all disclaimer for that
 
 Add customer disclaimers
+
+NEED to JSON.stringify() the config value before saving it to the custom form

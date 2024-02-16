@@ -9,12 +9,12 @@ inject.appendChild(frame);
 */
 
 function injectButtons(parent) {
-    let configField = document.querySelectorAll('div[data-condition="null"]')[1].children[1].children[0];
-    let configStr = JSON.stringify(configField.innerText);
-    let config = JSON.parse(configStr);
-    console.log(typeof(config));
-    console.log(config);
     
+    let notesPage = document.getElementById('ytTicketForm_ticketDevices_0_problem_description_ifr').contentDocument;
+    let notes = notesPage.getElementById('tinymce').children[0].innerText;
+    console.log(notes);
+
+
 }
 
 // Check if the custom form has popped up yet
@@ -22,6 +22,7 @@ function checkForForm() {
     // Check if this edit element exists
     let edit = document.getElementById('customFieldEditModal');
     if (edit !== null) {
+        observer.disconnect();
         // Go through the children of this element to find its title
         // then see if this is the correct title
         for (let c = 0; c < edit.children.length; c++) {
@@ -35,14 +36,13 @@ function checkForForm() {
 }
 
 // Watch for changes to the page
-function observeForm() {
-    let watch = document.getElementsByClassName('c-ticket')[0];
-    const config = {childList: true, attributes: true};
-    const observer = new MutationObserver(checkForForm);
-    observer.observe(watch, config);
-}
+let watch = document.getElementsByClassName('c-ticket')[0];
+const config = {childList: true, attributes: true};
+const observer = new MutationObserver(checkForForm);
+observer.observe(watch, config);
 
-observeForm();
+
+
 
 
 

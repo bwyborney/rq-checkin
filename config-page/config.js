@@ -124,3 +124,5 @@ let config = {
         ]
     }
 };
+
+console.log(JSON.stringify(config));

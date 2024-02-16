@@ -8,7 +8,8 @@ function getTicketData() {
         phoneNumbers: [],
         email: '',
         due: '',
-        techName: ''
+        techName: '',
+        notes: ''
     };
     
     // Identify the div containing device info using the unique 'device-row'
@@ -98,6 +99,11 @@ function getTicketData() {
     let username = document.getElementById('user_dropdown').innerText;
     let usernamesplit = username.split(', ');
     ticketData.techName = usernamesplit[1] + ' ' + usernamesplit[0];
+
+    // Get the initial diagnostic notes
+    let notesPage = document.getElementById('ytTicketForm_ticketDevices_0_problem_description_ifr').contentDocument;
+    let notes = notesPage.getElementById('tinymce').children[0].innerText;
+    ticketData.notes = notes;
 
     return ticketData;
 }
