@@ -24,7 +24,7 @@ Adding other features:
 - Model/manufacturer-specific information added to the bottom of a ticket. This would mostly be used for warranty and disclaimer text
 
 # To-do:
-- [ ] Functions for pulling customer, device, ticket, and repair details
+- [x] Functions for pulling customer, device, ticket, and repair details
     BW: nearly done, just need to pull ticket information and customer contact information. Will need to come up with a solution for contact method. I think the intake form should just have a drop-down which includes call, text, email, customer to return, and another drop-drop down which includes primary number (pulled from RQ), alt number, email, or custom 
 - [ ] Barcode generator. I'm just using a sample barcode PNG for CSS prototyping. This doesn't have to be a QR code, but it should be labelled "ticket number: 1234567"
     BW: probably just use [this](https://davidshimjs.github.io/qrcodejs/)
@@ -41,9 +41,13 @@ Adding other features:
 - [ ] Add an override button for certain situations
     Add a way to track whether this has been done or not
 - [ ] Add a backup in case someone fills this out before fillin out the customer, device data, if they choose anonymous customer, etc
+- [ ] Add to the check-in form a way to review and edit other information (namely estimated price, due time)
 
 Where I'm leaving off:
 Finish functions for pulling all page data and creating a basic default variable, this should happen when the edit modal is detected
+    I have the notes pulled, now need to pull the ticket number and estimate due time. Migh be missing something else
+    Should combine pulling all the data into one function
+    Should catch error in case nothing shows up (just leave it blank in the variable, let people change it manually on the checkin page)
     Just make a basic test layout for now
 Need to add buttons in the extension.
     One for creating the form, one for viewing it, one for override (doesn't do anything yet)

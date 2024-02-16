@@ -3,7 +3,8 @@ function getDeviceData() {
     let deviceInfo = {
         model: '',
         serial: '',
-        quote: ''
+        quote: '',
+        notes: ''
     };
     
     // Identify the div containing device info using the unique 'device-row'
@@ -16,6 +17,12 @@ function getDeviceData() {
     
     // Get the price quote using the unique 'remaining-balance' class
     deviceInfo.quote = document.getElementsByClassName('remaining-balance')[0].innerText;
+
+    // Get the intake notes
+    deviceInfo.notes = document
+        .getElementById('ytTicketForm_ticketDevices_0_problem_description_ifr')
+        .contentWindow.document.getElementById('tinymce')
+        .children[0].innerText;
 
     return deviceInfo;
 }

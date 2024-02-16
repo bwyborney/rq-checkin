@@ -9,7 +9,7 @@ inject.appendChild(frame);
 */
 
 function injectButtons(parent) {
-    console.log(parent);
+    console.log('nice');
 }
 
 // Check if the custom form has popped up yet
@@ -38,3 +38,5 @@ function observeForm() {
 }
 
 observeForm();
+
+

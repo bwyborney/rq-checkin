@@ -29,7 +29,7 @@ function getCustomerData() {
                     grabData = false;
                     break;
                 case 'phoneNumbers' :
-                    customerData.phoneNumbers = customerBox[i].innerText;
+                    customerData.phoneNumbers.push(customerBox[i].innerText);
                     grabData = false;
                     break;
                 case 'email' :
