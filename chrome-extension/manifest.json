@@ -19,10 +19,11 @@
         
         {
             "js" : [
-                "scripts/testing.js"
+                "scripts/addForm.js",
+                "scripts/checkin.js"
             ],
             "css" : [
-                "style/addButton.css"
+                "style/addForm.css"
             ],
             "matches" : [
                 "https://cpr.repairq.io/ticket/*"

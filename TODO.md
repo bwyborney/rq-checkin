@@ -24,7 +24,7 @@ Adding other features:
 - Model/manufacturer-specific information added to the bottom of a ticket. This would mostly be used for warranty and disclaimer text
 
 # To-do:
-- [x] Functions for pulling customer, device, ticket, and repair details
+- [ ] Functions for pulling customer, device, ticket, and repair details
     BW: nearly done, just need to pull ticket information and customer contact information. Will need to come up with a solution for contact method. I think the intake form should just have a drop-down which includes call, text, email, customer to return, and another drop-drop down which includes primary number (pulled from RQ), alt number, email, or custom 
 - [ ] Barcode generator. I'm just using a sample barcode PNG for CSS prototyping. This doesn't have to be a QR code, but it should be labelled "ticket number: 1234567"
     BW: probably just use [this](https://davidshimjs.github.io/qrcodejs/)
@@ -41,14 +41,14 @@ Adding other features:
 - [ ] Add an override button for certain situations
     Add a way to track whether this has been done or not
 - [ ] Add a backup in case someone fills this out before fillin out the customer, device data, if they choose anonymous customer, etc
-- [ ] Add to the check-in form a way to review and edit other information (namely estimated price, due time)
+- [ ] Finish the customization page. It is started
+    Do need to add customer store phone number and email before full release
 
 Where I'm leaving off:
 Finish functions for pulling all page data and creating a basic default variable, this should happen when the edit modal is detected
-    I have the notes pulled, now need to pull the ticket number and estimate due time. Migh be missing something else
-    Should combine pulling all the data into one function
-    Should catch error in case nothing shows up (just leave it blank in the variable, let people change it manually on the checkin page)
     Just make a basic test layout for now
+    Need to make a getConfig function in order to handle config, which means
+    I need a solution for configs
 Need to add buttons in the extension.
     One for creating the form, one for viewing it, one for override (doesn't do anything yet)
 Work on add button first, spawns the check-in page
@@ -59,3 +59,11 @@ add contextual detection for different types of devices (maybe make this into th
     Could even save the schema in the custom form to save up chrome user storage space
 If you don't do that, make the chrome options page
 test test test
+Need to remove ticket number, that will be impossible to get
+Change contact information for the store to get pulled from settings
+technicians will type in their name every time
+make sure the disclaimer is on there and includes the "diagnostic and liquid rep may require additional repairs" or maybe there's just a better catch-all disclaimer for that
+
+Add customer disclaimers
+
+NEED to JSON.stringify() the config value before saving it to the custom form
