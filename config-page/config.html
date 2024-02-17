@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Checkin Configuration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./config.css">
+    </head>
+    <body>
+        <h1>CPR Check-In Configuration</h1>
+        <p>Select a device type, then choose what you'd like to appear on your check-in form for that device type.</p>
+        <p>Under "Pre-tests," type the name of the component in the first column. For example, "Face ID." In the second column, choose the possible outcomes of this test. If you choose "amps" or "percent," the pre-test form will give you a box to type in a number, then it will add a percent symbol or "amps" to the end of what you typed.</p>
+        <p>Under "Repairs," enter all the repairs you might want to perform on this device type. In the first column, choose "Yes/No" for a single item with a checkbox. Choose "Pick one" for repairs where you need to select one of multiple options (think "OEM screen," "aftermarket screen"). Choose "Other" to add an "other" option which will let you manually enter a repair every time you fill out this form.</p>
+        <div id="device-type-selection">
+            <div id="select-phones" class="selector">Phones</div>
+            <div id="select-tablets" class="selector">Tablets</div>
+            <div id="select-computers" class="selector">Computers</div>
+            <div id="select-consoles" class="selector">Consoles</div>
+            <div id="select-wearables" class="selector">Wearables</div>
+        </div>
+
+        <h3>Pre-tests</h3>
+        <div id="pretests">
+            <div class="row header">
+                <div>Component</div>
+                <div>Test</div>
+            </div>
+        </div>
+
+        <h3>Repairs</h3>
+        <div id="repairs">
+            <div class="row header">
+                <div>Choice</div>
+                <div>Options</div>
+            </div>
+            
+        </div>
+        <script src="./config.js"></script>
+    </body>
+</html>
