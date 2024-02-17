@@ -24,46 +24,32 @@ Adding other features:
 - Model/manufacturer-specific information added to the bottom of a ticket. This would mostly be used for warranty and disclaimer text
 
 # To-do:
-- [ ] Functions for pulling customer, device, ticket, and repair details
-    BW: nearly done, just need to pull ticket information and customer contact information. Will need to come up with a solution for contact method. I think the intake form should just have a drop-down which includes call, text, email, customer to return, and another drop-drop down which includes primary number (pulled from RQ), alt number, email, or custom 
-- [ ] Barcode generator. I'm just using a sample barcode PNG for CSS prototyping. This doesn't have to be a QR code, but it should be labelled "ticket number: 1234567"
-    BW: probably just use [this](https://davidshimjs.github.io/qrcodejs/)
-- [ ] Create the Chrome extension. Will add a button alongside the ticket-status buttons to pull up the intake form
-- [ ] Find a solution for saving the form for later viewing
-    BW: since I'm hoping to avoid storing any information off-site, the obvious approach is to encode the intake information into RQ somehow. We could save a JSON object as the contents of a note or custom form. This is gonna be tricky, though
+- [ ] Add print and save
+    - Should just automatically happen on submit
+- [ ] Add awareness for saved data
+    - Change the "create" button to an "edit" button
+    - Add the view button
+    - need to spin up the observer again once the custom form is closed
+- [ ] Add buttons to the custom form 
+    - need an override button and a view button
+    - first need to make a method of viewing a saved form
 - [ ] Test with different types of ticket. Chrome extensions trigger based on URLs, and there are at least two URL variants for ticket editing. Element selectors may be different on claim tickets, too.
+- [ ] Add awareness for different device types
+    - Actually, no, just need to make different custom forms for different device types. This means the awareness of the title of the custom form has to change
+    - Could repairQ hide forms unless they're on the correct device type? 
+- [ ] For the extension: create options page for customizing test values
+    - need to add phone number and email. This could be done with chrome user storage
+    - need a hard check to ensure column A and B are the same length
+    - NEED to JSON.stringify() the config value before saving it to the custom form
+- [ ] Add a backup in case someone fills this out before fillin out the customer, device data, if they choose anonymous customer, etc
 - [ ] Documentation and polish:
     - Add a favicon
     - Add webstore images
     - Add instructions
-- [ ] For the extension: create options page for customizing test values
-- [ ] While customizing options, need a hard check to ensure column A and B are the same length
-- [ ] Add an override button for certain situations
-    Add a way to track whether this has been done or not
-- [ ] Add a backup in case someone fills this out before fillin out the customer, device data, if they choose anonymous customer, etc
-- [ ] Finish the customization page. It is started
-    Do need to add customer store phone number and email before full release
+    - In customization, let user know if they are missing store contact info
+    - Cursive font for signature
+    - Bigger divs for pre-tests
+    - Add catches for nulls
 
-Where I'm leaving off:
-Finish functions for pulling all page data and creating a basic default variable, this should happen when the edit modal is detected
-    Just make a basic test layout for now
-    Need to make a getConfig function in order to handle config, which means
-    I need a solution for configs
-Need to add buttons in the extension.
-    One for creating the form, one for viewing it, one for override (doesn't do anything yet)
-Work on add button first, spawns the check-in page
-    submit button on the check-in page saves the data into the custom form
-    override button fills in the data as "overridden"
-    view button only appears if the form has been filled out, override and new only appear when it hasn't
-add contextual detection for different types of devices (maybe make this into the custom forms)
-    Could even save the schema in the custom form to save up chrome user storage space
-If you don't do that, make the chrome options page
-test test test
-Need to remove ticket number, that will be impossible to get
-Change contact information for the store to get pulled from settings
-technicians will type in their name every time
-make sure the disclaimer is on there and includes the "diagnostic and liquid rep may require additional repairs" or maybe there's just a better catch-all disclaimer for that
-
-Add customer disclaimers
-
-NEED to JSON.stringify() the config value before saving it to the custom form
+# Ideas:
+- Would love to show the ticket number and generate a qr code at the bottom of the page, but this isn't going to be doable conistently since we don't know the ticket number until the ticket is initially saved.

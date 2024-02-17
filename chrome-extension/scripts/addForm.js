@@ -48,11 +48,15 @@ function getTicketData() {
                     grabData = false;
                     break;
                 case 'phoneNumbers' :
-                    ticketData.phoneNumbers = customerBox[i].innerText;
+                    let phones = customerBox[i].innerText.split('\n');
+                    ticketData.phoneNumbers.push(phones[0]);
+                    if (phones.length === 2) {
+                        ticketData.phoneNumbers.push(phones[1]);
+                    }
                     grabData = false;
                     break;
                 case 'email' :
-                    ticketData.email = customerBox[i].innerText;
+                    ticketData.phoneNumbers.push(customerBox[i].innerText);
                     grabData = false;
                     break;
             }
@@ -145,12 +149,15 @@ function launchPage(completeData, parent) {
     // Load the HTML into an iframe and serve it
     let frame = document.createElement('iframe');
     frame.id ='checkin-frame';
+    frame.onload = () => {
+        frame.contentWindow.postMessage(completeData, chrome.runtime.getURL('/checkin-form/checkin.html'));
+    };
     frame.src = chrome.runtime.getURL('/checkin-form/checkin.html');
     frame.width = '100%';
     frame.height = '100%';
     parent.appendChild(frame);
 
-    initializeCheckin(completeData);
+    
 }
 
 // Get it all started up

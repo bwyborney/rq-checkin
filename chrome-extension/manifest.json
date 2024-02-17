@@ -19,8 +19,7 @@
         
         {
             "js" : [
-                "scripts/addForm.js",
-                "scripts/checkin.js"
+                "scripts/addForm.js"
             ],
             "css" : [
                 "style/addForm.css"

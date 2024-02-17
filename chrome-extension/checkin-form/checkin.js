@@ -1,4 +1,7 @@
 // sample data
+let data = {};
+let maxRows;
+let columnPlace;
 
 let sampleData = {
     version: 1.0,
@@ -398,7 +401,7 @@ function initialize() {
     document.getElementById('submit-button').addEventListener('click', checkSubmit);
 }
 
-initialize();
+
 
 
 
@@ -426,13 +429,13 @@ function getMaxRows() {
 
     return max;
 }
-let maxRows = getMaxRows();
 
-// The place where the columns go
-const columnPlace = document.getElementById("inspection");
 
 // Make one row element for everything in column A
 function fillColumnA() {
+    maxRows = getMaxRows();
+    columnPlace = document.getElementById("inspection");
+
     let container = document.createElement('div');
     container.classList = 'inspect-column ic-internal-border';
 
@@ -633,6 +636,8 @@ function fillMetaInfo() {
     document.getElementById("notes").innerText = data.ticketInfo.notes;
 
     document.getElementById("inspection-points").innerText = data.columnA.values.length;
+
+    document.getElementById('tech-signature').innerText = data.ticketInfo.technician.name;
 }  
 
 // Call these functions to fill out the form:
@@ -647,5 +652,11 @@ function submit() {
     document.getElementById('printout').style.display = 'grid';
 }
 
-
-
+window.addEventListener('message', event => {
+    if (event.origin === "https://cpr.repairq.io") {
+        data = event.data;
+        initialize();
+    } else {
+        return;
+    }
+});
