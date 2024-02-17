@@ -421,3 +421,27 @@ body {
     font-family: "Comic Sans MS";
     text-decoration: underline;
 }
+
+#print-and-save {
+    width: 30%;
+    margin-left: 35%;
+    margin-left: 35%;
+    background-color: black;
+    color: white;
+    border: solid 3px black;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#print-and-save:hover {
+    background-color: white;
+    color: black;
+    transition: 0.1s;
+}
+
+@media print {
+    #print-and-save {
+        display: none;
+    }
+}

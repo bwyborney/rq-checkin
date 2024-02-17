@@ -386,6 +386,12 @@ function checkSubmit() {
     }
 }
 
+// Print the page then save the data and hide the form
+function printAndSave() {
+    window.print();
+    window.parent.postMessage(data, '*');
+}
+
 // Trigger everything to load the page with all the correct values
 function initialize() {
     if (data.ticketInfo.notes) {
@@ -399,6 +405,8 @@ function initialize() {
     addRepairs();
 
     document.getElementById('submit-button').addEventListener('click', checkSubmit);
+
+    document.getElementById('print-and-save').addEventListener('click', printAndSave);
 }
 
 

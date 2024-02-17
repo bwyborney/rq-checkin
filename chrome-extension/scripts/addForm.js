@@ -129,7 +129,12 @@ function convertData(ticketData) {
     return config;    
 }
 
+
+
+
+
 // Hide the text fields from view so they don't get messed with
+
 function hideFields() {
     let fields = document.querySelectorAll('div[data-condition="null"]');
     for (let f = 0; f < fields.length; f++) {
@@ -157,20 +162,57 @@ function launchPage(completeData, parent) {
     frame.height = '100%';
     parent.appendChild(frame);
 
+    // Listen for the data to come back from the iframe
+    window.addEventListener('message', event => {
+        // Set the CORS origin thingy
+        // Man my head hurts
+        let origin = chrome.runtime.getURL('/');
+        let correctOrigin = origin.substring(0, origin.length - 1);
+        if (event.origin === correctOrigin) {
+            // Hide the form and save the data
+            frame.style.display = 'none'
+            for (let c = 0; c < parent.children.length; c++) {
+                if (parent.children[c].classList[0] === 'modal-footer') {
+                    parent.children[c].style.display = 'table';
+                    let saveSpot = document.querySelectorAll('div[data-condition="null"]')[0].children[1].children[0];
+                    // Put the data in the data box
+                    saveSpot.innerText = JSON.stringify(event.data);
+                    // Start the observer again
+                    hideFields();
+                    startup();
+                }
+            }
+        } else {
+            return;
+        }
+    });
     
 }
 
 // Get it all started up
 function initialize(parent) {
-    let ticketData = getTicketData();
-    let completeData = convertData(ticketData);
-    hideFields();
+    // Make sure there's not already data
+    let saveSpot = document.querySelectorAll('div[data-condition="null"]')[0].children[1].children[0];
+    if (saveSpot.innerText.length < 1) {
+        let ticketData = getTicketData();
+        let completeData = convertData(ticketData);
+        hideFields();
 
-    let newButton = document.createElement('div');
-    newButton.id = 'button-create';
-    newButton.innerText = 'Create form';
-    newButton.addEventListener('click', () => launchPage(completeData, parent));
-    parent.appendChild(newButton);
+        let newButton = document.createElement('div');
+        newButton.id = 'button-create';
+        newButton.innerText = 'Create form';
+        newButton.addEventListener('click', () => launchPage(completeData, parent));
+        parent.appendChild(newButton);
+    } else {
+        let completeData = JSON.parse(saveSpot.innerText);
+        hideFields();
+
+        let newButton = document.createElement('div');
+        newButton.id = 'button-create';
+        newButton.innerText = 'Edit form';
+        newButton.addEventListener('click', () => launchPage(completeData, parent));
+        parent.appendChild(newButton);
+    }
 }
 
 // Check if the custom form has popped up yet
@@ -192,10 +234,20 @@ function checkForForm() {
 }
 
 // Watch for changes to the page
+function startup() {
+    let watch = document.getElementsByClassName('c-ticket')[0];
+    const config = {childList: true, attributes: true};
+    const observer = new MutationObserver(checkForForm);
+    observer.observe(watch, config);
+}
+
 let watch = document.getElementsByClassName('c-ticket')[0];
 const config = {childList: true, attributes: true};
 const observer = new MutationObserver(checkForForm);
 observer.observe(watch, config);
+
+
+
 
 
 
