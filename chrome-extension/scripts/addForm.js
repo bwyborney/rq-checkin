@@ -145,7 +145,7 @@ function hideFields() {
 // Show the form page
 function launchPage(completeData, parent) {
     // Hide extra stuff first
-    document.getElementById('button-create').style.display = 'none';
+    document.getElementById('button-create').remove();
     for (let c = 0; c < parent.children.length; c++) {
         if (parent.children[c].classList[0] === 'modal-footer') {
             parent.children[c].style.display = 'none';
@@ -178,7 +178,7 @@ function launchPage(completeData, parent) {
                     // Put the data in the data box
                     saveSpot.innerText = JSON.stringify(event.data);
                     // Start the observer again
-                    hideFields();
+                    initialize(document.getElementById('customFieldEditModal'));
                     startup();
                 }
             }

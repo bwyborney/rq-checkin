@@ -49,15 +49,17 @@ Adding other features:
     - [ ] Add instructions
     - [ ] In customization, let user know if they are missing store contact info
     - [ ] Cursive font for signature
-    - [ ] Bigger divs for pre-tests
+    - [ ] Bigger divs for pre-tests, allow for two lines of text. Give them cursor pointers. Give them "selected" borders too, remove borders on hover though
     - [ ] Add catches for nulls
     - [ ] Figure out if there's a way to set back ground graphics while printing
+    - [ ] Make the edit button look nicer
 
 # Ideas:
 - Would love to show the ticket number and generate a qr code at the bottom of the page, but this isn't going to be doable conistently since we don't know the ticket number until the ticket is initially saved.
 
 Where I'm leaving off:
-working on saved-data awareness. Need to do two things:
+working on saved-data awareness. Need to do a few things:
     1) Make the buttons and everything work while viewing the saved form, not just editing it
-    2) I forgot the other thing
+    2) Prevent multiple buttons from spawning (happens after the second time you edit the form)
+    3 ) remove the big whitespace at the top of the modal while filling out the form
 I also noticed that estimate  cost and turaround time isn't working
