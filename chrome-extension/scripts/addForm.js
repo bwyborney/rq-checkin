@@ -147,7 +147,7 @@ function launchPage(completeData, parent) {
     // Hide extra stuff first
     document.getElementById('button-create').remove();
     for (let c = 0; c < parent.children.length; c++) {
-        if (parent.children[c].classList[0] === 'modal-footer') {
+        if (parent.children[c].classList[0] === 'modal-footer' || parent.children[c].classList[0] === 'modal-body') {
             parent.children[c].style.display = 'none';
         }
     }
@@ -193,26 +193,119 @@ function launchPage(completeData, parent) {
 function initialize(parent) {
     // Make sure there's not already data
     let saveSpot = document.querySelectorAll('div[data-condition="null"]')[0].children[1].children[0];
+    let newButton = document.createElement('div');
+    newButton.id = 'button-create';
+    let completeData;
     if (saveSpot.innerText.length < 1) {
         let ticketData = getTicketData();
-        let completeData = convertData(ticketData);
-        hideFields();
+        completeData = convertData(ticketData);
+        
 
-        let newButton = document.createElement('div');
-        newButton.id = 'button-create';
+        
         newButton.innerText = 'Create form';
-        newButton.addEventListener('click', () => launchPage(completeData, parent));
-        parent.appendChild(newButton);
-    } else {
-        let completeData = JSON.parse(saveSpot.innerText);
-        hideFields();
 
-        let newButton = document.createElement('div');
-        newButton.id = 'button-create';
+        // Hide the save buttons until something has been filled out
+        for (let c = 0; c < parent.children.length; c++) {
+            // First, find the footer
+            if (parent.children[c].classList[0] === 'modal-footer') {
+                // Now find and hide the buttons
+                for (let g = 0; g < parent.children[c].children.length; g++) {
+                    if (parent.children[c].children[g].innerText === 'Save Draft' || parent.children[c].children[g].innerText === 'Save & Submit') {
+                        parent.children[c].children[g].style.display = 'none';
+                    }
+                }
+            }
+        }
+        
+        
+    } else {
+        completeData = JSON.parse(saveSpot.innerText);
         newButton.innerText = 'Edit form';
+
+        // Bring back the save and submit button
+        for (let c = 0; c < parent.children.length; c++) {
+            // First, find the footer
+            if (parent.children[c].classList[0] === 'modal-footer') {
+                // Now find and display the buttons
+                for (let g = 0; g < parent.children[c].children.length; g++) {
+                    if (parent.children[c].children[g].innerText === 'Save & Submit') {
+                        parent.children[c].children[g].style.display = 'inline-block';
+                    }
+                }
+            }
+        }
+        
+
+        
+    }
+    hideFields();
+    if (document.getElementById('button-create') === null) {
+        
         newButton.addEventListener('click', () => launchPage(completeData, parent));
         parent.appendChild(newButton);
+
     }
+    // Need to start the observer again in case the form gets closed in another way
+    startup();
+}
+
+let previewAdded = false;
+
+// Show the form preview
+function showPreview() {
+    let previewData;
+    let injectPoint;
+    // Identify the modal
+    let modal = document.getElementById('customFieldGroupModal');
+    modal.style.width = '90vw';
+    modal.style.marginLeft = '5vw';
+    modal.style.left = '0';
+    for (let m = 0; m < modal.children.length; m++) {
+        if (modal.children[m].classList[0] === 'modal-body') {
+            // Identify the inject point for later
+            injectPoint = modal.children[m];
+            injectPoint.style.height = '70vh';
+            injectPoint.style.overflow = 'hidden';
+            // Hide the data table from the modal
+            modal.children[m].children[1].style.display = 'none';
+            // Find the saved data
+            let dataTable = modal.children[m].children[1].children[0]; // Tbody containing the data
+            let dataBox = dataTable.children[0].children[1].children[0]; // Cell containing the data
+            previewData = JSON.parse(dataBox.innerText);
+        }
+    }
+
+    if (!previewAdded) {
+        // Load the HTML into an iframe and serve it
+        let frame = document.createElement('iframe');
+        frame.id ='preview-frame';
+        frame.onload = () => {
+            frame.contentWindow.postMessage(previewData, chrome.runtime.getURL('/checkin-form/preview.html'));
+        };
+        frame.src = chrome.runtime.getURL('/checkin-form/preview.html');
+        frame.width = '100%';
+        frame.height = '100%';
+        injectPoint.appendChild(frame);
+        previewAdded = true;
+
+        // Listen for the iframe to get closed
+        window.addEventListener('message', event => {
+            // Set the CORS origin thingy
+            // Man my head hurts
+            let origin = chrome.runtime.getURL('/');
+            let correctOrigin = origin.substring(0, origin.length - 1);
+            if (event.origin === correctOrigin) {
+                startup();
+            } else {
+                return;
+            }
+        });
+
+    }
+    
+
+
+
 }
 
 // Check if the custom form has popped up yet
@@ -230,14 +323,20 @@ function checkForForm() {
                 }
             }
         }
+        
+    } 
+    // Check if you're viewing a modal and then spawn the form
+    let view = document.getElementById('customFieldGroupModal');
+    if (view) {
+        if (view.children[0].children[1].innerText === 'CPR Check-in') {
+            showPreview();
+        }
     }
+    
 }
 
 // Watch for changes to the page
 function startup() {
-    let watch = document.getElementsByClassName('c-ticket')[0];
-    const config = {childList: true, attributes: true};
-    const observer = new MutationObserver(checkForForm);
     observer.observe(watch, config);
 }
 

@@ -31,6 +31,7 @@ Adding other features:
 - [ ] Add buttons to the custom form 
     - need an override button and a view button
     - first need to make a method of viewing a saved form
+- [ ] estimate cost and turaround time isn't working
 - [ ] Test with different types of ticket. Chrome extensions trigger based on URLs, and there are at least two URL variants for ticket editing. Element selectors may be different on claim tickets, too.
 - [ ] Add awareness for different device types
     - Actually, no, just need to make different custom forms for different device types. This means the awareness of the title of the custom form has to change
@@ -43,6 +44,7 @@ Adding other features:
 - [ ] Clean up the code
     - comments
     - function modularization
+- [ ] Figure out a way to save the "other" repair data so it's visible in the preview
 - [ ] Documentation and polish:
     - [ ] Add a favicon
     - [ ] Add webstore images
@@ -51,15 +53,12 @@ Adding other features:
     - [ ] Cursive font for signature
     - [ ] Bigger divs for pre-tests, allow for two lines of text. Give them cursor pointers. Give them "selected" borders too, remove borders on hover though
     - [ ] Add catches for nulls
-    - [ ] Figure out if there's a way to set back ground graphics while printing
+    - [ ] Figure out if there's a way to force back ground graphics while printing
     - [ ] Make the edit button look nicer
+    - [ ] Fix double-scrolling
 
 # Ideas:
 - Would love to show the ticket number and generate a qr code at the bottom of the page, but this isn't going to be doable conistently since we don't know the ticket number until the ticket is initially saved.
 
 Where I'm leaving off:
-working on saved-data awareness. Need to do a few things:
-    1) Make the buttons and everything work while viewing the saved form, not just editing it
-    2) Prevent multiple buttons from spawning (happens after the second time you edit the form)
-    3 ) remove the big whitespace at the top of the modal while filling out the form
-I also noticed that estimate  cost and turaround time isn't working
+need to reverse previewAdded on closing the frame
