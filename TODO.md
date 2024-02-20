@@ -24,14 +24,18 @@ Adding other features:
 # To-do:
 - [x] Add print and save
     - Should just automatically happen on submit
-- [ ] Add awareness for saved data
+- [x] Add awareness for saved data
     - Change the "create" button to an "edit" button
     - Add the view button
     - need to spin up the observer again once the custom form is closed
-- [ ] Add buttons to the custom form 
-    - need an override button and a view button
+- [x] Add buttons to the custom form 
     - first need to make a method of viewing a saved form
-- [ ] estimate cost and turaround time isn't working
+    - need an override button and a view button
+- [ ] Add override button
+    - Means we'll need a way to fill in that form later on
+    - The custom form can be edited later though
+- [x] estimate cost and turaround time isn't working
+- [ ] viewing saved form isn't always working during the initial ticket-edit
 - [ ] Test with different types of ticket. Chrome extensions trigger based on URLs, and there are at least two URL variants for ticket editing. Element selectors may be different on claim tickets, too.
 - [ ] Add awareness for different device types
     - Actually, no, just need to make different custom forms for different device types. This means the awareness of the title of the custom form has to change
@@ -60,5 +64,3 @@ Adding other features:
 # Ideas:
 - Would love to show the ticket number and generate a qr code at the bottom of the page, but this isn't going to be doable conistently since we don't know the ticket number until the ticket is initially saved.
 
-Where I'm leaving off:
-need to reverse previewAdded on closing the frame

@@ -252,6 +252,9 @@ function fillMetaInfo() {
     document.getElementById("technician-number").innerText = data.ticketInfo.technician.number;
     document.getElementById("technician-email").innerText = data.ticketInfo.technician.email;
 
+    document.getElementById("estimate-cost").innerText = data.ticketInfo.ticket.estimate;
+    document.getElementById("estimate-time").innerText = data.ticketInfo.ticket.due;
+
     document.getElementById("notes").innerText = data.ticketInfo.notes;
 
     document.getElementById("inspection-points").innerText = data.columnA.values.length;
