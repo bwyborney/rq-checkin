@@ -23,8 +23,6 @@ function getTicketData() {
     
     // Get the price quote using the unique 'remaining-balance' class
     ticketData.quote = '$' + document.getElementsByClassName('remaining-balance')[0].innerText;
-    console.log(document.getElementsByClassName('remaining-balance')[0].innerText);
-    console.log(ticketData.quote);
 
 
     // Select the parent DIV containing the customer's info using the
@@ -108,9 +106,25 @@ function getTicketData() {
     ticketData.techName = usernamesplit[1] + ' ' + usernamesplit[0];
 
     // Get the initial diagnostic notes
+    /*
     let notesPage = document.getElementById('ytTicketForm_ticketDevices_0_problem_description_ifr').contentDocument;
-    let notes = notesPage.getElementById('tinymce').children[0].innerText;
+    let notes = notesPage.getElementsByTagName('p')[0].innerText;
     ticketData.notes = notes;
+    */
+    // There are several elements which might contain the notes, all with the same ID
+    let candidates = document.getElementsByClassName('tox-edit-area__iframe');
+    for (let c = 0; c < candidates.length; c++) {
+        let notesPage = candidates[c].contentDocument;
+        let notes = notesPage.getElementsByTagName('p')[0].innerText;
+        if (notes.length > 0) {
+            ticketData.notes = notes;
+        }
+    }
+    // Because of this method, if someone types in notes for one device, then changes their mind and types notes
+    // for a different device which is higher in the list, the first notes will be chosen.
+    // There's a way around this, but I don't have time right now, and this is not a top priority since the
+    // notes are editable anyway.
+
 
     return ticketData;
 }
@@ -126,11 +140,7 @@ function convertData(ticketData) {
     config.ticketInfo.technician.name = ticketData.techName;
     config.ticketInfo.device.model = ticketData.model;
     config.ticketInfo.device.serial = ticketData.serial;
-    config.ticketInfo.notes = ticketData.notes;
-    
-    console.log('input');
-    console.log(ticketData);
-    
+    config.ticketInfo.notes = ticketData.notes;    
 
     return config;    
 }

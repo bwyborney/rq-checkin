@@ -666,7 +666,6 @@ function submit() {
 window.addEventListener('message', event => {
     if (event.origin === "https://cpr.repairq.io") {
         data = event.data;
-        console.log(data);
         initialize();
     } else {
         return;
