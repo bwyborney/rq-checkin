@@ -643,6 +643,9 @@ function fillMetaInfo() {
 
     document.getElementById("notes").innerText = data.ticketInfo.notes;
 
+    document.getElementById("estimate-cost").innerText = data.ticketInfo.ticket.estimate;
+    document.getElementById("estimate-time").innerText = data.ticketInfo.ticket.due;
+
     document.getElementById("inspection-points").innerText = data.columnA.values.length;
 
     document.getElementById('tech-signature').innerText = data.ticketInfo.technician.name;
@@ -663,6 +666,7 @@ function submit() {
 window.addEventListener('message', event => {
     if (event.origin === "https://cpr.repairq.io") {
         data = event.data;
+        console.log(data);
         initialize();
     } else {
         return;

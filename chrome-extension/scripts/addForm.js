@@ -22,7 +22,9 @@ function getTicketData() {
     ticketData.serial = deviceBox[3].children[0].value;
     
     // Get the price quote using the unique 'remaining-balance' class
-    ticketData.quote = document.getElementsByClassName('remaining-balance')[0].innerText;
+    ticketData.quote = '$' + document.getElementsByClassName('remaining-balance')[0].innerText;
+    console.log(document.getElementsByClassName('remaining-balance')[0].innerText);
+    console.log(ticketData.quote);
 
 
     // Select the parent DIV containing the customer's info using the
@@ -125,6 +127,10 @@ function convertData(ticketData) {
     config.ticketInfo.device.model = ticketData.model;
     config.ticketInfo.device.serial = ticketData.serial;
     config.ticketInfo.notes = ticketData.notes;
+    
+    console.log('input');
+    console.log(ticketData);
+    
 
     return config;    
 }
@@ -195,10 +201,10 @@ function initialize(parent) {
     let saveSpot = document.querySelectorAll('div[data-condition="null"]')[0].children[1].children[0];
     let newButton = document.createElement('div');
     newButton.id = 'button-create';
-    let completeData;
+    
+    let ticketData = getTicketData();
+    let completeData = convertData(ticketData);
     if (saveSpot.innerText.length < 1) {
-        let ticketData = getTicketData();
-        completeData = convertData(ticketData);
         
 
         
@@ -266,10 +272,18 @@ function showPreview() {
             injectPoint = modal.children[m];
             injectPoint.style.height = '70vh';
             injectPoint.style.overflow = 'hidden';
+            
+            // The div containing data only slightly varies depending on whether you're in edit or ticket-view mode.
+            let dataDiv;
+            if (modal.children[m].children[1].classList[0] === 'staff') {
+                dataDiv = modal.children[m].children[3];
+            } else {
+                dataDiv = modal.children[m].children[1];
+            }
             // Hide the data table from the modal
-            modal.children[m].children[1].style.display = 'none';
+            dataDiv.style.display = 'none';
             // Find the saved data
-            let dataTable = modal.children[m].children[1].children[0]; // Tbody containing the data
+            let dataTable = dataDiv.children[0]; // Tbody containing the data
             let dataBox = dataTable.children[0].children[1].children[0]; // Cell containing the data
             previewData = JSON.parse(dataBox.innerText);
         }
@@ -325,6 +339,10 @@ function checkForForm() {
         }
         
     } 
+
+    if (!document.getElementById('preview-frame')) {
+        previewAdded = false;
+    }
     // Check if you're viewing a modal and then spawn the form
     let view = document.getElementById('customFieldGroupModal');
     if (view) {
