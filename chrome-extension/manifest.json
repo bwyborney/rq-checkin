@@ -1,8 +1,8 @@
 {
     "manifest_version" : 3,
-    "name": "rq-checkin",
-    "version": "1.0",
-    "description": "A custom generated check-in form",
+    "name": "RQ Checkin",
+    "version": "0.9",
+    "description": "A custom generated check-in form for RepairQ",
 
     "icons": {
         "16": "images/icon-16.png",

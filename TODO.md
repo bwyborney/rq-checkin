@@ -38,6 +38,8 @@ Adding other features:
 - [x] Figure out a way to save the "other" repair data so it's visible in the preview
 - [x] Probably shouldn't include the logo
 - [x] Add plaintext backup
+- [ ] Device info still isn't pulling correctly
+- [ ] JSON.parse is failing on preview sometimes
 - [ ] Documentation and polish:
     - [ ] Add webstore images
         - Icon needs to be 96x96 inside a transparent 128x128 image
