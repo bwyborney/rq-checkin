@@ -197,7 +197,7 @@ function fillColumnC() {
     for (let v = 0; v < format.length; v++) {
         // Handle "other" repairs by grabbing the value of the correlated input 
         if (format[v][0] === "Other") {
-            let field = ''; // Need to figure out how to save the data
+            let field = data.columnC.values[v][1]; 
             if (field.length > 0 && originals[v][0] === 1) {
                 values[v] = "\u2611 Other: " + field;
             } else {

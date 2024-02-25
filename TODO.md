@@ -22,6 +22,7 @@ Here, we'll focus on some more long-term implementations of certain features, an
 - [ ] Different checklists for different device types
 - [ ] Alternate way to save forms for posterity. All saved data only works with this extension, so we'll probably want a plaintext alternative
 
+
 ### 1.3
 Adding other features:
 - [ ] Alternate device labels with additional information such as contact method
@@ -31,10 +32,14 @@ Adding other features:
 # To-do:
 - [x] viewing saved form isn't always working during the initial ticket-edit
 - [ ] Test with different types of ticket. Chrome extensions trigger based on URLs, and there are at least two URL variants for ticket editing. Element selectors may be different on claim tickets, too.
-- [ ] Make sure what's being checked is actually being checked
-- [ ] Figure out a way to save the "other" repair data so it's visible in the preview
+    - [ ] Does it work when converting from regular ticket to claim?
+    - [ ] Make it required and then test it while checking in a claim
+        - [ ] Test what happens when you make a regular repair ticket then convert it before filling in the form
+- [x] Make sure what's being checked is actually being checked
+- [x] Figure out a way to save the "other" repair data so it's visible in the preview
+- [ ] Fix: when you save the form, then preview it, then edit it, then preview it again, it shows the old data
+- [ ] Probably shouldn't include the logo, but allow people to upload their own logo, and then provide the link for the photo
 - [ ] Documentation and polish:
-    - [ ] Add a favicon
     - [ ] Add webstore images
         - Icon needs to be 96x96 inside a transparent 128x128 image
     - [ ] Add instructions
@@ -43,6 +48,7 @@ Adding other features:
     - [ ] Figure out if there's a way to force back ground graphics while printing
 
 # Lower priority:
+- [ ] Only allow phone numbers for phone-based contact methods, and email for emailing
 - [ ] Add override button
     - Labelled as "device not present"
     - Places default data into the saved-data box and triggers the same function as saving and printing/closing the form
@@ -59,4 +65,5 @@ Adding other features:
 # Ideas:
 - Would love to show the ticket number and generate a qr code at the bottom of the page, but this isn't going to be doable conistently since we don't know the ticket number until the ticket is initially saved.
 - An auto-filling checklist in the sidebar, which shows how many pieces of required information have been added to the ticket. This might prevent clicking on a status button until the checklist is filled
+- Conditional logic, like in the custom forms (i.e if you select "screen repair," you can be required to choose a type of screen)
 

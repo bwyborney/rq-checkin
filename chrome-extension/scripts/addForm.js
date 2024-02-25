@@ -15,11 +15,19 @@ function getTicketData() {
     
     // Identify the div containing device info using the unique 'device-row'
     // class, then narrow it down to its children
-    let deviceBox = document.getElementsByClassName('device-row')[0].children;
+    let deviceBox;
+    let deviceBoxFound = false;
+    if (document.getElementsByClassName('device-row').length > 0) {
+        deviceBox = document.getElementsByClassName('device-row')[0].children;
+        deviceBoxFound = true;
+    }
     
     // Go and pull the device information from the correct boxes
-    ticketData.model = deviceBox[1].innerText;
-    ticketData.serial = deviceBox[3].children[0].value;
+    if (deviceBoxFound) {
+        ticketData.model = deviceBox[1].innerText;
+        ticketData.serial = deviceBox[3].children[0].value;
+
+    }
     
     // Get the price quote using the unique 'remaining-balance' class
     ticketData.quote = '$' + document.getElementsByClassName('remaining-balance')[0].innerText;
@@ -191,6 +199,7 @@ function launchPage(completeData, parent) {
                 if (parent.children[c].classList[0] === 'modal-footer') {
                     parent.children[c].style.display = 'table';
                     let saveSpot = document.querySelectorAll('div[data-condition="null"]')[0].children[1].children[0];
+                    console.log(event.data);
                     // Put the data in the data box
                     saveSpot.innerText = JSON.stringify(event.data);
                     // Start the observer again
@@ -342,9 +351,12 @@ function checkForForm() {
         // then see if this is the correct title
         for (let c = 0; c < edit.children.length; c++) {
             if (edit.children[c].classList[0] === 'modal-header') {
-                if (edit.children[c].children[1].innerText === 'CPR Check-in') {
-                    initialize(edit);
+                if (edit.children[c].children.length > 1) { // The signature modal doesn't always have the same header structure, so this prevents an error
+                    if (edit.children[c].children[1].innerText === 'CPR Check-in') {
+                        initialize(edit);
+                    }
                 }
+                
             }
         }
         

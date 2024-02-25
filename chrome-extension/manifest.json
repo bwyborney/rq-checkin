@@ -5,9 +5,9 @@
     "description": "A custom generated check-in form",
 
     "icons": {
-        "16": "images/rqm16.png",
-        "48": "images/rqm48.png",
-        "128": "images/rqm128.png"
+        "16": "images/icon-16.png",
+        "48": "images/icon-48.png",
+        "128": "images/icon-128.png"
     },
 
     "permissions" : [

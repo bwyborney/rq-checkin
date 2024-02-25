@@ -3,69 +3,6 @@ let data = {};
 let maxRows;
 let columnPlace;
 
-let sampleData = {
-    version: 1.0,
-    ticketInfo: {
-        customer: {
-            name: "Customer McCustomer",
-            contact: "",
-            methods: [
-                "(541)555-5555",
-                "(808)888-8888",
-                "fix@cpr.com"
-            ]
-        },
-        ticket: {
-            estimate: "$329.99",
-            due: "1/1/24 - 1:00"
-        },
-        technician: {
-            name: "Ben Wyborney",
-            number: "12345678",
-            email: "repairs@cpr-eugene.com"
-        },
-        device: {
-            model: "Samsung Galaxy S22 Ultra",
-            serial: "45648461564861685"
-        },
-        notes: "Screen replacement - the glass is cracked."
-    },
-    columnA: {
-        values: [
-            "Front cracked?",
-            "Battery health?",
-            "Biometric scanner",
-            "Battery health again"
-        ]
-    },
-    columnB: {
-        format: [
-            ["Yes", "No"],
-            ["percent"],
-            ["Pass", "Fail", "Not testable"],
-            ["percent"]
-        ],
-        values: [
-            999,
-            999,
-            999,
-            999
-        ]
-    },
-    columnC: {
-        format: [
-            ["Screen replacement"],
-            ["OEM", "AFM LCD", "AFM OLED"],
-            ["Other"]
-        ],
-        values:  [
-            [0],
-            [0, 0, 0],
-            [0]
-        ]
-    }
-}
-
 // ----- Everything for generating the initial checkin form:
 
 // These functions will get passed IDs which they need to 
@@ -589,6 +526,8 @@ function fillColumnC() {
             let field = document.getElementById(`other-input-${v}`).value;
             if (field.length > 0 && originals[v][0] === 1) {
                 values[v] = "\u2611 Other: " + field;
+                // Save the value of the "other" repair
+                data.columnC.values[v][1] = field; 
             } else {
                 values[v] = "\u2610 Other: ";
             }
