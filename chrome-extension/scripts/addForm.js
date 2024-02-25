@@ -123,7 +123,10 @@ function getTicketData() {
     let candidates = document.getElementsByClassName('tox-edit-area__iframe');
     for (let c = 0; c < candidates.length; c++) {
         let notesPage = candidates[c].contentDocument;
-        let notes = notesPage.getElementsByTagName('p')[0].innerText;
+        let notes = '';
+        if (notesPage.getElementsByTagName('p').length > 0) {
+            notes = notesPage.getElementsByTagName('p')[0].innerText;
+        }
         if (notes.length > 0) {
             ticketData.notes = notes;
         }
@@ -199,9 +202,11 @@ function launchPage(completeData, parent) {
                 if (parent.children[c].classList[0] === 'modal-footer') {
                     parent.children[c].style.display = 'table';
                     let saveSpot = document.querySelectorAll('div[data-condition="null"]')[0].children[1].children[0];
-                    console.log(event.data);
                     // Put the data in the data box
-                    saveSpot.innerText = JSON.stringify(event.data);
+                    saveSpot.innerText = JSON.stringify(event.data.data);
+                    // Put the plaintext data where it belongs
+                    let plainSpot = document.querySelectorAll('div[data-condition="null"]')[2].children[1].children[0];
+                    plainSpot.innerText = event.data.plainText;
                     // Start the observer again
                     initialize(document.getElementById('customFieldEditModal'));
                     startup();

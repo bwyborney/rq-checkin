@@ -1,10 +1,7 @@
-// sample data
+// default data
 let data = {};
 let maxRows;
 let columnPlace;
-
-
-
 
 // Print the page then save the data and hide the form
 function printAndSave() {
@@ -14,18 +11,9 @@ function printAndSave() {
 
 // Trigger everything to load the page with all the correct values
 function initialize() {
-
     document.getElementById('print-and-save').addEventListener('click', printAndSave);
-
     submit();
 }
-
-
-
-
-
-
-
 
 // ----- Everything for populating the printout form:
 

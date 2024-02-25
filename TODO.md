@@ -9,12 +9,14 @@ It will include:
 - [x] A way to store the form inside the ticket and easily view it at any time later
 - [x] Ability to edit saved forms
 - Will only work for phones
+- Does not work on claim tickets
 
 ### 1.1
 We'll make changes based on feedback and experience using the extension
 - [ ] Better workflows
     - Key information, such as follow-up method, will be made more visible in the ticket. It is only one click to view the form, but the text is tiny and hard to read. Might make a more readable version which doesn't get printed.
     - Override button, for cases where the device is not in the store while making the ticket
+- Claim ticket compatibility
 
 ### 1.2 
 Here, we'll focus on some more long-term implementations of certain features, and expand device compatibility by adding customizable checklists.
@@ -31,15 +33,11 @@ Adding other features:
 
 # To-do:
 - [x] viewing saved form isn't always working during the initial ticket-edit
-- [ ] Test with different types of ticket. Chrome extensions trigger based on URLs, and there are at least two URL variants for ticket editing. Element selectors may be different on claim tickets, too.
-    - [ ] Does it work when converting from regular ticket to claim?
-    - [ ] Make it required and then test it while checking in a claim
-        - [ ] Test what happens when you make a regular repair ticket then convert it before filling in the form
+- [x] Test with different types of ticket. Chrome extensions trigger based on URLs, and there are at least two URL variants for ticket editing. Element selectors may be different on claim tickets, too.
 - [x] Make sure what's being checked is actually being checked
 - [x] Figure out a way to save the "other" repair data so it's visible in the preview
-- [ ] Fix: when you save the form, then preview it, then edit it, then preview it again, it shows the old data
-- [ ] Probably shouldn't include the logo, but allow people to upload their own logo, and then provide the link for the photo
-- [ ] Add plaintext backup
+- [x] Probably shouldn't include the logo
+- [x] Add plaintext backup
 - [ ] Documentation and polish:
     - [ ] Add webstore images
         - Icon needs to be 96x96 inside a transparent 128x128 image
@@ -48,6 +46,8 @@ Adding other features:
     - [x] Bigger divs for pre-tests, allow for two lines of text. Give them cursor pointers. Give them "selected" borders too, remove borders on hover though
     - [x] Figure out if there's a way to force back ground graphics while printing
         - [ ] there is not, so this will need to be included in the instructions
+    - [ ] Add "known issues"
+        - [ ] Fix: when you save the form, then preview it, then edit it, then preview it again, it shows the old data
 
 # Lower priority:
 - [ ] Only allow phone numbers for phone-based contact methods, and email for emailing
@@ -60,6 +60,11 @@ Adding other features:
     - need a hard check to ensure column A and B are the same length
     - NEED to JSON.stringify() the config value before saving it to the custom form
     - let user know if they are missing store contact info
+    - allow people to upload their own logo, and then provide the link for the photo
+- [ ] Test claim tickets
+    - [x] Does it work when converting from regular ticket to claim?
+    - [ ] Make it required and then test it while checking in a claim
+        - [ ] Test what happens when you make a regular repair ticket then convert it before filling in the form
 - [x] Polish:
     - [x] Make the edit button look nicer
     - [x] Fix double-scrolling
