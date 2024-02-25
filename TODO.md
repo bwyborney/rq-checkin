@@ -39,13 +39,15 @@ Adding other features:
 - [x] Figure out a way to save the "other" repair data so it's visible in the preview
 - [ ] Fix: when you save the form, then preview it, then edit it, then preview it again, it shows the old data
 - [ ] Probably shouldn't include the logo, but allow people to upload their own logo, and then provide the link for the photo
+- [ ] Add plaintext backup
 - [ ] Documentation and polish:
     - [ ] Add webstore images
         - Icon needs to be 96x96 inside a transparent 128x128 image
     - [ ] Add instructions
-    - [ ] Cursive font for signature
-    - [ ] Bigger divs for pre-tests, allow for two lines of text. Give them cursor pointers. Give them "selected" borders too, remove borders on hover though
-    - [ ] Figure out if there's a way to force back ground graphics while printing
+    - [x] Cursive font for signature
+    - [x] Bigger divs for pre-tests, allow for two lines of text. Give them cursor pointers. Give them "selected" borders too, remove borders on hover though
+    - [x] Figure out if there's a way to force back ground graphics while printing
+        - [ ] there is not, so this will need to be included in the instructions
 
 # Lower priority:
 - [ ] Only allow phone numbers for phone-based contact methods, and email for emailing
@@ -58,10 +60,10 @@ Adding other features:
     - need a hard check to ensure column A and B are the same length
     - NEED to JSON.stringify() the config value before saving it to the custom form
     - let user know if they are missing store contact info
-- [ ] Polish:
-    - [ ] Make the edit button look nicer
-    - [ ] Fix double-scrolling
-    - [ ] Change the "print and save" button to just say "print" while viewing a saved form
+- [x] Polish:
+    - [x] Make the edit button look nicer
+    - [x] Fix double-scrolling
+    - [x] Change the "print and save" button to just say "print" while viewing a saved form
 # Ideas:
 - Would love to show the ticket number and generate a qr code at the bottom of the page, but this isn't going to be doable conistently since we don't know the ticket number until the ticket is initially saved.
 - An auto-filling checklist in the sidebar, which shows how many pieces of required information have been added to the ticket. This might prevent clicking on a status button until the checklist is filled

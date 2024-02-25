@@ -183,7 +183,7 @@ function launchPage(completeData, parent) {
     };
     frame.src = chrome.runtime.getURL('/checkin-form/checkin.html');
     frame.width = '100%';
-    frame.height = '100%';
+    frame.height = '80%';
     parent.appendChild(frame);
 
     // Listen for the data to come back from the iframe
@@ -216,6 +216,8 @@ function launchPage(completeData, parent) {
 
 // Get it all started up
 function initialize(parent) {
+    // Hide the extra scrollbar
+    parent.style.overflow = 'hidden';
     // Make sure there's not already data
     let saveSpot = document.querySelectorAll('div[data-condition="null"]')[0].children[1].children[0];
     let newButton = document.createElement('div');
