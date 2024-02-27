@@ -29,7 +29,7 @@ Here, we'll focus on some more long-term implementations of certain features, an
 Adding other features:
 - [ ] Alternate device labels with additional information such as contact method
 - [ ] Model/manufacturer-specific information added to the bottom of a ticket. This would mostly be used for warranty and disclaimer text
-- [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty
+- [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty. It will also show pre-test vs. post-test
 
 # To-do:
 - [x] viewing saved form isn't always working during the initial ticket-edit
@@ -38,6 +38,7 @@ Adding other features:
 - [x] Figure out a way to save the "other" repair data so it's visible in the preview
 - [x] Probably shouldn't include the logo
 - [x] Add plaintext backup
+- [ ] Make the checkin form look better
 - [ ] Device info still isn't pulling correctly
 - [ ] JSON.parse is failing on preview sometimes
 - [ ] Documentation and polish:
@@ -75,4 +76,5 @@ Adding other features:
 - Would love to show the ticket number and generate a qr code at the bottom of the page, but this isn't going to be doable conistently since we don't know the ticket number until the ticket is initially saved.
 - An auto-filling checklist in the sidebar, which shows how many pieces of required information have been added to the ticket. This might prevent clicking on a status button until the checklist is filled
 - Conditional logic, like in the custom forms (i.e if you select "screen repair," you can be required to choose a type of screen)
+- Pop-up scripts (i.e. recommend battery when the health is below a certain threshold, print "reccommended" on the form next to it)
 
