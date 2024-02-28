@@ -77,4 +77,5 @@ Adding other features:
 - An auto-filling checklist in the sidebar, which shows how many pieces of required information have been added to the ticket. This might prevent clicking on a status button until the checklist is filled
 - Conditional logic, like in the custom forms (i.e if you select "screen repair," you can be required to choose a type of screen)
 - Pop-up scripts (i.e. recommend battery when the health is below a certain threshold, print "reccommended" on the form next to it)
+- Figure out how to make the form required
 
