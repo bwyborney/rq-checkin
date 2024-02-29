@@ -1,7 +1,44 @@
 // Generate the pre-test forms based on the data from column A and column B
 // (a.k.a.) what has been set in the user's configuration
 function generatePreTests(dataA, dataB) {
-    
+  // Figure out where to inject these test elements
+  const inject = document.getElementById('ci-section-inspection');
+
+  // Build all the elements
+  for (let a = 0; a < dataA.length; a++) {
+    const test = dataA[a];
+    const format = dataB.format[a];
+    const values = dataB.values[a];
+
+    // Start building the container elements
+    let row = document.createElement('div');
+    row.classList = 'ci-inspect-row';
+    let title = document.createElement('p');
+    title.innerText = test;
+    row.appendChild(title);
+    let options = document.createElement('div');
+
+    // Handle manual input tests, such as percent and amps
+    if (format[0] === 'percent' || format[0] === 'amps') {
+      // Create the input element 
+      options.classList = 'ci-inspect-input';
+      let input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = values[0] || '0';
+
+      // Assign an id. a-0 represents the index in data.columnB.values,
+      // Which is where this input's value will be stored
+      input.id = `cio-${a}-0`;
+
+      options.appendChild(input);
+    } else {
+      // Handle all other kinds of inputs
+      
+    }
+
+    row.appendChild(options);
+    inject.appendChild(row);
+  }
 }
 
 export {generatePreTests};

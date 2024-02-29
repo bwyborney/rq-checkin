@@ -18,6 +18,10 @@ fillContactNumbers(data.ticketInfo.customer.methods, mf.customer.number);
 import { addMetaFormListeners } from "./scripts/addMetaFormListeners.js";
 addMetaFormListeners(mf);
 
+// Figure out the length of the longest column
+import { findMaxLength } from "./scripts/findMaxLength.js";
+let maxLength = findMaxLength(data);
+
 // Generate pre-test forms
 import { generatePreTests } from "./scripts/generatePreTests.js";
 generatePreTests(data.columnA.values, data.columnB);

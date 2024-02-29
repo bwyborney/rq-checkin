@@ -86,3 +86,6 @@ Adding other features:
 - Pop-up scripts (i.e. recommend battery when the health is below a certain threshold, print "reccommended" on the form next to it)
 - Figure out how to make the form required
 
+# Where I'm leaving off:
+line 36 of generatePreTests.
+
