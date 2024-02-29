@@ -57,6 +57,7 @@ Adding other features:
         - [ ] there is not, so this will need to be included in the instructions
     - [ ] Add "known issues"
         - [ ] Fix: when you save the form, then preview it, then edit it, then preview it again, it shows the old data
+- [ ] Take our store's number out
 
 # Lower priority:
 - [ ] Only allow phone numbers for phone-based contact methods, and email for emailing

@@ -1,27 +1,32 @@
-let sampleData = {
+// Retrieve the "starting data" which is passed to this page by the extension
+
+function getStartingData() {
+  return {
     "version": 1,
     "ticketInfo": {
       "customer": {
-        "name": "",
+        "name": "Customer Name",
         "contact": "",
         "methods": [
-          ""
+          "(111)111-1111",
+          "(000)000-0000",
+          "fake@email.net"
         ]
       },
       "ticket": {
-        "estimate": "",
-        "due": ""
+        "estimate": "$99.99",
+        "due": "1/1/1 - 1:00"
       },
       "technician": {
-        "name": "",
-        "number": "(541)914-1230",
-        "email": "repairs@cpr-eugene.com"
+        "name": "Technician Name",
+        "number": "(222)222-2222",
+        "email": "repairs@cpr-anywhere.com"
       },
       "device": {
-        "model": "",
-        "serial": ""
+        "model": "Google Pixel 7",
+        "serial": "DF78HR95FDG546"
       },
-      "notes": ""
+      "notes": "The screen is cracked and has ghost touching."
     },
     "columnA": {
       "values": [
@@ -256,3 +261,6 @@ let sampleData = {
       ]
     }
   };
+}
+
+export {getStartingData};

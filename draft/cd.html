@@ -4,6 +4,7 @@
         <title>CPR Check-in Form</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./checkin.css">
+        <link rel="icon" href="./images/icon-128.png">
     </head>
     <body>
         <!-- Container for the checkin form -->
@@ -33,14 +34,14 @@
                                 <option value="No contact method">No contact method</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <input style="display: none" type="text" id="ci-other-method" placeholder='type a method (like "FB message")'>
+                            <input style="display: none; margin-top: 5px;" type="text" id="ci-other-method" placeholder='type a method (like "FB message")'>
                         </div>
                         <div class="ci-meta-input">
                             <p>Contact number:</p>
                             <select id="ci-customer-number" name="contact-number">
                                 <option value="" selected disabled>Select a number:</option>
                             </select>
-                            <input style="display: none" type="text" id="ci-other-number" placeholder='type a number'>
+                            <input style="display: none; margin-top: 5px;" type="text" id="ci-other-number" placeholder='type a number'>
                         </div>
                         <div class="ci-meta-input">
                             <p>Customer name:</p>
@@ -141,7 +142,8 @@
                 <div class="ci-inspect-row">
                     <p>Battery health</p>
                     <div class="ci-inspect-input">
-                        <input type="text" placeholder="80%" id="cio-3-0">
+                        <input type="text" placeholder="80" id="cio-3-0">
+                        <p>%</p>
                     </div>
                 </div>
             </div>
