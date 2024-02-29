@@ -31,8 +31,34 @@ function generatePreTests(dataA, dataB) {
       input.id = `cio-${a}-0`;
 
       options.appendChild(input);
+
+      // Add a tailing character to show percent or amps
+      let tail = document.createElement('p');
+      if (format[0] === 'percent') {
+        tail.innerText = '%';
+      } else if (format[0] === 'amps') {
+        tail.innerText = 'amps';
+      }
+      options.appendChild(tail);
+
     } else {
       // Handle all other kinds of inputs
+      options.classList = 'ci-inspect-options';
+      for (let b = 0; b < format.length; b++) {
+        // Create one selectable element for each possible choice
+        let choice = document.createElement('div');
+        // Initialize the classes to 'selected' if they are already marked as such in the data
+        if (values[b] === 1) {
+          choice.classList = 'ci-selected';
+        } else {
+          choice.classList = 'ci-deselected';
+        }
+
+        choice.innerText = format[b];
+        choice.id = `cio-${a}-${b}`;
+
+        options.appendChild(choice);
+      }
       
     }
 
