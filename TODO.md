@@ -29,17 +29,24 @@ Here, we'll focus on some more long-term implementations of certain features, an
 Adding other features:
 - [ ] Alternate device labels with additional information such as contact method
 - [ ] Model/manufacturer-specific information added to the bottom of a ticket. This would mostly be used for warranty and disclaimer text
-- [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty
+- [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty. It will also show pre-test vs. post-test
 
 # To-do:
-- [x] viewing saved form isn't always working during the initial ticket-edit
-- [x] Test with different types of ticket. Chrome extensions trigger based on URLs, and there are at least two URL variants for ticket editing. Element selectors may be different on claim tickets, too.
-- [x] Make sure what's being checked is actually being checked
-- [x] Figure out a way to save the "other" repair data so it's visible in the preview
-- [x] Probably shouldn't include the logo
-- [x] Add plaintext backup
+- Test and implement modular chrome functions
+- Test modular iframe functions
+- Sketch revised check-in form with logic and everything else, consider all permutations
+    - Should include meta info as forms
+    - better look, obviously
+    - include defaults for override
+    - maybe add thumbs-up, thumbs-down, checkmark/prohibit sign/letter x icons, etc.
+- Make mockup/sample check-in HTML
+- Re-make checkin.js
+- Re-make preview.js with modular and cleaner functions
+- Make custom options pages
+- [ ] Make the checkin form look better
 - [ ] Device info still isn't pulling correctly
-- [ ] JSON.parse is failing on preview sometimes
+- [ ] Need to make it so that when you re-do the form (either by clicking the edit button or RQ's built-in re-do button), it pulls the data fresh
+    - [ ] Might consider adding the ability to edit all the meta information too
 - [ ] Documentation and polish:
     - [ ] Add webstore images
         - Icon needs to be 96x96 inside a transparent 128x128 image
@@ -75,4 +82,6 @@ Adding other features:
 - Would love to show the ticket number and generate a qr code at the bottom of the page, but this isn't going to be doable conistently since we don't know the ticket number until the ticket is initially saved.
 - An auto-filling checklist in the sidebar, which shows how many pieces of required information have been added to the ticket. This might prevent clicking on a status button until the checklist is filled
 - Conditional logic, like in the custom forms (i.e if you select "screen repair," you can be required to choose a type of screen)
+- Pop-up scripts (i.e. recommend battery when the health is below a certain threshold, print "reccommended" on the form next to it)
+- Figure out how to make the form required
 

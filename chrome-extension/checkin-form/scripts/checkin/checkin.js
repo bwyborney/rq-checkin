@@ -119,13 +119,20 @@ function handleRepairCheck(id) {
 
     // Finally, set the correct classes and checkboxes for everyone
     for (let s = 0; s < data.columnC.values[a].length; s++) {
-        if (data.columnC.values[a][s] === 0) {
-            document.getElementById(`r-${a}-${s}`).classList = "rep-deselected";
-            document.getElementById(`r-${a}-${s}`).innerText = "\u2610 " + data.columnC.format[a][s];
-        } else {
-            document.getElementById(`r-${a}-${s}`).classList = "rep-selected";
-            document.getElementById(`r-${a}-${s}`).innerText = "\u2611 " + data.columnC.format[a][s];
+
+        if (document.getElementById(`r-${a}-${s}`) != null) {
+            if (data.columnC.values[a][s] === 0) {
+                document.getElementById(`r-${a}-${s}`).classList = "rep-deselected";
+                document.getElementById(`r-${a}-${s}`).innerText = "\u2610 " + data.columnC.format[a][s];
+            } else {
+                document.getElementById(`r-${a}-${s}`).classList = "rep-selected";
+                document.getElementById(`r-${a}-${s}`).innerText = "\u2611 " + data.columnC.format[a][s];
+            }
+
         }
+        
+
+
     }
 }
 
