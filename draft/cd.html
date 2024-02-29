@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CPR Check-in Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./checkin.css">
+    </head>
+    <body>
+        <!-- Container for the checkin form -->
+        <div id="checkin">
+            <h3 class="ci-section-title">Instructions:</h3>
+            <div class="ci-section">
+                <p id="ci-instructions">
+                    Please review the following information, then make a selection for each of the items below.
+                    Once you are done, hit the "Submit and Print" button, then hand the form to the customer.
+                </p>
+            </div>
+            <!-- Meta information -->
+            <h3 class="ci-section-title">Ticket info:</h3>
+            <div class="ci-section" id="ci-section-meta">
+                <div class="ci-meta-row">
+                    <div class="ci-meta-icon">
+                        <img src="./images/meta-icon-user.png" alt="image of a person">
+                    </div>
+                    <div class="ci-meta-form">
+                        <div class="ci-meta-input">
+                            <p>Contact method:</p>
+                            <select id="ci-customer-method" name="contact-method">
+                                <option value="" selected disabled>Select a method:</option>
+                                <option value="Call">Call</option>
+                                <option value="Text">Text</option>
+                                <option value="Email">Email</option>
+                                <option value="No contact method">No contact method</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <input style="display: none" type="text" id="ci-other-method" placeholder='type a method (like "FB message")'>
+                        </div>
+                        <div class="ci-meta-input">
+                            <p>Contact number:</p>
+                            <select id="ci-customer-number" name="contact-number">
+                                <option value="" selected disabled>Select a number:</option>
+                            </select>
+                            <input style="display: none" type="text" id="ci-other-number" placeholder='type a number'>
+                        </div>
+                        <div class="ci-meta-input">
+                            <p>Customer name:</p>
+                            <input type="text" placeholder="customer name" id="ci-customer-name">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="ci-meta-row">
+                    <div class="ci-meta-icon">
+                        <img src="./images/meta-icon-wrench.png" alt="image of a wrench">
+                    </div>
+                    <div class="ci-meta-form">
+                        <div class="ci-meta-input">
+                            <p>Due time:</p>
+                            <input type="text" placeholder="1/1/24 - 12:00" id="ci-ticket-due">
+                        </div>
+                        <div class="ci-meta-input">
+                            <p>Estimated cost:</p>
+                            <input type="text" placeholder="$0.00" id="ci-ticket-estimate">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="ci-meta-row">
+                    <div class="ci-meta-icon">
+                        <img src="./images/meta-icon-phone.png" alt="image of a phone">
+                    </div>
+                    <div class="ci-meta-form">
+                        <div class="ci-meta-input">
+                            <p>Device model:</p>
+                            <input type="text" placeholder="Device model" id="ci-device-model">
+                        </div>
+                        <div class="ci-meta-input">
+                            <p>Device serial number:</p>
+                            <input type="text" placeholder="Device serial number" id="ci-device-serial">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="ci-meta-row">
+                    <div class="ci-meta-icon">
+                        <img src="./images/meta-icon-store.png" alt="image of a storefront">
+                    </div>
+                    <div class="ci-meta-form">
+                        <div class="ci-meta-input">
+                            <p>Technician name:</p>
+                            <input type="text" placeholder="Technician name" id="ci-technician-name">
+                        </div>
+                        <div class="ci-meta-input">
+                            <p>Store phone number:</p>
+                            <input type="text" placeholder="(111-111-1111)" id="ci-store-number">
+                        </div>
+                        <div class="ci-meta-input">
+                            <p>Store email:</p>
+                            <input type="text" placeholder="repairs@cpr-anywhere.com" id="ci-store-email">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="ci-meta-row">
+                    <div class="ci-meta-icon">
+                        <img src="./images/meta-icon-pencil.png" alt="image of a pencil">
+                    </div>
+                    <div class="ci-meta-notes">
+                        <div class="ci-meta-input">
+                            <p>Customer remarks:</p>
+                            <input type="textarea" placeholder="Customer remarks..." id="ci-ticket-notes">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pre-inspection -->
+            <h3 class="ci-section-title">Pre-repair inspection:</h3>
+            <div class="ci-section" id="ci-section-inspection">
+                <div class="ci-inspect-row">
+                    <p>Screen cracked?</p>
+                    <div class="ci-inspect-options">
+                        <div class="ci-selected" id="cio-0-1">Yes</div>
+                        <div class="ci-deselected" id="cio-0-2">No</div>
+                    </div>
+                </div>
+                <div class="ci-inspect-row">
+                    <p>Back cracked?</p>
+                    <div class="ci-inspect-options">
+                        <div class="ci-deselected" id="cio-1-1">Yes</div>
+                        <div class="ci-selected" id="cio-1-2">No</div>
+                    </div>
+                </div>
+                <div class="ci-inspect-row">
+                    <p>Touch screen response</p>
+                    <div class="ci-inspect-options">
+                        <div class="ci-deselected" id="cio-2-1">Pass</div>
+                        <div class="ci-deselected" id="cio-2-2">Fail</div>
+                        <div class="ci-selected" id="cio-2-3">Can't test</div>
+                    </div>
+                </div>
+                <div class="ci-inspect-row">
+                    <p>Battery health</p>
+                    <div class="ci-inspect-input">
+                        <input type="text" placeholder="80%" id="cio-3-0">
+                    </div>
+                </div>
+            </div>
+            <!-- Repair checklist, just mimic what was done above using the same classes -->
+            <h3 class="ci-section-title">Repairs to be performed:</h3>
+            <div class="ci-section" id="ci-section-repairs"> 
+
+            </div>
+
+            <div id="submit">Submit</div>
+
+            <p id="author-note">CPR Check-in by Ben Wyborney</p>
+        </div>
+        <script src="./cd.js" type="module"></script>
+    </body>
+</html>

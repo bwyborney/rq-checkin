@@ -1,0 +1,227 @@
+@charset "utf-8"; 
+
+/* Font for the signature */
+@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
+
+:root {
+    --colorA1: #A4A7C5;
+    --colorA2: #7479A3;
+    --colorA3: #4E5588; /* Border/accent color */
+    --colorA4: #333A70;
+    --colorA5: #1C2356; /* Border for interactable fields */
+    
+    --colorB1: #98AFBA;
+    --colorB2: #668696;
+    --colorB3: #436A7D;
+    --colorB4: #2A5367;
+    --colorB5: #143C4F;
+
+    --colorC1: black; /* Main font color */
+    --colorC2: white; /* Background color */
+}
+
+* > h1, * > h2, * > h3, * > p, * > a, * > ul > li, * > ol > li, * > div, * > input
+{
+  font-family: "Helvetica", "Arial", sans-serif;
+  line-height:1.5;
+  word-wrap: break-word;
+  color: var(--colorC1);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: var(--colorC2);
+}
+
+* > a, * > a:hover, * > a:visited {
+    text-decoration: none;
+}
+
+* > ul, * > ol {
+    margin-left: 2.5rem;
+}
+
+body {
+    text-align: center;
+    background-color: var(--colorC2);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+* > span {
+    font-style: italic;
+}
+
+/* ============================== Checkin form ============================== */
+
+/* ----- Main elements ----- */
+
+#checkin {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20vh;
+}
+
+.ci-section-title {
+    font-size: 28px;
+    font-weight: normal;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.ci-section {
+    width: 85%;
+    margin-left: 5%;
+    border: solid 3px var(--colorA3);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#ci-instructions {
+    font-size: 18px;
+}
+
+#author-note {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: var(--colorC1);
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+/* ----- Meta information ----- */
+
+.ci-meta-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10% 90%;
+}
+
+.ci-meta-icon {
+    text-align: center;
+}
+
+.ci-meta-icon > img {
+    width: 60%;
+}
+
+.ci-meta-form {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.ci-meta-input > p {
+    font-size: 18px;
+}
+
+.ci-meta-input > select, input {
+    font-size: 16px;
+    border: solid 2px var(--colorA5);
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--colorC2);
+    width: 90%;
+    margin-right: 10%;
+    margin-top: 0;
+}
+
+.ci-meta-notes {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+/* ----- Pre-inspection ----- */
+
+.ci-inspect-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50%;
+}
+
+.ci-inspect-row > p {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+/* For selection inspections */
+.ci-inspect-options {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.ci-selected, .ci-deselected {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0;
+    font-size: 20px;
+    border: solid 2px var(--colorA5);
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.ci-selected {
+    background-color: var(--colorA5);
+    color: var(--colorA1);
+}
+
+.ci-deselected {
+    background-color: var(--colorC2);
+    color: var(--colorC1);
+}
+
+.ci-selected:hover, .ci-deselected:hover {
+    background-color: var(--colorA1);
+    color: var(--colorA5);
+    transition: 0.1s;
+}
+
+/* For text input inspections */
+.ci-inspect-input {
+    width: 90%;
+    margin-left: 8px;
+}
+
+.ci-inspect-input > input {
+    width: 81%;
+    margin-left: 0;
+    font-size: 20px;
+    border: solid 2px var(--colorA5);
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* ----- Submit button ----- */
+#submit {
+    width: 30%;
+    margin-top: 20px;
+    margin-left: 35%;
+    margin-right: 35%;
+    font-size: 28px;
+    border: solid 2px var(--colorA5);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: var(--colorA1);
+    color: var(--colorA5);
+    transition: 0.1s;
+}
