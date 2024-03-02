@@ -3,6 +3,8 @@
 /* Font for the signature */
 @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 :root {
     --colorA1: #A4A7C5;
     --colorA2: #7479A3;
@@ -22,7 +24,8 @@
 
 * > h1, * > h2, * > h3, * > p, * > a, * > ul > li, * > ol > li, * > div, * > input
 {
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Quicksand", "Helvetica", sans-serif;
+  font-weight: 570;
   line-height:1.5;
   word-wrap: break-word;
   color: var(--colorC1);
@@ -62,8 +65,14 @@ body {
     margin-bottom: 20vh;
 }
 
+.ci-double-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
 .ci-section-title {
-    font-size: 28px;
+    font-size: 2vw;
     font-weight: normal;
     width: 90%;
     margin-left: 5%;
@@ -75,24 +84,23 @@ body {
 .ci-section {
     width: 90%;
     margin-left: 5%;
-    border: solid 3px var(--colorA3);
-    border-radius: 10px;
     padding: 5px;
 }
 
 .ci-double-section {
     display: grid;
     grid-template-columns: 50% 50%;
+    width: 100%;
 }
 
 #ci-instructions {
-    font-size: 18px;
+    font-size: 1.2vw;
 }
 
 #author-note {
     width: 100%;
     text-align: center;
-    font-size: 10px;
+    font-size: 0.8vw;
     color: var(--colorC1);
     margin-top: 5vh;
     margin-bottom: 5vh;
@@ -123,11 +131,11 @@ body {
 }
 
 .ci-meta-input > p {
-    font-size: 18px;
+    font-size: 1.1vw;
 }
 
 .ci-meta-input > select, input {
-    font-size: 16px;
+    font-size: 1.2vw;
     border: solid 2px var(--colorA5);
     border-radius: 5px;
     padding: 5px;
@@ -147,32 +155,42 @@ body {
 
 /* ----- Pre-inspection ----- */
 
-.ci-inspect-row {
+#ci-section-inspection {
     width: 100%;
+}
+
+#ci-section-inspection-2 {
+    width: 100%;
+}
+
+.ci-inspect-row, .ci-repair-row {
+    width: 90%;
     display: grid;
 }
 
-.ci-inspect-row > p {
-    font-size: 20px;
+.ci-inspect-row, .ci-repair-row > p {
+    font-size: 1.1vw;
     margin-left: 10px;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 /* For selection inspections */
 .ci-inspect-options {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 33% 33% 33%;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .ci-selected, .ci-deselected {
     width: 90%;
-    margin-left: 5%;
     margin-right: 5%;
     margin-top: 0;
-    font-size: 20px;
-    border: solid 2px var(--colorA5);
+    font-size: 0.9vw;
+    border: solid 2px var(--colorA1);
     border-radius: 5px;
-    padding: 5px;
+    padding: 2px;
     text-align: center;
     cursor: pointer;
     transition: 0.1s;
@@ -180,32 +198,33 @@ body {
 
 .ci-selected {
     background-color: var(--colorA5);
-    color: var(--colorA1);
+    border-color:  var(--colorA5);
+    color: var(--colorC2);
 }
 
 .ci-deselected {
-    background-color: var(--colorC2);
+    background-color: var(--colorA1);
     color: var(--colorC1);
 }
 
 .ci-deselected:hover {
-    background-color: var(--colorA1);
-    color: var(--colorA5);
+    background-color: var(--colorA2);
+    border-color: var(--colorA2);
+    color: var(--colorC1);
     transition: 0.1s;
 }
 
 /* For text input inspections */
 .ci-inspect-input {
-    width: 70%;
-    margin-left: 8px;
+    width: 100%;
     display: grid;
-    grid-template-columns: 95% 5%;
+    grid-template-columns: 12% 30%;
 }
 
 .ci-inspect-input > input {
     width: 100%;
     margin-left: 0;
-    font-size: 20px;
+    font-size: 1vw;
     border: solid 2px var(--colorA5);
     border-radius: 5px;
     padding: 5px;
@@ -213,8 +232,9 @@ body {
 }
 
 .ci-inspect-input > p {
-    font-size: 20px;
-    text-align: center;
+    font-size: 1vw;
+    text-align: left;
+    margin-left: 5px;
 }
 
 /* ----- Submit button ----- */
@@ -223,7 +243,7 @@ body {
     margin-top: 20px;
     margin-left: 35%;
     margin-right: 35%;
-    font-size: 28px;
+    font-size: 1.8vw;
     border: solid 2px var(--colorA5);
     border-radius: 5px;
     padding: 10px;

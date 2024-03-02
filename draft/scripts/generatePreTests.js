@@ -38,6 +38,10 @@ function generatePreTests(dataA, dataB) {
       input.onchange  = (e) => handleInputChange(e, dataB.values);
 
       options.appendChild(input);
+      // Add a "percent" or "amps" indicator to the end
+      let indicator = document.createElement('p');
+      indicator.innerText = format[0];
+      options.appendChild(indicator);
     } else {
       // Handle all other kinds of inputs
       options.classList = 'ci-inspect-options';

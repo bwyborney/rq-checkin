@@ -27,6 +27,7 @@ import { generatePreTests } from "./scripts/generatePreTests.js";
 generatePreTests(data.columnA.values, data.columnB);
 
 // Generate repair forms
-
+import { generateRepairs } from "./scripts/generateRepairs.js";
+generateRepairs(data.columnC.format, data.columnC.values);
 
 // Add listener and handler for the submit button
