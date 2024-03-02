@@ -73,11 +73,16 @@ body {
 }
 
 .ci-section {
-    width: 85%;
+    width: 90%;
     margin-left: 5%;
     border: solid 3px var(--colorA3);
     border-radius: 10px;
     padding: 5px;
+}
+
+.ci-double-section {
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 #ci-instructions {
@@ -145,7 +150,6 @@ body {
 .ci-inspect-row {
     width: 100%;
     display: grid;
-    grid-template-columns: 50%;
 }
 
 .ci-inspect-row > p {
@@ -184,7 +188,7 @@ body {
     color: var(--colorC1);
 }
 
-.ci-selected:hover, .ci-deselected:hover {
+.ci-deselected:hover {
     background-color: var(--colorA1);
     color: var(--colorA5);
     transition: 0.1s;
