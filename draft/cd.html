@@ -9,6 +9,26 @@
     <body>
         <!-- Container for the checkin form -->
         <div id="checkin">
+            <div id="checkin-title">CPR Check-in</div>
+            <div class="palette">
+                <div class="A1"></div>
+                <div class="A2"></div>
+                <div class="A3"></div>
+                <div class="A4"></div>
+                <div class="A5"></div>
+                
+                <div class="B1"></div>
+                <div class="B2"></div>
+                <div class="B3"></div>
+                <div class="B4"></div>
+                <div class="B5"></div>
+                
+                <div class="D1"></div>
+                <div class="D2"></div>
+                <div class="D3"></div>
+                <div class="D4"></div>
+                <div class="D5"></div>
+            </div>
             <h3 class="ci-section-title">Instructions:</h3>
             <div class="ci-section">
                 <p id="ci-instructions">
@@ -136,6 +156,11 @@
             
 
             <div id="submit">Submit</div>
+            <div class="ci-error" id="error1" style="display: none">Please choose a contact method.</div>
+            <div class="ci-error" id="error2" style="display: none">Other contact is selected but nothing has been typed in</div>
+            <div class="ci-error" id="error3" style="display: none">Please fill out the customer remarks.</div>
+            <div class="ci-error" id="error4" style="display: none">Please make a selection for each entry in the pre-repair inspection.</div>
+            <div class="ci-error" id="error5" style="display: none">"Other" repair is selected but nothing has been typed in.</div>
 
             <p id="author-note">CPR Check-in by Ben Wyborney</p>
         </div>

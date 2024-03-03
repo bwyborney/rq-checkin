@@ -6,7 +6,10 @@ function getStartingData() {
     "ticketInfo": {
       "customer": {
         "name": "Customer Name",
-        "contact": "",
+        "contact": {
+          "method": "",
+          "number": ""
+        },
         "methods": [
           "(111)111-1111",
           "(000)000-0000",

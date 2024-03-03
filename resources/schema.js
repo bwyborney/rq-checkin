@@ -7,7 +7,10 @@ let data = {
     ticketInfo: {
         customer: {
             name: "",
-            contact: "Call (123)456-7891", // This will show up on the form
+            contact: {
+                method: "",
+                number: ""
+            },
             methods: [
                 "(541)555-5555",
                 "(808)888-8888",

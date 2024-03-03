@@ -57,6 +57,8 @@ Adding other features:
         - [ ] there is not, so this will need to be included in the instructions
     - [ ] Add "known issues"
         - [ ] Fix: when you save the form, then preview it, then edit it, then preview it again, it shows the old data
+    - [ ] In fillContactNumbers, pre-select the already-chose method and number. This will require a schema change
+    - [ ] Pre-fill the contact information, will require setting the dropdowns too
 - [ ] Take our store's number out
 
 # Lower priority:
@@ -87,5 +89,8 @@ Adding other features:
 - Figure out how to make the form required
 
 # Where I'm leaving off:
-line 36 of generatePreTests.
+Time to start making the repairs. I need to mock it up in HTML first, then make a comment with samples like in the pre-tests file
+
+
+
 
