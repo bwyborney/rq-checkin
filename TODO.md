@@ -89,7 +89,26 @@ Adding other features:
 - Figure out how to make the form required
 
 # Where I'm leaving off:
-Time to start making the repairs. I need to mock it up in HTML first, then make a comment with samples like in the pre-tests file
+Working on filling columns
+Once that's done, need to look into the chrome extension stuff
+Make a preview form version
+Update the schema in RQ to fit the new thing
+Probably think about what needs to be done the plan it out, but also look at the functionality I had before
+Rewrite the whole chrome extension part
+Create the custom options
+Add the sample to my website 
+Figure out how to monetize
+
+
+
+- [ ] Need to set the lower form back to display: none 
+- [ ] Need to reset the default data
+- [ ] Need to delete line 61 of handleSubmit
+- [ ] Should rename cd.html and cd.js
+- [ ] I'll need to write getStartingData for real
+- [ ] Set the pretests to change their classes based on starting data
+- [ ]  Need to prefill the values of the contact stuff, keeping the dropdowns in mind too. They're also resetting their values in data to blank when the page loads
+- [ ] Change the title to a single image instead of an image follow by text
 
 
 

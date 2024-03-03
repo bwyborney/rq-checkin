@@ -9,20 +9,21 @@
     <body>
         <!-- Container for the checkin form -->
         <div id="checkin">
-            <div id="checkin-title">CPR Check-in</div>
+            <div id="checkin-title">
+                <img src="./images/icon-full.png" alt="an image of a checkmark">
+                <p>CPR Check-in</p>
+            </div>
             <div class="palette">
                 <div class="A1"></div>
                 <div class="A2"></div>
                 <div class="A3"></div>
                 <div class="A4"></div>
                 <div class="A5"></div>
-                
                 <div class="B1"></div>
                 <div class="B2"></div>
                 <div class="B3"></div>
                 <div class="B4"></div>
                 <div class="B5"></div>
-                
                 <div class="D1"></div>
                 <div class="D2"></div>
                 <div class="D3"></div>
@@ -152,18 +153,114 @@
                     </div>
                 </div>
             </div>
-            
-            
-
             <div id="submit">Submit</div>
             <div class="ci-error" id="error1" style="display: none">Please choose a contact method.</div>
             <div class="ci-error" id="error2" style="display: none">Other contact is selected but nothing has been typed in</div>
             <div class="ci-error" id="error3" style="display: none">Please fill out the customer remarks.</div>
             <div class="ci-error" id="error4" style="display: none">Please make a selection for each entry in the pre-repair inspection.</div>
             <div class="ci-error" id="error5" style="display: none">"Other" repair is selected but nothing has been typed in.</div>
-
             <p id="author-note">CPR Check-in by Ben Wyborney</p>
         </div>
+
+        <!-- 
+            The printed form, to be handed to the customer.
+            This will be auto-filled by the script
+        -->
+        <div id="printout" style="display: block">
+            <div id="header">
+                <img src="https://www.cellphonerepair.com/assets/img/main/cpr-logo.webp?v=1708733668623">
+                <h1><span id="technician-location" class="no-i">Repair Check-In</span></h1>
+            </div>            
+
+            <div id="meta-info">
+
+                <div class="mi-column">
+                    <p id="mi-customer-info">
+                        <b>Customer info</b>
+                        <br>
+                        <span id="customer-name">blank</span>
+                        <br>
+                        Follow-up:
+                        <span id="customer-contact">blank</span>
+                        
+                    </p>
+
+                </div>
+
+                <div class="mi-column">
+                    <p id="mi-estimate-info">
+                        <b>Ticket info</b>
+                        <br>
+                        
+                        Cost estimate: <span id="estimate-cost">blank</span>
+                        <br>
+                        
+                        Due: <span id="estimate-time">blank</span>
+                        
+                    </p>
+                </div>
+
+            
+                <div class="mi-column">
+                    <p id="mi-device-info">
+                        
+                        <b>Device info</b>
+                        <br>
+                        <span id="device-model">blank</span>
+                        <br>
+                        <span id="device-serial">blank</span>
+                    </p>
+                </div>
+
+                <div class="mi-column">
+                    <p id="mi-technician-info">
+                        <b>Technician</b>
+                        <br>
+                        <span id="technician-name">blank</span>
+                        <br>
+                        
+                        <span id="technician-number">blank</span>
+                        <br>
+                        
+                        <span id="technician-email">blank</span>
+                    </p>
+                </div>
+                
+            </div>
+
+
+            <div class="section-header">
+                <h3>Customer remarks</h3>
+            </div>
+
+
+            <div id="diag-notes">
+                <p id="notes">blank</p>
+            </div>
+
+            <div class="section-header">
+                <h3><span id="inspection-points" class="no-i">18</span>-point inspection</h3>
+            </div>
+
+            <div id="inspection">
+                
+
+            </div>
+
+            <p id="disclaimer">
+                CPR Cell Phone Repair is not liable for the functionality of any components which are non-functional or non-testable when the device is dropped off.
+                <br>
+                Devices may need additional repairs after a diganostic or liquid damage cleaning.
+            </p>
+    
+            <div id="signature">
+                <p>Technician signature: <span id="tech-signature"></span></p>
+            </div>
+
+            <div id="print-and-save">Print & Save</div>
+
+        </div>
+
         <script src="./cd.js" type="module"></script>
     </body>
 </html>

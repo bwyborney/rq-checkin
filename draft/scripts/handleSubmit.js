@@ -58,6 +58,7 @@ function handleSubmit(data) {
             }
         }
     }
+    ready = true;
     // If everything looks good, submit the form
     if (ready) {
         submit(data);
