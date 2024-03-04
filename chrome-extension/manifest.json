@@ -19,7 +19,7 @@
         
         {
             "js" : [
-                "scripts/addForm.js"
+                "scripts/initialize.js"
             ],
             "css" : [
                 "style/addForm.css"
