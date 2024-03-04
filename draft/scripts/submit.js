@@ -9,8 +9,12 @@ import { placeColumnC } from "./printout/placeColumnC.js";
 function submit(data) {
     // Retrieve the meta info
     data.ticketInfo = pullMetaInfo(data.ticketInfo);
-
+    // Hide the upper form and show the lower form
     document.getElementById('printout').style.display = 'block';
+    document.getElementById('checkin').style.display = 'none';
+
+    // Add a print button listener
+    document.getElementById('print-and-save').onclick = () => window.print();
 
     placeMetaInfo(data.ticketInfo);
 
@@ -19,6 +23,8 @@ function submit(data) {
     placeColumnA(data.columnA, max);
     placeColumnB(data.columnB, max);
     placeColumnC(data.columnC, max);
+    // Make the inspection header reflect the actual number of inspected points
+    document.getElementById('inspection-points').innerText = data.columnA.values.length.toString();
 }
 
 export {submit};

@@ -10,8 +10,7 @@
         <!-- Container for the checkin form -->
         <div id="checkin">
             <div id="checkin-title">
-                <img src="./images/icon-full.png" alt="an image of a checkmark">
-                <p>CPR Check-in</p>
+                <img src="./images/title.png" alt="an image of a checkmark">
             </div>
             <div class="palette">
                 <div class="A1"></div>
@@ -57,7 +56,7 @@
                             </select>
                             <input style="display: none; margin-top: 5px;" type="text" id="ci-other-method" placeholder='type a method (like "FB message")'>
                         </div>
-                        <div class="ci-meta-input">
+                        <div class="ci-meta-input" id="number-column">
                             <p>Contact number:</p>
                             <select id="ci-customer-number" name="contact-number">
                                 <option value="" selected disabled>Select a number:</option>
@@ -166,7 +165,7 @@
             The printed form, to be handed to the customer.
             This will be auto-filled by the script
         -->
-        <div id="printout" style="display: block">
+        <div id="printout" style="display: none">
             <div id="header">
                 <img src="https://www.cellphonerepair.com/assets/img/main/cpr-logo.webp?v=1708733668623">
                 <h1><span id="technician-location" class="no-i">Repair Check-In</span></h1>
@@ -239,7 +238,7 @@
             </div>
 
             <div class="section-header">
-                <h3><span id="inspection-points" class="no-i">18</span>-point inspection</h3>
+                <h3><span id="inspection-points" class="no-i">Multi</span>-point Inspection</h3>
             </div>
 
             <div id="inspection">
@@ -257,10 +256,13 @@
                 <p>Technician signature: <span id="tech-signature"></span></p>
             </div>
 
+            <p id="print-instructions">
+                If the printout form doesn't look quite right, make sure you've checked the box for "print background graphics" in the print menu that pops up.
+            </p>
             <div id="print-and-save">Print & Save</div>
 
         </div>
 
-        <script src="./cd.js" type="module"></script>
+        <script src="./checkin.js" type="module"></script>
     </body>
 </html>

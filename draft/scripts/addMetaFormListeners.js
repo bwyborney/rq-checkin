@@ -9,8 +9,13 @@ function addMetaFormListeners(mf) {
 function handleMethodChange(mf) {
     if (mf.customer.method.value === 'Other') {
         mf.customer.otherMethod.style.display = 'grid';
+        document.getElementById('number-column').style.display = 'block';
+    } else if (mf.customer.method.value === 'No contact method') {
+        mf.customer.otherMethod.style.display = 'none';
+        document.getElementById('number-column').style.display = 'none';
     } else {
         mf.customer.otherMethod.style.display = 'none';
+        document.getElementById('number-column').style.display = 'block';
     }
 }
 // And for the contact number

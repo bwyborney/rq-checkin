@@ -11,27 +11,33 @@ function handleSubmit(data) {
     // make sure everything is filled out
     let ready = true;
     // Check on the contact information
-    let method = document.getElementById('ci-customer-method').value;
-    let number = document.getElementById('ci-customer-number').value;
-    let othermethod = document.getElementById('ci-other-method').value;
-    let othernumber = document.getElementById('ci-other-number').value;
-    // Make sure a selection has been made for contact number and method
-    if (method === '' || number === '') {
-        ready = false;
-        document.getElementById('error1').style.display = 'grid';
-    } 
-    // If 'other' method or number has been selected, make sure something
-    // has actually been typed in
-    if (method === 'Other') {
-        if (othermethod === '') {
-            ready = false;
-            document.getElementById('error2').style.display = 'grid';
-        }
-    } 
-    if (number === 'Other') {
-        if (othernumber === '') {
-            ready = false;
-            document.getElementById('error2').style.display = 'grid';
+    // First check if there's not something already in the data
+    if (data.ticketInfo.customer.contact.method === '' || data.ticketInfo.customer.contact.number === '') {
+        let method = document.getElementById('ci-customer-method').value;
+        let number = document.getElementById('ci-customer-number').value;
+        let othermethod = document.getElementById('ci-other-method').value;
+        let othernumber = document.getElementById('ci-other-number').value;
+        // Check if 'no method' has been selected
+        if (method !== 'No contact method') {
+            // Make sure a selection has been made for contact number and method
+            if (method === '' || number === '') {
+                ready = false;
+                document.getElementById('error1').style.display = 'grid';
+            } 
+            // If 'other' method or number has been selected, make sure something
+            // has actually been typed in
+            if (method === 'Other') {
+                if (othermethod === '') {
+                    ready = false;
+                    document.getElementById('error2').style.display = 'grid';
+                }
+            } 
+            if (number === 'Other') {
+                if (othernumber === '') {
+                    ready = false;
+                    document.getElementById('error2').style.display = 'grid';
+                }
+            }
         }
     }
     // Check on the customer remarks
@@ -58,7 +64,6 @@ function handleSubmit(data) {
             }
         }
     }
-    ready = true;
     // If everything looks good, submit the form
     if (ready) {
         submit(data);

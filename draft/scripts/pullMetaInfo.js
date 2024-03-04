@@ -19,15 +19,34 @@ function pullMetaInfo(info) {
     let number = document.getElementById('ci-customer-number').value;
     let otherMethod = document.getElementById('ci-other-method').value;
     let otherNumber = document.getElementById('ci-other-number').value;
+
     if (method === 'Other') {
         info.customer.contact.method = otherMethod;
+    } else 
+    if (method === 'No contact method') {
+        info.customer.contact.method = 'No contact method'; 
+    } else if (method === '') {
+        // If nothing has been select, but the form was allowd to submit, then
+        // the user must be editing the form and has previously filled this
+        // part of the data in, so don't change it
     } else {
         info.customer.contact.method = method;
     }
+
     if (number === 'Other') {
         info.customer.contact.number = otherNumber;
+    } else if (method === 'No contact method') {
+        // Handle 'no contact method'
+        info.customer.contact.number = ''; 
+        
+    } else if (number === '') {
+        
     } else {
         info.customer.contact.number = number;
+    }
+    // Handle 'no contact method'
+    if (method === 'No contact method') {
+
     }
 
     return info;

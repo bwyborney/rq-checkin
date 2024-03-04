@@ -87,10 +87,12 @@ Adding other features:
 - Conditional logic, like in the custom forms (i.e if you select "screen repair," you can be required to choose a type of screen)
 - Pop-up scripts (i.e. recommend battery when the health is below a certain threshold, print "reccommended" on the form next to it)
 - Figure out how to make the form required
+- Add override buttons (all good, can't test, device not present)
 
 # Where I'm leaving off:
-Working on filling columns
+
 Once that's done, need to look into the chrome extension stuff
+- [ ] I'll need to write getStartingData for real
 Make a preview form version
 Update the schema in RQ to fit the new thing
 Probably think about what needs to be done the plan it out, but also look at the functionality I had before
@@ -101,14 +103,6 @@ Figure out how to monetize
 
 
 
-- [ ] Need to set the lower form back to display: none 
-- [ ] Need to reset the default data
-- [ ] Need to delete line 61 of handleSubmit
-- [ ] Should rename cd.html and cd.js
-- [ ] I'll need to write getStartingData for real
-- [ ] Set the pretests to change their classes based on starting data
-- [ ]  Need to prefill the values of the contact stuff, keeping the dropdowns in mind too. They're also resetting their values in data to blank when the page loads
-- [ ] Change the title to a single image instead of an image follow by text
 
 
 

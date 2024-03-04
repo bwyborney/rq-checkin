@@ -2,8 +2,10 @@
 
 /* Font for the signature */
 @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
-
+/* Font for the checkin form */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+/* Font for the printout */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 :root {
     --colorA1: #A4A7C5;
@@ -79,18 +81,11 @@ body {
     width: 50%;
     margin-left: 25%;
     margin-right: 25%;
-    display: grid;
-    grid-template-columns: 16% 84%;
+    text-align: center;
 }
 
 #checkin-title > img {
     width: 100%;
-}
-
-#checkin-title > p {
-    font-size: 5vw;
-    text-align: center;
-    color: var(--colorB5);
 }
 
 .ci-double-container {
@@ -310,11 +305,12 @@ body {
     text-align: center;
     cursor: pointer;
     transition: 0.1s;
+    user-select: none;
 }
 
 @media only screen and (min-width: 981px) {
     .ci-selected, .ci-deselected {
-        font-size: 0.9vw;
+        font-size: 0.8vw;
     }
 }
 
@@ -427,11 +423,12 @@ body {
     text-align: center;
     cursor: pointer;
     transition: 0.1s;
+    user-select: none;
 }
 
 @media only screen and (min-width: 981px) {
     .cir-selected, .cir-deselected {
-        font-size: 0.9vw;
+        font-size: 0.8vw;
     }
 }
 
@@ -541,6 +538,7 @@ body {
     padding: 10px;
     text-align: center;
     cursor: pointer;
+    user-select: none;
 }
 
 #submit:hover {
@@ -650,6 +648,10 @@ body {
     margin-right: calc((100vw - 1125px) / 2);
 }
 
+#printout * {
+    font-family: "Mulish", "Arial", sans-serif;
+}
+
 @media print {
     #printout {
         width: 90%;
@@ -727,6 +729,9 @@ body {
     font-size: 14px;
     font-weight: normal;
     margin-top: 5px;
+    padding-top: 5px;
+    background-color: black;
+    color: white;
 }
 
 #inspection {
@@ -751,28 +756,29 @@ body {
     border-right: solid 1px black;
 }
 
-.ir-even {
+.ir-even, .ir-even > p {
     background-color: white;
 }
 
-.ir-odd {
+.ir-odd, .ir-odd > p {
     background-color: lightgray;
 }
 
 .ir-even, .ir-odd {
-    height: 15px;
+    height: 20px;
     font-size: 9px;
     padding: 2px;
+    margin: 0;
 }
 
 .ir-even > *, .ir-odd > * {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 5px;
+    margin-left: 0;
 }
 
-.ir-bold {
-    font-weight: bold;
+.ir-bold > p {
+    font-weight:bold !important;
 }
 
 #qr-code {
@@ -808,6 +814,14 @@ body {
     text-decoration: underline;
 }
 
+#print-instructions {
+    text-align: center;
+    color: var(--colorC2);
+    background-color: var(--colorD5);
+    border: solid 5px var(--colorD5);
+    border-radius: 3px;
+}
+
 #print-and-save {
     width: 30%;
     margin-left: 35%;
@@ -828,6 +842,9 @@ body {
 
 @media print {
     #print-and-save {
+        display: none;
+    }
+    #print-instructions {
         display: none;
     }
 }

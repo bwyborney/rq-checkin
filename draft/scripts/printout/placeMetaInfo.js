@@ -11,6 +11,8 @@ function placeMetaInfo(info) {
     document.getElementById('technician-number').innerText = info.technician.number;
     document.getElementById('technician-email').innerText = info.technician.email;
 
+    document.getElementById('notes').innerText = info.notes;
+
     document.getElementById('tech-signature').innerText = info.technician.name;
 }
 
