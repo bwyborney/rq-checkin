@@ -90,17 +90,10 @@ Adding other features:
 - Add override buttons (all good, can't test, device not present)
 
 # Where I'm leaving off:
-
-Once that's done, need to look into the chrome extension stuff
-- [ ] I'll need to write getStartingData for real
-Make a preview form version
-Update the schema in RQ to fit the new thing
-Probably think about what needs to be done the plan it out, but also look at the functionality I had before
-Rewrite the whole chrome extension part
-Create the custom options
-Add the sample to my website 
-Figure out how to monetize
-
+Need to test the whole thing again now.
+Some stray thoughts: 
+    The device-grabber still isn't working perfectly
+    Need to make hard checks for check-in notes, device information, all of it
 
 
 

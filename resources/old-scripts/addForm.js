@@ -135,8 +135,6 @@ function getTicketData() {
     // for a different device which is higher in the list, the first notes will be chosen.
     // There's a way around this, but I don't have time right now, and this is not a top priority since the
     // notes are editable anyway.
-
-
     return ticketData;
 }
 
@@ -161,7 +159,6 @@ function convertData(ticketData) {
 
 
 // Hide the text fields from view so they don't get messed with
-
 function hideFields() {
    let fields = document.querySelectorAll('div[data-condition="null"]');
     for (let f = 0; f < fields.length; f++) {
@@ -216,7 +213,6 @@ function launchPage(completeData, parent) {
             return;
         }
     });
-    
 }
 
 // Get it all started up
@@ -231,11 +227,7 @@ function initialize(parent) {
     let ticketData = getTicketData();
     let completeData = convertData(ticketData);
     if (saveSpot.innerText.length < 1) {
-        
-
-        
         newButton.innerText = 'Create form';
-
         // Hide the save buttons until something has been filled out
         for (let c = 0; c < parent.children.length; c++) {
             // First, find the footer
@@ -248,12 +240,9 @@ function initialize(parent) {
                 }
             }
         }
-        
-        
     } else {
         completeData = JSON.parse(saveSpot.innerText);
         newButton.innerText = 'Edit form';
-
         // Bring back the save and submit button
         for (let c = 0; c < parent.children.length; c++) {
             // First, find the footer
@@ -265,17 +254,12 @@ function initialize(parent) {
                     }
                 }
             }
-        }
-        
-
-        
+        } 
     }
     hideFields();
     if (document.getElementById('button-create') === null) {
-        
         newButton.addEventListener('click', () => launchPage(completeData, parent));
         parent.appendChild(newButton);
-
     }
     // Need to start the observer again in case the form gets closed in another way
     startup();
@@ -340,12 +324,7 @@ function showPreview() {
                 return;
             }
         });
-
     }
-    
-
-
-
 }
 
 // Check if the custom form has popped up yet
