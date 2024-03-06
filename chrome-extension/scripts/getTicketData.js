@@ -13,22 +13,6 @@ function getTicketData() {
         notes: ''
     };
     
-    // Identify the div containing device info using the unique 'device-row'
-    // class, then narrow it down to its children
-    let deviceBox;
-    let deviceBoxFound = false;
-    if (document.getElementsByClassName('device-row').length > 0) {
-        deviceBox = document.getElementsByClassName('device-row')[0].children;
-        deviceBoxFound = true;
-    }
-    
-    // Go and pull the device information from the correct boxes
-    if (deviceBoxFound) {
-        ticketData.model = deviceBox[1].innerText;
-        ticketData.serial = deviceBox[3].children[0].value;
-
-    }
-    
     // Get the price quote using the unique 'remaining-balance' class
     ticketData.quote = '$' + document.getElementsByClassName('remaining-balance')[0].innerText;
 
@@ -113,16 +97,22 @@ function getTicketData() {
     let usernamesplit = username.split(', ');
     ticketData.techName = usernamesplit[1] + ' ' + usernamesplit[0];
 
-    // Get the initial diagnostic notes
-    /*
-    let notesPage = document.getElementById('ytTicketForm_ticketDevices_0_problem_description_ifr').contentDocument;
-    let notes = notesPage.getElementsByTagName('p')[0].innerText;
-    ticketData.notes = notes;
-    */
     // There are several elements which might contain the notes, all with the same ID
-    let candidates = document.getElementsByClassName('tox-edit-area__iframe');
-    for (let c = 0; c < candidates.length; c++) {
-        let notesPage = candidates[c].contentDocument;
+    // They will be contained within a tr which will be displayed as table-row if
+    // they are the correct one
+    // Find the right one:
+    let drIndex = 999;
+    let deviceRows = document.getElementsByClassName('device-ticket-info');
+    for (let d = 0; d < deviceRows.length; d++) {
+        if (deviceRows[d].style.display === 'table-row') {
+            drIndex = d;
+        }
+    }
+    // Idenfity all the potential boxes containing the data, then pick the notes
+    // out of the one matching the earlier index
+    if (drIndex !== 999) {
+        let drBox = document.getElementsByClassName('tox-edit-area__iframe')[drIndex];
+        let notesPage = drBox.contentDocument;
         let notes = '';
         if (notesPage.getElementsByTagName('p').length > 0) {
             notes = notesPage.getElementsByTagName('p')[0].innerText;
@@ -130,10 +120,25 @@ function getTicketData() {
         if (notes.length > 0) {
             ticketData.notes = notes;
         }
+    
+        // Identify the div containing device info using the 'device-row'
+        // class at the same index, then narrow it down to its children
+        let deviceBox;
+        let deviceBoxFound = false;
+        if (document.getElementsByClassName('device-row').length > 0) {
+            deviceBox = document.getElementsByClassName('device-row')[drIndex].children;
+            deviceBoxFound = true;
+        }
+        
+        // Go and pull the device information from the correct boxes
+        if (deviceBoxFound) {
+            ticketData.model = deviceBox[1].innerText;
+            ticketData.serial = deviceBox[3].children[0].value;
+        }
+
     }
-    // Because of this method, if someone types in notes for one device, then changes their mind and types notes
-    // for a different device which is higher in the list, the first notes will be chosen.
-    // There's a way around this, but I don't have time right now, and this is not a top priority since the
-    // notes are editable anyway.
+    
+
+
     return ticketData;
 }
