@@ -17,6 +17,7 @@ function checkForForm() {
             }
         }
     } 
+    let previewAdded = true;
     if (!document.getElementById('preview-frame')) {
         previewAdded = false;
     }
@@ -24,7 +25,6 @@ function checkForForm() {
     let view = document.getElementById('customFieldGroupModal');
     if (view) {
         if (view.children[0].children[1].innerText === 'CPR Check-in') {
-            let previewAdded = false;
             showPreview(previewAdded);
         }
     }

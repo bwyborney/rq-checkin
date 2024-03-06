@@ -1,13 +1,13 @@
 // This will be the default configuration until changed
 let config = {
-    version: 1.0,
+    version: 1,
     ticketInfo: {
         customer: {
             name: "",
-            contact: "",
-            methods: [
-                ""
-            ]
+            contact: {
+                method: "",
+                number: ""
+            }
         },
         ticket: {
             estimate: "",
