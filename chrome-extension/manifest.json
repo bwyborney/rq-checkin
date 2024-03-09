@@ -19,7 +19,15 @@
         
         {
             "js" : [
-                "scripts/initialize.js"
+                "scripts/getTicketData.js",
+                "scripts/convertData.js",
+                "scripts/hideFields.js",
+                "scripts/launchPage.js",
+                "scripts/initialize.js",
+                "scripts/showPreview.js",
+                "scripts/startup.js",
+                "scripts/checkForForm.js",
+                "begin.js"
             ],
             "css" : [
                 "style/addForm.css"

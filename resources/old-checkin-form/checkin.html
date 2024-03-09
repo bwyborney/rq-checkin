@@ -4,14 +4,56 @@
         <title>CPR Check-in Form</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./checkin.css">
-        <link rel="icon" href="./images/icon-128.png">
     </head>
     <body>
+
+        <!-- The pre-test form, to be filled out by technicians -->
+        <div id="checkin">
+            <div id="ci-intructions">
+                Please review the following information, then make a selection for each of the items below.
+                Once you are done, hit the "Submit and Print" button, then hand the form to the customer.
+            </div>
+            <div id="ci-notes-container">
+                <p>Customer remarks: </p>
+                <input type="textarea" id="ci-notes">
+            </div>
+            
+
+            <div id="ci-contact">
+                <div class="ci-contact-label">Contact method: </div>
+                <div class="ci-contact-row">
+                    <select id="contact-method" name="contact-method">
+                        <option value="" selected disabled>Select a method:</option>
+                        <option value="Call">Call</option>
+                        <option value="Text">Text</option>
+                        <option value="Email">Email</option>
+                        <option value="No contact method">No contact method</option>
+                        <option value="Other">Other</option>
+                    </select>
+    
+                    <input style="display:none" type="text" id="cic-other-method" placeholder='type a method (like "FB message")'>
+                </div>
+                <div class="ci-contact-row">
+                    <select id="contact-number" name="contact-number">
+                        <option value="" selected disabled>Select a number:</option>
+                    </select>
+                    <input style="display:none" type="text" id="cic-other-number" placeholder='type a number or email'>
+                </div>
+            </div>
+
+        </div>  
+        <div id="submit">
+            
+            <div class="error-message" id="err-contact" style="display: none">Please choose a contact method.</div>
+            <div class="error-message" id="err-pretest" style="display: none">Please fill out the pre-test.</div>
+            <div class="error-message" id="err-other-repair" style="display: none">"Other" repair is selected but nothing has been typed.</div>
+            <div id="submit-button">Submit</div>
+        </div>
         <!-- 
             The printed form, to be handed to the customer.
             This will be auto-filled by the script
         -->
-        <div id="printout">
+        <div id="printout" style="display: none">
             <div id="header">
                 <img src="https://www.cellphonerepair.com/assets/img/main/cpr-logo.webp?v=1708733668623">
                 <h1><span id="technician-location" class="no-i">Repair Check-In</span></h1>
@@ -84,7 +126,7 @@
             </div>
 
             <div class="section-header">
-                <h3><span id="inspection-points" class="no-i">Multi</span>-point Inspection</h3>
+                <h3><span id="inspection-points" class="no-i">18</span>-point inspection</h3>
             </div>
 
             <div id="inspection">
@@ -102,13 +144,10 @@
                 <p>Technician signature: <span id="tech-signature"></span></p>
             </div>
 
-            <p id="print-instructions">
-                If the printout form doesn't look quite right, make sure you've checked the box for "print background graphics" in the print menu that pops up.
-            </p>
-            <div id="print-and-save">Print</div>
+            <div id="print-and-save">Print & Save</div>
 
         </div>
+        <script src="./scripts/checkin/checkin.js" type="module"></script>
 
-        <script src="./preview.js" type="module"></script>
     </body>
 </html>
