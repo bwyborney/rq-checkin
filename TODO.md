@@ -27,12 +27,25 @@ Here, we'll focus on some more long-term implementations of certain features, an
 
 ### 1.3
 Adding other features:
+- [ ] Logic
+    - [ ] When you choose to do a screen repair, the type of screen pops up
+    - [ ] Below 84% battery health prompts a script for including a battery
+- [ ] Non-customer-facing prompts, such as accessories
 - [ ] Alternate device labels with additional information such as contact method
+    - Overall page size could be customized
+    Would need to be printed from the same page as the form
 - [ ] Model/manufacturer-specific information added to the bottom of a ticket. This would mostly be used for warranty and disclaimer text
 - [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty. It will also show pre-test vs. post-test
 
 # To-do:
+- [ ] Make sure the default data is clear
+- [ ] The form doesn't seem to work whenever it is forced to pop up by a ticket status change
+- [ ] Make sure price includes tax (we don't have tax here)
+- [ ] Bugs
+    - [ ] Due time may not being getting pulled
+- [ ] Auto-format phone numbers
 - [ ] Documentation and polish:
+    - [ ] Make only one header for "contact method" above the two dropdowns
     - [ ] Add instructions
         - [ ] Remember to print background graphics
 
