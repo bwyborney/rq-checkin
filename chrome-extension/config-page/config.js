@@ -16,6 +16,10 @@ addStoreInfoListeners(data.ticketInfo.technician);
 import { fillPreTests } from "./scripts/fillPreTests.js";
 fillPreTests(data.columnA.values, data.columnB.format);
 
+// Fill the repairs
+import { fillRepairs } from "./scripts/fillRepairs.js";
+fillRepairs(data.columnC.format);
+
 // Handler for mini-menu clicks
 // Declaring this here so it has access to the data variable
 function handleMiniMenuClick(index, type, command) {
@@ -66,6 +70,8 @@ function handleMiniMenuClick(index, type, command) {
         if (type === 'pt') {
             newValues.splice(index + 1, 0, "");
             newFormat.splice(index + 1, 0, ["Pass, Fail, Not testable"]);
+        } else {
+            newFormat.splice(index + 1, 0, ["Repair"]);
         }
 
         values = newValues;
@@ -93,6 +99,7 @@ function handleMiniMenuClick(index, type, command) {
     document.getElementById('pretest-section').replaceChildren();
     document.getElementById('repair-section').replaceChildren();
     fillPreTests(data.columnA.values, data.columnB.format);
+    fillRepairs(data.columnC.format);
 }
 export {handleMiniMenuClick};
 
@@ -105,6 +112,15 @@ function handleTitleChange(e) {
     // Handle this depending on whether it's a pre-test or a repair
     if (column === 'pt') {
         data.columnA.values[index] = e.target.value;
+    } else {
+        // Repair format can be an array of 1 or an array of 3, which means
+        // they may have a double index. Let's find out
+        if (parse[2] === 'value') {
+            data.columnC.format[index] = [e.target.value];
+        } else {
+            let index2 = parseInt(parse[2]);
+            data.columnC.format[index][index2] = e.target.value;
+        }
     }
 }
 export {handleTitleChange};
@@ -138,6 +154,26 @@ function handleFormatChange(e) {
                 break;
         }
         data.columnB.format[index] = newFormat;
+    } else { // Handle changes to a repair format
+        let newFormat = [];
+        switch (e.target.value) {
+            case 'default' :
+                newFormat = [""];
+                break;
+            case 'chk' :
+                newFormat = [""];
+                break;
+            case 'pic' :  
+                newFormat = ["","","",];
+                break;
+            case 'oth' :
+                newFormat = ["Other"];
+                break;
+        }
+        data.columnC.format[index] = newFormat;
+        // Now clear out the old elements and re-render them
+    document.getElementById('repair-section').replaceChildren();
+        fillRepairs(data.columnC.format);
     }
 }
 export {handleFormatChange};
