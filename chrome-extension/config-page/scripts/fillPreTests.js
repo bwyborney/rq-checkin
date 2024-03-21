@@ -1,6 +1,6 @@
 import { handleMiniMenuClick } from "../config.js";
 import { handleTitleChange } from "../config.js";
-import { handleFormatChange } from "../config.js";;
+import { handleFormatChange } from "../config.js";
 
 // Fill in the pre-test items. Gets passed data.columnA.values
 // and data.columnB.format

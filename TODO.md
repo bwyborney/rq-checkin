@@ -50,9 +50,9 @@ Adding other features:
     - [ ] Make sure the OLED/OEM/LCD thing looks good with two, four, five options, etc.
     - [ ] Add instructions
         - [ ] Remember to print background graphics
-- [ ] Redesign "pick one" repair options since they only allow for three options right now
 
 # Lower priority:
+- [ ] Redesign "pick one" repair options since they only allow for three options right now
 - [ ] Only allow phone numbers for phone-based contact methods, and email for emailing
 - [ ] Add override button
     - Labelled as "device not present"
@@ -75,12 +75,13 @@ Adding other features:
 - Figure out how to make the form required
 - Add override buttons (all good, can't test, device not present)
 
-
-
-
-
-
-
+# Where I'm leaving off:
+Working on the config form.
+Need to change getData to pull data from the page, and if that fails, use the default data
+Change the fillStoreInfo to use whatever is passed over from Chrome user storage
+On submit, need to save store info in chrome storage again
+when rearranging the values ,need to make sure to get rid of blank ones. Maybe just do this on submit
+testing try clicking the mini menus around while there's no data or one entry in the data
 
 
 

@@ -82,6 +82,7 @@ body {
     border-color: var(--colorA3);
     color: var(--colorC2);
     text-align: center;
+    cursor: default;
 }
 
 .config-section {
@@ -91,6 +92,7 @@ body {
 .config-section > p {
     font-size: 0.9rem;
     font-weight: 400;
+    cursor: default;
 }
 
 
@@ -200,6 +202,7 @@ body {
     font-weight: 450;
     padding: 2%;
     background-color: var(--colorC2);
+    cursor: pointer;
 }
 
 /* ----- Repair entry ----- */
@@ -224,6 +227,7 @@ body {
     font-weight: 450;
     padding: 1%;
     background-color: var(--colorC2);
+    cursor: pointer;
 }
 
 .repair-entry-lower {
@@ -239,10 +243,10 @@ body {
     width: 100%;
     border: solid 2px var(--colorB5);
     border-radius: 3px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 450;
     padding: 1%;
-    background-color: var(--colorC2);
+    background-color: var(--colorB1);
 }
 
 .re-pick {
@@ -255,8 +259,18 @@ body {
     margin-left: 10%;
     border: solid 2px var(--colorB5);
     border-radius: 3px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 450;
     padding: 1%;
-    background-color: var(--colorC2);
+    background-color: var(--colorB1);
+}
+
+.re-other > div {
+    border: solid 2px var(--colorB1);
+    border-radius: 3px;
+    font-size: 1rem;
+    font-weight: 450;
+    padding: 1%;
+    background-color: var(--colorB1);
+    cursor: not-allowed;
 }

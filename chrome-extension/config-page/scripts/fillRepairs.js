@@ -90,6 +90,13 @@ function fillRepairs(format) {
             lowerContainer.appendChild(inputC);
 
             lower.appendChild(lowerContainer);
+        } else {
+            let lowerContainer = document.createElement('div');
+            lowerContainer.classList = 're-other';
+            let otherDiv = document.createElement('div');
+            otherDiv.innerText = 'Other';
+            lowerContainer.appendChild(otherDiv);
+            lower.appendChild(lowerContainer);
         }
 
 
