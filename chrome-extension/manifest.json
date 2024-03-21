@@ -27,13 +27,27 @@
                 "scripts/showPreview.js",
                 "scripts/startup.js",
                 "scripts/checkForForm.js",
-                "begin.js"
+                "checkinInit.js"
             ],
             "css" : [
                 "style/addForm.css"
             ],
             "matches" : [
                 "https://cpr.repairq.io/ticket/*"
+            ],
+            "run_at": "document_end"
+        },
+
+        {
+            "js" : [
+                "configInit.js",
+                "scripts-config/spawnConfig.js"
+            ],
+            "css" : [
+
+            ],
+            "matches" : [
+                "https://cpr.repairq.io/settings/custom-field-group/edit/*"
             ],
             "run_at": "document_end"
         }
