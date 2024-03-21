@@ -1,6 +1,6 @@
-// Retrieve the "starting data" which is passed to this page by the extension
+// Retrieve the "default data" which is used in case a config hasn't been made already
 
-function getStartingData() {
+function getDefaultData() {
   return {
     "version": 1,
     "ticketInfo": {
@@ -266,4 +266,4 @@ function getStartingData() {
   };
 }
 
-export {getStartingData};
+export {getDefaultData};

@@ -1,0 +1,262 @@
+@charset "utf-8"; 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+:root {
+    --colorA1: #A4A7C5;
+    --colorA2: #7479A3;
+    --colorA3: #4E5588; /* Border/accent color */
+    --colorA4: #333A70;
+    --colorA5: #1C2356; /* Border for interactable fields */
+    
+    --colorB1: #98AFBA;
+    --colorB2: #668696;
+    --colorB3: #436A7D;
+    --colorB4: #2A5367;
+    --colorB5: #143C4F;
+
+    --colorC1: black; /* Main font color */
+    --colorC2: white; /* Background color */
+
+    --colorD1: #FFCDCD;
+    --colorD2: #ED9D9D;
+    --colorD3: #C66464;
+    --colorD4: #A13C3C;
+    --colorD5: #7D1B1B;
+}
+
+* > h1, * > h2, * > h3, * > p, * > a, * > ul > li, * > ol > li, * > div, * > input
+{
+  font-family: "Inter", "Helvetica", sans-serif;
+  font-weight: 570;
+  line-height:1.5;
+  word-wrap: break-word;
+  color: var(--colorC1);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: var(--colorC2);
+}
+
+* > a, * > a:hover, * > a:visited {
+    text-decoration: none;
+}
+
+* > ul, * > ol {
+    margin-left: 2.5rem;
+}
+
+body {
+    text-align: center;
+    background-color: var(--colorC2);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ============================== Config form ============================== */
+
+/* ----- General elements ----- */
+
+#config {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.config-column {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+
+.section-header {
+    font-size: 1.5rem;
+    font-weight: 400;
+    border: solid 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 1%;
+    background-color: var(--colorA3);
+    border-color: var(--colorA3);
+    color: var(--colorC2);
+    text-align: center;
+}
+
+.config-section {
+    margin-bottom: 25px;
+}
+
+.config-section > p {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+
+#store-header {
+    border-color: var(--colorA3);
+    background-color: var(--colorA3);
+}
+
+#repairs-header {
+    border-color: var(--colorB3);
+    background-color: var(--colorB3);
+}
+
+#pretest-header {
+    border-color: var(--colorD3);
+    background-color: var(--colorD3);
+}
+
+/* ----- Layout elements ----- */
+
+.entry {
+    width: 100%;
+}
+
+.entry > p {
+    font-size: 0.9rem;
+    font-weight: 450;
+    margin-bottom: 0;
+    margin-top: 8px;
+}
+
+.entry > input {
+    width: 100%;
+    border: solid 2px black;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 450;
+    margin-top: 2px;
+    padding: 1%;
+}
+
+.minimenu {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    text-align: center;
+    border: solid 2px lightgray;
+    border-radius: 3px;
+}
+
+.minimenu > div {
+    font-size: 0.9rem;
+    border: solid 1px var(--colorC2);
+    border-radius: 3px;
+    color: var(--colorC1);
+    background-color: var(--colorC2);
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.minimenu > div:hover {
+    background-color: lightgray;
+    border-color: lightgray;
+    transition: 0.1s;
+}
+
+/* ----- Pre-test entry ----- */
+
+.pretest-entry {
+    display: grid;
+    grid-template-columns: 14% 43% 43%;
+    margin-top: 5px;
+}
+
+.pretext-text, .pretest-option {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.pretest-text > input {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    border: solid 2px black;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 450;
+    padding: 1%;
+}
+
+.pretest-option {
+    
+    margin-top: 5px;
+}
+
+.pretest-option > select {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: solid 2px black;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 450;
+    padding: 2%;
+    background-color: var(--colorC2);
+}
+
+/* ----- Repair entry ----- */
+
+.repair-entry {
+    margin-bottom: 5px;
+    border-bottom: solid 2px black;
+
+}
+.repair-entry-upper {
+    display: grid;
+    grid-template-columns: 14% 86%;
+    margin-top: 5px;
+}
+
+.repair-option > select {
+    width: 95%;
+    margin-left: 5%;
+    border: solid 2px black;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 450;
+    padding: 1%;
+    background-color: var(--colorC2);
+}
+
+.repair-entry-lower {
+    width: 100%;
+}
+
+
+.re-check, .re-other, .re-pick {
+    width: 100%;
+}
+
+.re-check > input {
+    width: 100%;
+    border: solid 2px var(--colorB5);
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 450;
+    padding: 1%;
+    background-color: var(--colorC2);
+}
+
+.re-pick {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.re-pick > input {
+    width: 90%;
+    margin-left: 10%;
+    border: solid 2px var(--colorB5);
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 450;
+    padding: 1%;
+    background-color: var(--colorC2);
+}

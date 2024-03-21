@@ -21,7 +21,7 @@ We'll make changes based on feedback and experience using the extension
 ### 1.2 
 Here, we'll focus on some more long-term implementations of certain features, and expand device compatibility by adding customizable checklists.
 - [ ] Options for customizing checklists 
-- [ ] Different checklists for different device types
+- [ ] Customizable disclaimers
 - [ ] Alternate way to save forms for posterity. All saved data only works with this extension, so we'll probably want a plaintext alternative
 
 
@@ -45,9 +45,12 @@ Adding other features:
     - [ ] Due time may not being getting pulled
 - [ ] Auto-format phone numbers
 - [ ] Documentation and polish:
+    - [ ] Make the CPR Checkin header smaller and remove the pallette, just use an HR if needed
     - [ ] Make only one header for "contact method" above the two dropdowns
+    - [ ] Make sure the OLED/OEM/LCD thing looks good with two, four, five options, etc.
     - [ ] Add instructions
         - [ ] Remember to print background graphics
+- [ ] Redesign "pick one" repair options since they only allow for three options right now
 
 # Lower priority:
 - [ ] Only allow phone numbers for phone-based contact methods, and email for emailing
@@ -71,6 +74,9 @@ Adding other features:
 - Pop-up scripts (i.e. recommend battery when the health is below a certain threshold, print "reccommended" on the form next to it)
 - Figure out how to make the form required
 - Add override buttons (all good, can't test, device not present)
+
+
+
 
 
 

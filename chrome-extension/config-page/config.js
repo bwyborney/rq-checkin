@@ -1,128 +1,143 @@
-// This will be the default configuration until changed
-let config = {
-    version: 1,
-    ticketInfo: {
-        customer: {
-            name: "",
-            contact: {
-                method: "",
-                number: ""
-            }
-        },
-        ticket: {
-            estimate: "",
-            due: ""
-        },
-        technician: {
-            name: "",
-            number: "(541)914-1230",
-            email: "repairs@cpr-eugene.com"
-        },
-        device: {
-            model: "",
-            serial: ""
-        },
-        notes: ""
-    },
-    columnA: {
-        values: [
-            "Front cracked?",
-            "Back cracked?",
-            "Touch sensitivity",
-            "Display visibility",
-            "Biometric scanner",
-            "Proximity sensor",
-            "Ear speaker",
-            "Loudspeaker",
-            "Microphones",
-            "Vibration",
-            "Cellular signal",
-            "WiFi and Bluetooth",
-            "Side buttons",
-            "Rear camera",
-            "Front camera",
-            "Flashlight",
-            "Battery health"
-        ]
-    },
-    columnB: {
-        format: [
-            ["Yes", "No"],
-            ["Yes", "No"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["Pass", "Fail", "Not testable"],
-            ["percent"]
-        ],
-        values: [
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999,
-            999
-        ]
-    },
-    columnC: {
-        format: [
-            ["Screen repair"],
-            ["OEM", "AFM OLED", "AFM LCD"],
-            ["Back glass"],
-            ["Battery"],
-            ["Charging port"],
-            ["Front camera"],
-            ["Rear camera"],
-            ["Microphone"],
-            ["Speaker"],
-            ["Proximity sensor"],
-            ["Side buttons"],
-            ["Biometric scanner"],
-            ["Microsoldering"],
-            ["Diagnostic"],
-            ["Liquid damage cleaning"],
-            ["Other"]
-        ],
-        values: [
-            [0],
-            [0, 0, 0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0],
-            [0]
-        ]
-    }
-};
+// Get the data 
+import { getData } from "./scripts/getData.js";
+let data = getData();
 
-console.log(JSON.stringify(config));
+// Fill in the store information
+let storePhone = '(541)914-1230';
+let storeEmail = 'repairs@cpr-eugene.com';
+import { fillStoreInfo } from "./scripts/fillStoreInfo.js";
+fillStoreInfo(storePhone, storeEmail);
+
+// Add onchange listeners to the store info forms
+import { addStoreInfoListeners } from "./scripts/addStoreInfoListeners.js";
+addStoreInfoListeners(data.ticketInfo.technician);
+
+// Fill the pretests
+import { fillPreTests } from "./scripts/fillPreTests.js";
+fillPreTests(data.columnA.values, data.columnB.format);
+
+// Handler for mini-menu clicks
+// Declaring this here so it has access to the data variable
+function handleMiniMenuClick(index, type, command) {
+    // Decide if this is a pre-test or a repair, then set the target data
+    let values;
+    let format;
+    if (type === 'pt') {
+        values = data.columnA.values;
+        format = data.columnB.format;
+    } else {
+        values = data.columnC.values;
+        format = data.columnC.format;
+    }
+    // Handle the action differently depending on the command/button
+    if (command === 'up') {
+        // Do nothing if "up" is clicked when the item is at the top
+        if (values.length < 2 || index === 0) {
+            console.log('cannot move up');
+        } else {
+            // Swap the value with the value above it to move it "up" the list
+            let newValues = [...values];
+            let newFormat = [...format];
+            newValues[index] = values[index - 1];
+            newValues[index - 1] = values[index];
+            newFormat[index] = format[index - 1];
+            newFormat[index - 1] = format[index];
+            values = newValues;
+            format = newFormat;
+        }
+    } else if (command === 'down') {
+        if (values.length < 2 || index === values.length - 1) {
+            console.log('cannot move down');
+        } else {
+            let newValues = [...values];
+            let newFormat = [...format];
+            newValues[index] = values[index + 1];
+            newValues[index + 1] = values[index];
+            newFormat[index] = format[index + 1];
+            newFormat[index + 1] = format[index];
+            values = newValues;
+            format = newFormat;
+        }
+    } else if (command === 'add') {
+        // Add a new element below this one
+        let newValues = [...values];
+        let newFormat = [...format];
+        // This will get handle differently for pre-tests vs. repairs
+        if (type === 'pt') {
+            newValues.splice(index + 1, 0, "");
+            newFormat.splice(index + 1, 0, ["Pass, Fail, Not testable"]);
+        }
+
+        values = newValues;
+        format = newFormat;
+    } else if (command === 'remove') {
+        // Delete this index from the array
+        let newValues = [...values];
+        let newFormat = [...format];
+        newValues.splice(index, 1);
+        newFormat.splice(index, 1);
+        values = newValues;
+        format = newFormat;
+    }
+
+    // Now replace the actual data with the new stuff
+    if (type === 'pt') {
+        data.columnA.values = values;
+        data.columnB.format = format;
+    } else {
+        data.columnC.values = values;
+        data.columnC.format = format;
+    }
+
+    // Now clear out the old elements and re-render them
+    document.getElementById('pretest-section').replaceChildren();
+    document.getElementById('repair-section').replaceChildren();
+    fillPreTests(data.columnA.values, data.columnB.format);
+}
+export {handleMiniMenuClick};
+
+// Handle when the title of a pretest or a repair option is changed
+function handleTitleChange(e) {
+    // Parse the type and index from the calling element's ID
+    let parse = e.target.id.split('-');
+    let column = parse[0];
+    let index = parse[1];
+    // Handle this depending on whether it's a pre-test or a repair
+    if (column === 'pt') {
+        data.columnA.values[index] = e.target.value;
+    }
+}
+export {handleTitleChange};
+
+// Handle the format of a pre-test or repair being changed
+function handleFormatChange(e) {
+    // Parse the type and index from the calling element's ID
+    let parse = e.target.id.split('-');
+    let column = parse[0];
+    let index = parse[1];
+    
+    if (column === 'pt') {
+        // We'll inject a new set of values in the data.columnA.format,
+        // depending on what the value being passed in is
+        let newFormat = [];
+        switch(e.target.value) {
+            case 'default' :
+                newFormat = ["Yes", "No"];
+                break;
+            case 'yn' :
+                newFormat = ["Yes", "No"];
+                break;
+            case 'pf' :
+                newFormat = ["Pass", "Fail", "Not testable"];
+                break;
+            case 'amps' :
+                newFormat = ["amps"];
+                break;
+            case 'percent' :
+                newFormat = ["percent"];
+                break;
+        }
+        data.columnB.format[index] = newFormat;
+    }
+}
+export {handleFormatChange};

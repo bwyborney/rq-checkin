@@ -4,36 +4,139 @@
         <title>Checkin Configuration</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./config.css">
+        <link rel="icon" href="./images/icon-128.png">
     </head>
     <body>
-        <h1>CPR Check-In Configuration</h1>
-        <p>Select a device type, then choose what you'd like to appear on your check-in form for that device type.</p>
-        <p>Under "Pre-tests," type the name of the component in the first column. For example, "Face ID." In the second column, choose the possible outcomes of this test. If you choose "amps" or "percent," the pre-test form will give you a box to type in a number, then it will add a percent symbol or "amps" to the end of what you typed.</p>
-        <p>Under "Repairs," enter all the repairs you might want to perform on this device type. In the first column, choose "Yes/No" for a single item with a checkbox. Choose "Pick one" for repairs where you need to select one of multiple options (think "OEM screen," "aftermarket screen"). Choose "Other" to add an "other" option which will let you manually enter a repair every time you fill out this form.</p>
-        <div id="device-type-selection">
-            <div id="select-phones" class="selector">Phones</div>
-            <div id="select-tablets" class="selector">Tablets</div>
-            <div id="select-computers" class="selector">Computers</div>
-            <div id="select-consoles" class="selector">Consoles</div>
-            <div id="select-wearables" class="selector">Wearables</div>
-        </div>
+        <div id="config">
+            <div class="config-column">
+                <div class="section-header">
+                    Instructions
+                </div>
+                <div class="config-section" id="instructions-section">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec sapien quis nibh dignissim posuere a eu arcu. Phasellus mi justo, sollicitudin vel faucibus dignissim, tincidunt nec est. In semper mauris id augue pulvinar, eget hendrerit metus imperdiet. Duis auctor id nulla ac convallis. In ornare sem eu mi vehicula, eget venenatis ante tempor. Praesent porttitor eu diam nec tincidunt. Fusce dignissim lorem in dignissim maximus. Aliquam ut lectus sed nunc bibendum tincidunt. Morbi vitae congue nisi. Phasellus nisi turpis, malesuada id auctor venenatis, lobortis eu nibh. </p>
+                </div>
+                <div class="section-header" id="pretest-header">
+                    Pre-tests
+                </div>
+                <div class="config-section" id="pretest-section"></div>
 
-        <h3>Pre-tests</h3>
-        <div id="pretests">
-            <div class="row header">
-                <div>Component</div>
-                <div>Test</div>
+            </div>
+
+            <div class="config-column">
+
+                
+                <div class="section-header" id="store-header">
+                    Store information
+                </div>
+                <div class="config-section">
+                    <div class="entry">
+                        <p>Phone number:</p>
+                        <input type="text" placeholder="(111)111-1111" id="store-phone">
+                    </div>
+                    <div class="entry">
+                        <p>Email:</p>
+                        <input type="text" placeholder="repairs@cpr-anywhere.com" id="store-email">
+                    </div>
+                </div>
+                
+                <div class="section-header" id="repairs-header">
+                    Repairs
+                </div>
+                <div class="config-section" id="repair-section">
+                    
+
+
+
+
+
+                    <div class="repair-entry">
+                        <div class="repair-entry-upper">
+                            <div class="minimenu">
+                                <div id="re-0-up">&uarr;</div>
+                                <div id="re-0-down">&darr;</div>
+                                <div id="re-0-add">&#65291;</div>
+                                <div id="re-0-remove">x</div>
+                            </div>
+
+                            <div class="repair-option">
+                                <select id="re-0-format">
+                                    <option value="chk">Checkbox</option>
+                                    <option value="pic">Pick one</option>
+                                    <option value="oth">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="repair-entry">
+                        <div class="repair-entry-upper">
+                            <div class="minimenu">
+                                <div id="re-0-up">&uarr;</div>
+                                <div id="re-0-down">&darr;</div>
+                                <div id="re-0-add">&#65291;</div>
+                                <div id="re-0-remove">x</div>
+                            </div>
+
+                            <div class="repair-option">
+                                <select id="re-0-format">
+                                    <option value="chk">Checkbox</option>
+                                    <option value="pic">Pick one</option>
+                                    <option value="oth">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="repair-entry-lower">
+                            <div class="re-check">
+                                <input type="text" id="re-0-value" placeholder="Screen replacement">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="repair-entry">
+                        <div class="repair-entry-upper">
+                            <div class="minimenu">
+                                <div id="re-0-up">&uarr;</div>
+                                <div id="re-0-down">&darr;</div>
+                                <div id="re-0-add">&#65291;</div>
+                                <div id="re-0-remove">x</div>
+                            </div>
+
+                            <div class="repair-option">
+                                <select id="re-0-format">
+                                    <option value="chk">Checkbox</option>
+                                    <option value="pic">Pick one</option>
+                                    <option value="oth">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="repair-entry-lower">
+                            <div class="re-pick">
+                                <input type="text" id="re-0-a-value" placeholder="Screen replacement">
+                                <input type="text" id="re-0-a-value" placeholder="Screen replacement">
+                                <input type="text" id="re-0-a-value" placeholder="Screen replacement">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
             </div>
         </div>
 
-        <h3>Repairs</h3>
-        <div id="repairs">
-            <div class="row header">
-                <div>Choice</div>
-                <div>Options</div>
-            </div>
-            
-        </div>
-        <script src="./config.js"></script>
+        <script src="./config.js" type="module"></script>
     </body>
 </html>
