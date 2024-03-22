@@ -221,7 +221,7 @@ body {
 .repair-option > select {
     width: 95%;
     margin-left: 5%;
-    border: solid 2px black;
+    border: solid 1px lightgray;
     border-radius: 3px;
     font-size: 0.9rem;
     font-weight: 450;
@@ -241,7 +241,7 @@ body {
 
 .re-check > input {
     width: 100%;
-    border: solid 2px var(--colorB5);
+    border: solid 2px var(--colorB1);
     border-radius: 3px;
     font-size: 1rem;
     font-weight: 450;
@@ -257,7 +257,7 @@ body {
 .re-pick > input {
     width: 90%;
     margin-left: 10%;
-    border: solid 2px var(--colorB5);
+    border: solid 2px var(--colorB1);
     border-radius: 3px;
     font-size: 1rem;
     font-weight: 450;

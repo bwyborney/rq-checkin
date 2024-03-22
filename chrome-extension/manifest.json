@@ -40,11 +40,13 @@
 
         {
             "js" : [
-                "configInit.js",
-                "scripts-config/spawnConfig.js"
+                "scripts-config/pullData.js",
+                "scripts-config/showForm.js",
+                "scripts-config/spawnConfigButton.js",
+                "configInit.js"
             ],
             "css" : [
-
+                "style/addConfig.css"
             ],
             "matches" : [
                 "https://cpr.repairq.io/settings/custom-field-group/edit/*"
@@ -56,7 +58,8 @@
     "web_accessible_resources": [
         {
           "resources": [ 
-            "/checkin-form/*" 
+            "/checkin-form/*" ,
+            "/config-page/*"
         ],
           "matches": [ 
             "<all_urls>" 
