@@ -38,18 +38,13 @@ Adding other features:
 - [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty. It will also show pre-test vs. post-test
 
 # To-do:
-- [ ] Make sure the default data is clear
-- [ ] The form doesn't seem to work whenever it is forced to pop up by a ticket status change
 - [ ] Make sure price includes tax (we don't have tax here)
-- [ ] Bugs
-    - [ ] Due time may not being getting pulled
 - [ ] Auto-format phone numbers
 - [ ] Documentation and polish:
     - [ ] Make the CPR Checkin header smaller and remove the pallette, just use an HR if needed
     - [ ] Make only one header for "contact method" above the two dropdowns
     - [ ] Make sure the OLED/OEM/LCD thing looks good with two, four, five options, etc.
     - [ ] Add instructions
-        - [ ] Remember to print background graphics
 
 # Lower priority:
 - [ ] Redesign "pick one" repair options since they only allow for three options right now
