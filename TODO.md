@@ -68,7 +68,8 @@ Adding other features:
     - [x] Does it work when converting from regular ticket to claim?
     - [ ] Make it required and then test it while checking in a claim
         - [ ] Test what happens when you make a regular repair ticket then convert it before filling in the form
-- [ ] Make the config mutationObserver restart after submitting the page
+- [ ] Make the config mutationObserver restart after submitting the page (for the config form)
+- [ ] prevent the config form from popping up when the form is not ready yet
 # Ideas:
 - An auto-filling checklist in the sidebar, which shows how many pieces of required information have been added to the ticket. This might prevent clicking on a status button until the checklist is filled
 - Conditional logic, like in the custom forms (i.e if you select "screen repair," you can be required to choose a type of screen)
@@ -76,10 +77,6 @@ Adding other features:
 - Figure out how to make the form required
 - Add override buttons (all good, can't test, device not present)
 
-# Where I'm leaving off:
-deleting all forms messes it up
-testing try clicking the mini menus around while there's no data or one entry in the data
-what happens when you don't enter anything into the data?
 
 
 

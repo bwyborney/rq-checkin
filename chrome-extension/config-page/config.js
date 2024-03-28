@@ -52,7 +52,7 @@ function handleMiniMenuClick(index, type, command) {
     // Handle the action differently depending on the command/button
     if (command === 'up') {
         // Do nothing if "up" is clicked when the item is at the top
-        if (values.length < 2 || index === 0) {
+        if (format.length < 2 || index === 0) {
             console.log('cannot move up');
         } else {
             // Swap the value with the value above it to move it "up" the list
@@ -66,7 +66,7 @@ function handleMiniMenuClick(index, type, command) {
             format = newFormat;
         }
     } else if (command === 'down') {
-        if (values.length < 2 || index === values.length - 1) {
+        if (format.length < 2 || index === values.length - 1) {
             console.log('cannot move down');
         } else {
             let newValues = [...values];
@@ -95,15 +95,14 @@ function handleMiniMenuClick(index, type, command) {
     } else if (command === 'remove') {
         let newValues;
         let newFormat;
-        console.log(values);
-        console.log(format);
         // Check if the last value is being removed
-        if (values.length === 1) {
+        if (format.length === 1) {
             if (type === 'pt') {
-                newValues = [];
+                newValues = [''];
+                newFormat = [['Pass', 'Fail', 'Not testable']];
             } else {
                 newValues = [0];
-                newFormat = ['Repair'];
+                newFormat = [['Repair']];
             }
         } else {
             // Delete this index from the array
