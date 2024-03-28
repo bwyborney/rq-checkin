@@ -33,7 +33,7 @@ function getDefaultData() {
     },
     "columnA": {
       "values": [
-        "Front cracked?",
+        "Screen cracked?",
         "Back cracked?",
         "Touch sensitivity:",
         "Display visibility:",

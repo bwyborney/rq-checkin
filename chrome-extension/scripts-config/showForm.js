@@ -1,6 +1,6 @@
 // Display the configuration form
 function showForm(container) {
-    // First, get the data
+    // Get the data
     let data = pullData();
     // Gets passed 'container,' which is the edit modal. Hide all its children
     for (let c = 0; c < container.children.length; c++) {
@@ -16,5 +16,25 @@ function showForm(container) {
     frame.width = '100%';
     frame.height = '80%';
     container.appendChild(frame);
+
+    // Start listening for the data to come back from the form
+    window.addEventListener('message', event => {
+        let origin = chrome.runtime.getURL('/');
+        let correctOrigin = origin.substring(0, origin.length - 1);
+        if (event.origin === correctOrigin) {
+            // Bring back the regular forms
+            for (let c = 0; c < container.children.length; c++) {
+                container.children[c].style.display = 'block';
+            }
+            // Hide the form
+            frame.style.display = 'none';
+            // Save the data in the form
+            let dataSpot = document.getElementById('CustomFieldForm_value');
+            dataSpot.value = JSON.stringify(event.data);
+
+        } else {
+            return;
+        }
+    });
 
 }

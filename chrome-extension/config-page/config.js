@@ -1,24 +1,40 @@
-// Get the data 
-import { getData } from "./scripts/getData.js";
-let data = getData();
-
-// Fill in the store information
-let storePhone = '(541)914-1230';
-let storeEmail = 'repairs@cpr-eugene.com';
+import { getDefaultData } from "./scripts/getDefaultData.js";
 import { fillStoreInfo } from "./scripts/fillStoreInfo.js";
-fillStoreInfo(storePhone, storeEmail);
-
-// Add onchange listeners to the store info forms
-import { addStoreInfoListeners } from "./scripts/addStoreInfoListeners.js";
-addStoreInfoListeners(data.ticketInfo.technician);
-
-// Fill the pretests
 import { fillPreTests } from "./scripts/fillPreTests.js";
-fillPreTests(data.columnA.values, data.columnB.format);
-
-// Fill the repairs
 import { fillRepairs } from "./scripts/fillRepairs.js";
-fillRepairs(data.columnC.format);
+import { fillData } from "./scripts/fillData.js";
+let data;
+
+// Once the message containing the data is received from 
+// the parent window, send it through to the assembly line
+window.addEventListener('message', event => {
+    if (event.origin === "https://cpr.repairq.io") {
+        initialize(event.data);
+    } else {
+        return;
+    }
+});
+
+function initialize(passedData) {
+    if (passedData === 'noData' || passedData === undefined) {
+        // Get the default data if there is none
+        data = getDefaultData();
+    } else {
+        data = passedData;
+    }
+    // Fill in the store information
+    let storePhone = data.ticketInfo.technician.number;
+    let storeEmail = data.ticketInfo.technician.email;
+    fillStoreInfo(storePhone, storeEmail);
+    // Add onchange listeners to the store info forms
+    addStoreInfoListeners();
+    // Fill the pretests
+    fillPreTests(data.columnA.values, data.columnB.format);
+    // Fill the repairs
+    fillRepairs(data.columnC.format);
+    // Add listener for the submit button
+    document.getElementById('submit').addEventListener('click', () => {handleSubmit()});
+}
 
 // Handler for mini-menu clicks
 // Declaring this here so it has access to the data variable
@@ -77,11 +93,25 @@ function handleMiniMenuClick(index, type, command) {
         values = newValues;
         format = newFormat;
     } else if (command === 'remove') {
-        // Delete this index from the array
-        let newValues = [...values];
-        let newFormat = [...format];
-        newValues.splice(index, 1);
-        newFormat.splice(index, 1);
+        let newValues;
+        let newFormat;
+        console.log(values);
+        console.log(format);
+        // Check if the last value is being removed
+        if (values.length === 1) {
+            if (type === 'pt') {
+                newValues = [];
+            } else {
+                newValues = [0];
+                newFormat = ['Repair'];
+            }
+        } else {
+            // Delete this index from the array
+            newValues = [...values];
+            newFormat = [...format];
+            newValues.splice(index, 1);
+            newFormat.splice(index, 1);
+        }
         values = newValues;
         format = newFormat;
     }
@@ -177,3 +207,30 @@ function handleFormatChange(e) {
     }
 }
 export {handleFormatChange};
+
+// Handle submit button
+function handleSubmit() {
+    // Pass the data along to the filler function
+    let completeData = fillData(data);
+    // Emit this data back to the main page
+    window.parent.postMessage(completeData, '*');
+}
+
+function addStoreInfoListeners() {
+    // Identify the two form elements
+    let phone = document.getElementById('store-phone');
+    let email = document.getElementById('store-email');
+    // Add listeners
+    phone.onchange = (e) => handlePhoneChange(e);
+    email.onchange = (e) => handleEmailChange(e);
+}
+
+// For each form, change the value in the data to the form's value
+// The "data" variable getting passed here is data.ticketInfo.technician
+function handlePhoneChange(e) {
+    data.ticketInfo.technician.number = e.target.value;
+}
+
+function handleEmailChange(e) {
+    data.ticketInfo.technician.email = e.target.value;
+}

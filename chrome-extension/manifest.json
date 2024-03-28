@@ -49,7 +49,8 @@
                 "style/addConfig.css"
             ],
             "matches" : [
-                "https://cpr.repairq.io/settings/custom-field-group/edit/*"
+                "https://cpr.repairq.io/settings/custom-field-group/edit/*",
+                "https://cpr.repairq.io/customFieldGroup/edit/*"
             ],
             "run_at": "document_end"
         }

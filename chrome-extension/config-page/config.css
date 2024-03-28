@@ -241,7 +241,7 @@ body {
 
 .re-check > input {
     width: 100%;
-    border: solid 2px var(--colorB1);
+    border: solid 2px var(--colorB3);
     border-radius: 3px;
     font-size: 1rem;
     font-weight: 450;
@@ -257,7 +257,7 @@ body {
 .re-pick > input {
     width: 90%;
     margin-left: 10%;
-    border: solid 2px var(--colorB1);
+    border: solid 2px var(--colorB3);
     border-radius: 3px;
     font-size: 1rem;
     font-weight: 450;
@@ -273,4 +273,23 @@ body {
     padding: 1%;
     background-color: var(--colorB1);
     cursor: not-allowed;
+}
+
+/* ----- Submit button ----- */
+
+#submit {
+    width: 30%;
+    margin-left: 35%;
+    border: solid 3px var(--colorB3);
+    border-radius: 5px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 1%;
+    background-color: var(--colorB1);
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: var(--colorB2);
+    transition: 0.1s;
 }

@@ -68,6 +68,7 @@ Adding other features:
     - [x] Does it work when converting from regular ticket to claim?
     - [ ] Make it required and then test it while checking in a claim
         - [ ] Test what happens when you make a regular repair ticket then convert it before filling in the form
+- [ ] Make the config mutationObserver restart after submitting the page
 # Ideas:
 - An auto-filling checklist in the sidebar, which shows how many pieces of required information have been added to the ticket. This might prevent clicking on a status button until the checklist is filled
 - Conditional logic, like in the custom forms (i.e if you select "screen repair," you can be required to choose a type of screen)
@@ -76,12 +77,9 @@ Adding other features:
 - Add override buttons (all good, can't test, device not present)
 
 # Where I'm leaving off:
-Working on the config form.
-Need to change getData to pull data from the page, and if that fails, use the default data
-Change the fillStoreInfo to use whatever is passed over from Chrome user storage
-On submit, need to save store info in chrome storage again
-when rearranging the values ,need to make sure to get rid of blank ones. Maybe just do this on submit
+deleting all forms messes it up
 testing try clicking the mini menus around while there's no data or one entry in the data
+what happens when you don't enter anything into the data?
 
 
 
