@@ -38,8 +38,11 @@ Adding other features:
 - [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty. It will also show pre-test vs. post-test
 
 # To-do:
+- [ ] fix the due time showing up in 24-hour format
 - [ ] Make sure price includes tax (we don't have tax here)
 - [ ] Auto-format phone numbers
+- [ ] Bugs
+    - [ ] The preview no longer works
 - [ ] Documentation and polish:
     - [ ] Make the CPR Checkin header smaller and remove the pallette, just use an HR if needed
     - [ ] Make only one header for "contact method" above the two dropdowns
