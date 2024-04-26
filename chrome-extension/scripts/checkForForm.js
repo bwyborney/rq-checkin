@@ -32,7 +32,7 @@ function checkForForm() {
     // Check if you're viewing a modal and then spawn the form
     let view = document.getElementById('customFieldGroupModal');
     if (view) {
-        if (view.children[0].children[1].innerText === 'CPR Check-in') {
+        if (view.children[0].children[1].innerText.includes('CPR Check-in')) {
             showPreview(previewAdded);
         }
     }
