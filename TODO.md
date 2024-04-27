@@ -42,7 +42,9 @@ Adding other features:
 - [ ] Make sure price includes tax (we don't have tax here)
 - [ ] Auto-format phone numbers
 - [ ] Bugs
-    - [ ] The preview no longer works
+    - [x] The preview no longer works
+    - [ ] Not always pulling device info and serial number on regular tickets
+    - [ ] Doesn't seem to pull device information anymore
 - [ ] Documentation and polish:
     - [ ] Make the CPR Checkin header smaller and remove the pallette, just use an HR if needed
     - [ ] Make only one header for "contact method" above the two dropdowns
