@@ -40,15 +40,12 @@ Adding other features:
 # To-do:
 - [ ] Make sure price includes tax (we don't have tax here)
 - [ ] Auto-format phone numbers
-- [x] Bugs
-    - [x] The preview no longer works
-    - [x] Not always pulling device info and serial number on regular tickets
-    - [x] Doesn't seem to pull device information anymore
-- [ ] Documentation and polish:
-    - [x] Make the CPR Checkin header smaller and remove the pallette, just use an HR if needed
-    - [ ] Make only one header for "contact method" above the two dropdowns
-    - [ ] Make sure the OLED/OEM/LCD thing looks good with two, four, five options, etc.
-    - [ ] Add instructions
+- [ ] Add instructions
+    - [ ] Webpage
+    - [ ] Extension page
+    - [ ] git page
+    - [ ] video
+- [ ] allow people to upload their own logo, and then provide the link for the photo
 
 # Lower priority:
 - [ ] fix the due time showing up in 24-hour format
@@ -58,12 +55,12 @@ Adding other features:
     - Labelled as "device not present"
     - Places default data into the saved-data box and triggers the same function as saving and printing/closing the form
     - Adds "device not present" to the intake notes, which then triggers a pop-up message whenever viewing or editing the ticket
-- [ ] For the extension: create options page for customizing test values
+- [x] For the extension: create options page for customizing test values
     - need to add phone number and email. This could be done with chrome user storage
     - need a hard check to ensure column A and B are the same length
     - NEED to JSON.stringify() the config value before saving it to the custom form
     - let user know if they are missing store contact info
-    - allow people to upload their own logo, and then provide the link for the photo
+    
 - [ ] Test claim tickets
     - [x] Does it work when converting from regular ticket to claim?
     - [ ] Make it required and then test it while checking in a claim
