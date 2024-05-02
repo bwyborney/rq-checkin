@@ -41,12 +41,12 @@ Adding other features:
 - [ ] fix the due time showing up in 24-hour format
 - [ ] Make sure price includes tax (we don't have tax here)
 - [ ] Auto-format phone numbers
-- [ ] Bugs
+- [x] Bugs
     - [x] The preview no longer works
-    - [ ] Not always pulling device info and serial number on regular tickets
-    - [ ] Doesn't seem to pull device information anymore
+    - [x] Not always pulling device info and serial number on regular tickets
+    - [x] Doesn't seem to pull device information anymore
 - [ ] Documentation and polish:
-    - [ ] Make the CPR Checkin header smaller and remove the pallette, just use an HR if needed
+    - [x] Make the CPR Checkin header smaller and remove the pallette, just use an HR if needed
     - [ ] Make only one header for "contact method" above the two dropdowns
     - [ ] Make sure the OLED/OEM/LCD thing looks good with two, four, five options, etc.
     - [ ] Add instructions
