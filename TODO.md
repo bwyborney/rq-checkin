@@ -38,7 +38,6 @@ Adding other features:
 - [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty. It will also show pre-test vs. post-test
 
 # To-do:
-- [ ] fix the due time showing up in 24-hour format
 - [ ] Make sure price includes tax (we don't have tax here)
 - [ ] Auto-format phone numbers
 - [x] Bugs
@@ -52,6 +51,7 @@ Adding other features:
     - [ ] Add instructions
 
 # Lower priority:
+- [ ] fix the due time showing up in 24-hour format
 - [ ] Redesign "pick one" repair options since they only allow for three options right now
 - [ ] Only allow phone numbers for phone-based contact methods, and email for emailing
 - [ ] Add override button
