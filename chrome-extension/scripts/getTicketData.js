@@ -104,7 +104,7 @@ function getTicketData() {
     let drIndex = 999;
     let deviceRows = document.getElementsByClassName('device-ticket-info');
     for (let d = 0; d < deviceRows.length; d++) {
-        if (deviceRows[d].style.display === 'table-row') {
+        if (deviceRows[d].style.display !== 'none') { 
             drIndex = d;
         }
     }
