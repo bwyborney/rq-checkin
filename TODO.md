@@ -38,30 +38,29 @@ Adding other features:
 - [ ] Post-test version of the form with invoice/receipt information, such as payment as warranty. It will also show pre-test vs. post-test
 
 # To-do:
-- [ ] fix the due time showing up in 24-hour format
 - [ ] Make sure price includes tax (we don't have tax here)
 - [ ] Auto-format phone numbers
-- [ ] Bugs
-    - [ ] The preview no longer works
-- [ ] Documentation and polish:
-    - [ ] Make the CPR Checkin header smaller and remove the pallette, just use an HR if needed
-    - [ ] Make only one header for "contact method" above the two dropdowns
-    - [ ] Make sure the OLED/OEM/LCD thing looks good with two, four, five options, etc.
-    - [ ] Add instructions
+- [ ] Add instructions
+    - [ ] Webpage
+    - [ ] Extension page
+    - [ ] git page
+    - [ ] video
+- [ ] allow people to upload their own logo, and then provide the link for the photo
 
 # Lower priority:
+- [ ] fix the due time showing up in 24-hour format
 - [ ] Redesign "pick one" repair options since they only allow for three options right now
 - [ ] Only allow phone numbers for phone-based contact methods, and email for emailing
 - [ ] Add override button
     - Labelled as "device not present"
     - Places default data into the saved-data box and triggers the same function as saving and printing/closing the form
     - Adds "device not present" to the intake notes, which then triggers a pop-up message whenever viewing or editing the ticket
-- [ ] For the extension: create options page for customizing test values
+- [x] For the extension: create options page for customizing test values
     - need to add phone number and email. This could be done with chrome user storage
     - need a hard check to ensure column A and B are the same length
     - NEED to JSON.stringify() the config value before saving it to the custom form
     - let user know if they are missing store contact info
-    - allow people to upload their own logo, and then provide the link for the photo
+    
 - [ ] Test claim tickets
     - [x] Does it work when converting from regular ticket to claim?
     - [ ] Make it required and then test it while checking in a claim

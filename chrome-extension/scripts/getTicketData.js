@@ -75,8 +75,21 @@ function getTicketData() {
     }
 
     // Get the due time and date
-    let date = document.getElementsByClassName('date-picker')[0].value;
-    let time = document.getElementsByClassName('estimate-time')[0].value;
+    let date;
+    let time;
+    if (document.getElementsByClassName('date-picker')[0].value) {
+        date = document.getElementsByClassName('date-picker')[0].value;
+    } else {
+        date = document.getElementById('TicketForm_repair_estimated_day').value;
+    }
+    /*
+    if (document.getElementsByClassName('estimate-time')[0].value) {
+        time = document.getElementsByClassName('estimate-time')[0].value;
+    } else {
+        time = document.getElementById().value; // There's no alternate to put in here
+    }
+    */
+    time = document.getElementsByClassName('estimate-time')[0].value;
 
     // Combine the two values and add a colon and hyphen
     // First make sure there's actually a date and a time chosen
@@ -104,7 +117,7 @@ function getTicketData() {
     let drIndex = 999;
     let deviceRows = document.getElementsByClassName('device-ticket-info');
     for (let d = 0; d < deviceRows.length; d++) {
-        if (deviceRows[d].style.display === 'table-row') {
+        if (deviceRows[d].style.display !== 'none') { 
             drIndex = d;
         }
     }
@@ -138,7 +151,5 @@ function getTicketData() {
 
     }
     
-
-
     return ticketData;
 }
