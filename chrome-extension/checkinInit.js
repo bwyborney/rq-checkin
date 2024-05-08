@@ -3,6 +3,9 @@
 let watch = document.getElementsByClassName('c-ticket')[0];
 const config = {childList: true, attributes: true};
 const observer = new MutationObserver(checkForForm);
-observer.observe(watch, config);
+if (document.getElementsByClassName('c-ticket')[0]) {
+    observer.observe(watch, config);
+}
+
 
 
