@@ -46,6 +46,7 @@ Adding other features:
     - [ ] git page
     - [ ] video
 - [ ] allow people to upload their own logo, and then provide the link for the photo
+- [ ] Test text overflow in repair and pre-test item names
 
 # Lower priority:
 - [ ] fix the due time showing up in 24-hour format
